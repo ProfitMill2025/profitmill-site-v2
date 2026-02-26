@@ -38,16 +38,18 @@ interface PricingGridMobileProps {
   className?: string
 }
 
+const sectionLabels = ["KEY PLAN DIFFERENCES", "INCREMENTAL DIFFERENCES", "ALWAYS INCLUDED"]
+
 const defaultTiers: PricingTier[] = [
   {
     name: "Explore",
-    price: "$3,000",
+    price: "$5,000",
     period: "USD/month",
-    description: "Best for first time Google or LinkedIn Ad users testing channel fit",
-    stage: "Stage:",
+    description: "Often selected by teams testing channel fit and early traction",
+    stage: "Common Stage:",
     stageDetail: " Pre-seed / self-funded",
-    arr: "ARR: ",
-    arrDetail: "Up to $1M",
+    arr: "Common Revenue:",
+    arrDetail: " Up to $1M",
     headerBgColor: "#006840",
     details: [
       ["Google Ads OR LinkedIn Ads", "Text + Image Ads", "Landing page advice"],
@@ -56,14 +58,14 @@ const defaultTiers: PricingTier[] = [
     ]
   },
   {
-    name: "Invest", 
-    price: "$6,000",
+    name: "Invest",
+    price: "$8,000",
     period: "USD/month",
-    description: "Best for funded teams looking to optimize core channels and ramp spend efficiently",
-    stage: "Ideal stage:",
+    description: "Often selected by teams with PMF looking to accelerate scale",
+    stage: "Common Stage:",
     stageDetail: " Seed to Series A",
-    arr: "ARR:",
-    arrDetail: " $1M - $5M",
+    arr: "Common Revenue:",
+    arrDetail: " $1M - $10M",
     highlight: "most popular",
     highlightColor: "#ffba0a",
     headerBgColor: "#00351f",
@@ -76,13 +78,13 @@ const defaultTiers: PricingTier[] = [
   },
   {
     name: "Accelerate",
-    price: "$8,000", 
+    price: "$12,000",
     period: "USD/month",
-    description: "Best for teams looking to move fast, test multiple channels, and maximize CAC efficiently.",
-    stage: "Ideal stage:",
+    description: "Often selected by teams driving hyper-growth and peak expansion",
+    stage: "Common Stage:",
     stageDetail: " Series B and beyond",
-    arr: "ARR:",
-    arrDetail: " $5M+",
+    arr: "Common Revenue:",
+    arrDetail: " $10M+",
     highlight: "highest value",
     highlightColor: "#b6ffce",
     headerBgColor: "#001109",
@@ -290,7 +292,7 @@ export default function PricingGridMobile({ tiers = defaultTiers, className = ''
                       style={{ backgroundColor: bgColors[sectionIndex] }}
                     >
                       <span className="text-[12px] font-extrabold uppercase tracking-[2.16px] leading-[1.3]">
-                        additional details
+                        {sectionLabels[sectionIndex]}
                       </span>
                       <div className={`w-6 h-6 transform transition-transform ${isExpanded ? 'rotate-0' : 'rotate-180'}`}>
                         <ChevronDownIcon />

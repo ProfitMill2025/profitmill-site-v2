@@ -24,7 +24,7 @@ const channelCtaConfigs = {
   'linkedin-ads': {
     title: "Get a free LinkedIn Ads audit",
     subtitle: "Share read-only access to your LinkedIn account and we'll show you the gaps, quick wins, and biggest growth opportunities that you might be missing out on.",
-    buttonText: "Book your free LinkedIn Ads audit"
+    buttonText: "Book your free audit"
   },
   'other-channels': {
     title: "Get a free paid ads audit",

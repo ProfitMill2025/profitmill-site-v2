@@ -112,7 +112,7 @@ export default async function PrivacyPolicyPage() {
 
         {privacyPolicy?.lastUpdated && (
           <p className="text-gray-600 mb-8">
-            Last updated: {new Date(privacyPolicy.lastUpdated).toLocaleDateString('en-US', {
+            Last Updated: {new Date(privacyPolicy.lastUpdated).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
               day: 'numeric'

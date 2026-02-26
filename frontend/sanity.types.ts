@@ -13,6 +13,45 @@
  */
 
 // Source: ../sanity.schema.json
+export type PageFaqs = {
+  _id: string
+  _type: 'pageFaqs'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  pageTitle: string
+  pageSlug: Slug
+  faqs?: Array<{
+    question: string
+    answer: Array<{
+      children?: Array<{
+        marks?: Array<string>
+        text?: string
+        _type: 'span'
+        _key: string
+      }>
+      style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+      listItem?: 'bullet' | 'number'
+      markDefs?: Array<{
+        href?: string
+        _type: 'link'
+        _key: string
+      }>
+      level?: number
+      _type: 'block'
+      _key: string
+    }>
+    defaultOpen?: boolean
+    _key: string
+  }>
+}
+
+export type Slug = {
+  _type: 'slug'
+  current: string
+  source?: string
+}
+
 export type Terms = {
   _id: string
   _type: 'terms'
@@ -268,12 +307,6 @@ export type WhoWeWorkWith = {
     subtitle: string
     buttonText: string
   }
-}
-
-export type Slug = {
-  _type: 'slug'
-  current: string
-  source?: string
 }
 
 export type CaseStudy = {
@@ -800,6 +833,8 @@ export type Geopoint = {
 }
 
 export type AllSanitySchemaTypes =
+  | PageFaqs
+  | Slug
   | Terms
   | PrivacyPolicy
   | Podcast
@@ -810,7 +845,6 @@ export type AllSanitySchemaTypes =
   | SanityImageHotspot
   | Tool
   | WhoWeWorkWith
-  | Slug
   | CaseStudy
   | AuthorReference
   | BlogPostReference
@@ -1078,6 +1112,37 @@ export type AuthorQueryResult = {
 export type AuthorSlugsQueryResult = Array<string>
 
 // Source: sanity/lib/queries.ts
+// Variable: pageFaqsQuery
+// Query: *[_type == "pageFaqs" && pageSlug.current == $pageSlug][0] {    _id,    pageTitle,    "pageSlug": pageSlug.current,    faqs[] {      question,      answer,      defaultOpen    }  }
+export type PageFaqsQueryResult = {
+  _id: string
+  pageTitle: string
+  pageSlug: string
+  faqs: Array<{
+    question: string
+    answer: Array<{
+      children?: Array<{
+        marks?: Array<string>
+        text?: string
+        _type: 'span'
+        _key: string
+      }>
+      style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal'
+      listItem?: 'bullet' | 'number'
+      markDefs?: Array<{
+        href?: string
+        _type: 'link'
+        _key: string
+      }>
+      level?: number
+      _type: 'block'
+      _key: string
+    }>
+    defaultOpen: boolean | null
+  }> | null
+} | null
+
+// Source: sanity/lib/queries.ts
 // Variable: whoWeWorkWithQuery
 // Query: *[_type == "whoWeWorkWith" && slug.current == $slug][0] {    ...,    "processedLogos": hero.logos[] {      name,      "logoUrl": logo.asset->url    }  }
 export type WhoWeWorkWithQueryResult = {
@@ -1190,6 +1255,7 @@ declare module '@sanity/client' {
     '\n  *[_type == "podcast" && isActive == true && defined(spotifyUrl) && spotifyUrl != ""] | order(_createdAt desc) {\n    _id,\n    title,\n    spotifyUrl\n  }\n': AllPodcastsQueryResult
     '\n  *[_type == "author" && slug.current == $slug][0] {\n    _id,\n    name,\n    slug,\n    title,\n    profileImage,\n    bio,\n    linkedinUrl,\n    twitterUrl,\n    email,\n    "blogPosts": *[_type == "blogPost" && references(^._id)] | order(publishedAt desc) {\n      _id,\n      title,\n      subtitle,\n      slug,\n      publishedAt,\n      categories,\n      tags,\n      heroImage,\n      featured\n    }\n  }\n': AuthorQueryResult
     '\n  *[_type == "author"].slug.current\n': AuthorSlugsQueryResult
+    '\n  *[_type == "pageFaqs" && pageSlug.current == $pageSlug][0] {\n    _id,\n    pageTitle,\n    "pageSlug": pageSlug.current,\n    faqs[] {\n      question,\n      answer,\n      defaultOpen\n    }\n  }\n': PageFaqsQueryResult
     '\n  *[_type == "whoWeWorkWith" && slug.current == $slug][0] {\n    ...,\n    "processedLogos": hero.logos[] {\n      name,\n      "logoUrl": logo.asset->url\n    }\n  }\n': WhoWeWorkWithQueryResult
     '\n  *[_type == "whoWeWorkWith" && isActive == true].slug.current\n': WhoWeWorkWithSlugsQueryResult
     '\n  *[_type == "caseStudy" && isActive == true] | order(_createdAt desc) {\n    _id,\n    title,\n    slug,\n    excerpt,\n    clientName,\n    image,\n    order,\n    isActive\n  }\n': AllCaseStudiesQueryResult

@@ -207,6 +207,19 @@ export const authorSlugsQuery = defineQuery(`
   *[_type == "author"].slug.current
 `)
 
+export const pageFaqsQuery = defineQuery(`
+  *[_type == "pageFaqs" && pageSlug.current == $pageSlug][0] {
+    _id,
+    pageTitle,
+    "pageSlug": pageSlug.current,
+    faqs[] {
+      question,
+      answer,
+      defaultOpen
+    }
+  }
+`)
+
 export const whoWeWorkWithQuery = defineQuery(`
   *[_type == "whoWeWorkWith" && slug.current == $slug][0] {
     ...,

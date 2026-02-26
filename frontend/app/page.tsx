@@ -10,7 +10,8 @@ import TestimonialsSection from '@/components/v2/landing-page/testimonials'
 import CaseStudiesSection from '@/components/v2/case-studies-section'
 import FaqsSection from '@/components/v2/landing-page/faqs-section'
 import CtaSection from '@/components/v2/cta-section'
-import { homepageFaqs } from '@/data/faqs'
+import { client } from '@/sanity/lib/client'
+import { pageFaqsQuery } from '@/sanity/lib/queries'
 
 export const metadata: Metadata = {
   title: 'Paid Ads Experts for B2B Growth | Profit Mill',
@@ -20,7 +21,11 @@ export const metadata: Metadata = {
   },
 }
 
-export default function Homepage() {
+export default async function Homepage() {
+  const faqDoc = await client.fetch(pageFaqsQuery, { pageSlug: 'homepage' }, {
+    next: { tags: ['pageFaqs', 'pageFaqs-homepage'] }
+  })
+
   return (
     <>
       <HomepageHero />
@@ -57,7 +62,7 @@ export default function Homepage() {
 
       <TestimonialsSection />
       <CaseStudiesSection />
-      <FaqsSection faqData={homepageFaqs} />
+      {faqDoc?.faqs && <FaqsSection faqData={faqDoc.faqs} />}
       <CtaSection buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit" />
     </>
   )

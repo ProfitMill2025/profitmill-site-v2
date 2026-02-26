@@ -53,20 +53,20 @@ export default function MetricsSection({
           </div>
 
           {/* Project Highlights Title */}
-          <h2 className="text-center text-2xl font-bold mt-8">Project Highlights</h2>
+          <h2 className="text-center text-2xl font-bold mt-8">Project highlights</h2>
 
           {/* Project Highlights Cards */}
           <div className="mt-6 flex flex-wrap justify-center gap-8">
             <div className="bg-[#003B2D] w-full md:flex-1 lg:max-w-[350px] px-4 py-4 rounded-md text-center shadow-lg">
-              <div className="text-sm font-light text-[#CEFF00]">Industry</div>
+              <div className="text-sm font-light text-[#CEFF00]">Industry:</div>
               <div className="text-[#CEFF00] font-light">{industry}</div>
             </div>
             <div className="bg-[#003B2D] w-full md:flex-1 lg:max-w-[350px] px-4 py-4 rounded-md text-center shadow-lg">
-              <div className="text-sm font-light text-[#CEFF00]">Tool</div>
+              <div className="text-sm font-light text-[#CEFF00]">Tools:</div>
               <div className="text-[#CEFF00] font-light">{tools}</div>
             </div>
             <div className="bg-[#003B2D] w-full md:flex-1 lg:max-w-[350px] px-4 py-4 rounded-md text-center shadow-lg">
-              <div className="text-sm font-light text-[#CEFF00]">Team</div>
+              <div className="text-sm font-light text-[#CEFF00]">Who I worked with:</div>
               <div className="text-[#CEFF00] font-light">{team}</div>
             </div>
           </div>

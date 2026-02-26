@@ -8,7 +8,8 @@ import TestimonialsSection from '@/components/v2/landing-page/testimonials'
 import CaseStudiesSection from '@/components/v2/case-studies-section'
 import FaqsSection from '@/components/v2/landing-page/faqs-section'
 import CtaSection from '@/components/v2/cta-section'
-import { pricingFaqs } from '@/data/faqs'
+import { client } from '@/sanity/lib/client'
+import { pageFaqsQuery } from '@/sanity/lib/queries'
 
 export const metadata: Metadata = {
   title: 'Paid Ads That Pay For Themselves | Profit Mill',
@@ -46,7 +47,11 @@ export const metadata: Metadata = {
   },
 }
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const faqDoc = await client.fetch(pageFaqsQuery, { pageSlug: 'pricing' }, {
+    next: { tags: ['pageFaqs', 'pageFaqs-pricing'] }
+  })
+
   return (
     <div className="bg-white min-h-screen">
       <PageHeader
@@ -90,7 +95,7 @@ export default function PricingPage() {
         description="Hear what our clients have to say:"
       />
       <CaseStudiesSection />
-      <FaqsSection faqData={pricingFaqs} />
+      {faqDoc?.faqs && <FaqsSection faqData={faqDoc.faqs} />}
       <CtaSection
         title="Get your free ad audit"
         subtitle="Don't just take our word for it. Share read-only access to your ad accounts, and we'll show you exactly where you're leaving money on the table."

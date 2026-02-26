@@ -140,7 +140,7 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
         <div className="mx-auto px-4 md:px-8 py-12 md:py-16">
           <MoreBlogPosts
             posts={authorData.blogPosts}
-            title={`Articles by ${authorData.name.split(' ')[0]}`}
+            title={`More blog posts by ${authorData.name.split(' ')[0]}`}
           />
         </div>
       )}

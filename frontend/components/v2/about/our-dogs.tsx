@@ -103,16 +103,17 @@ export default function OurDogs({ className = '' }: OurDogsProps) {
           </h2>
 
           {/* Dogs Grid - Responsive layout */}
+          {/* Row 1: 3 pets */}
           <div className="flex flex-col lg:flex-row gap-12 items-start justify-start w-full">
-            {/* Dog 1 - Chief Happiness Officer */}
-            <div 
+            {/* Pet 1 - Bembo */}
+            <div
               ref={setDogCardRef(0)}
               className="flex flex-col gap-6 items-start justify-start w-full lg:flex-1 cursor-pointer"
             >
               <div className="dog-image relative w-full h-[290px] lg:w-[225px] lg:h-[225px] rounded-[10px] overflow-hidden bg-center bg-cover bg-no-repeat">
                 <Image
                   src={imgPeterGreen4}
-                  alt="Office dog - Chief Happiness Officer"
+                  alt="Bembo - Head of Security (Window Division)"
                   fill
                   className="object-cover"
                 />
@@ -120,24 +121,24 @@ export default function OurDogs({ className = '' }: OurDogsProps) {
               <div className="flex flex-col gap-4 lg:gap-6 items-start justify-start w-full">
                 <div className="flex flex-col gap-2 items-start justify-start w-full">
                   <h3 className="font-semibold text-[#006840] text-[24px] leading-[1.5] w-full">
-                    Charlie
+                    Bembo
                   </h3>
                   <p className="font-normal text-[#001109] text-[18px] leading-[1.5] w-full">
-                    Chief Happiness Officer
+                    Head of Security (Window Division)
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Dog 2 - Chief Nap Officer */}
-            <div 
+            {/* Pet 2 - Pixel */}
+            <div
               ref={setDogCardRef(1)}
               className="flex flex-col gap-6 items-start justify-start w-full lg:flex-1 cursor-pointer"
             >
               <div className="dog-image relative w-full h-[290px] lg:w-[225px] lg:h-[225px] rounded-[10px] overflow-hidden bg-center bg-cover bg-no-repeat">
                 <Image
                   src={imgPeterGreen5}
-                  alt="Office dog - Chief Nap Officer"
+                  alt="Pixel - Chief Nap Officer"
                   fill
                   className="object-cover"
                 />
@@ -145,7 +146,7 @@ export default function OurDogs({ className = '' }: OurDogsProps) {
               <div className="flex flex-col gap-4 lg:gap-6 items-start justify-start w-full">
                 <div className="flex flex-col gap-2 items-start justify-start w-full">
                   <h3 className="font-semibold text-[#006840] text-[24px] leading-[1.5] w-full">
-                    Bella
+                    Pixel
                   </h3>
                   <p className="font-normal text-[#001109] text-[18px] leading-[1.5] w-full">
                     Chief Nap Officer
@@ -154,15 +155,15 @@ export default function OurDogs({ className = '' }: OurDogsProps) {
               </div>
             </div>
 
-            {/* Dog 3 - Director of Barketing */}
-            <div 
+            {/* Pet 3 - Dolly */}
+            <div
               ref={setDogCardRef(2)}
               className="flex flex-col gap-6 items-start justify-start w-full lg:flex-1 cursor-pointer"
             >
               <div className="dog-image relative w-full h-[290px] lg:w-[225px] lg:h-[225px] rounded-[10px] overflow-hidden bg-center bg-cover bg-no-repeat">
                 <Image
                   src={imgPeterGreen6}
-                  alt="Office dog - Director of Barketing"
+                  alt="Dolly - Snack Acquisition Officer"
                   fill
                   className="object-cover"
                 />
@@ -170,10 +171,63 @@ export default function OurDogs({ className = '' }: OurDogsProps) {
               <div className="flex flex-col gap-4 lg:gap-6 items-start justify-start w-full">
                 <div className="flex flex-col gap-2 items-start justify-start w-full">
                   <h3 className="font-semibold text-[#006840] text-[24px] leading-[1.5] w-full">
-                    Max
+                    Dolly
                   </h3>
                   <p className="font-normal text-[#001109] text-[18px] leading-[1.5] w-full">
-                    Director of Barketing
+                    Snack Acquisition Officer
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Row 2: 2 pets (TODO: upload actual pet photos to Cloudinary) */}
+          <div className="flex flex-col lg:flex-row gap-12 items-start justify-start w-full lg:justify-center mt-12">
+            {/* Pet 4 - Viki */}
+            <div
+              ref={setDogCardRef(3)}
+              className="flex flex-col gap-6 items-start justify-start w-full lg:flex-1 lg:max-w-[33.333%] cursor-pointer"
+            >
+              <div className="dog-image relative w-full h-[290px] lg:w-[225px] lg:h-[225px] rounded-[10px] overflow-hidden bg-center bg-cover bg-no-repeat">
+                <Image
+                  src={imgPeterGreen4}
+                  alt="Viki - Chief Mischief Officer"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="flex flex-col gap-4 lg:gap-6 items-start justify-start w-full">
+                <div className="flex flex-col gap-2 items-start justify-start w-full">
+                  <h3 className="font-semibold text-[#006840] text-[24px] leading-[1.5] w-full">
+                    Viki
+                  </h3>
+                  <p className="font-normal text-[#001109] text-[18px] leading-[1.5] w-full">
+                    Chief Mischief Officer
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Pet 5 - Gigi */}
+            <div
+              ref={setDogCardRef(4)}
+              className="flex flex-col gap-6 items-start justify-start w-full lg:flex-1 lg:max-w-[33.333%] cursor-pointer"
+            >
+              <div className="dog-image relative w-full h-[290px] lg:w-[225px] lg:h-[225px] rounded-[10px] overflow-hidden bg-center bg-cover bg-no-repeat">
+                <Image
+                  src={imgPeterGreen5}
+                  alt="Gigi - Lead Purr Engineer"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="flex flex-col gap-4 lg:gap-6 items-start justify-start w-full">
+                <div className="flex flex-col gap-2 items-start justify-start w-full">
+                  <h3 className="font-semibold text-[#006840] text-[24px] leading-[1.5] w-full">
+                    Gigi
+                  </h3>
+                  <p className="font-normal text-[#001109] text-[18px] leading-[1.5] w-full">
+                    Lead Purr Engineer
                   </p>
                 </div>
               </div>

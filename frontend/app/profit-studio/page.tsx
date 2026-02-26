@@ -29,7 +29,7 @@ export default function ProfitStudioPage() {
       <CtaSection
         title="Ready to build with us?"
         subtitle="We partner with a small number of founders per year—when the product, timing, and vision align. Got a venture worth building? Send us your pitch and let's talk."
-        buttonText="Pitch Us Your Startup"
+        buttonText="Pitch us your startup"
         buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
       />
     </div>

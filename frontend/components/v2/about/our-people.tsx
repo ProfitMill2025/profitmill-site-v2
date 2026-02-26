@@ -84,7 +84,7 @@ export default function OurPeople({ className = '' }: OurPeopleProps) {
               <div className="relative w-full lg:w-[225px] aspect-square rounded-[10px] overflow-hidden bg-center bg-cover bg-no-repeat">
                 <Image
                   src={imgPeterGreen4}
-                  alt="Peter Guba, Founder"
+                  alt="Peter Guba, Founder & CEO"
                   fill
                   className="object-cover"
                 />
@@ -95,16 +95,20 @@ export default function OurPeople({ className = '' }: OurPeopleProps) {
                     Peter Guba
                   </h3>
                   <p className="font-normal text-[#001109] text-[18px] leading-[1.5] w-full">
-                    Founder
+                    Founder &amp; CEO
                   </p>
                 </div>
                 <p className="font-normal text-[#001109] text-[16px] leading-[1.5] w-full">
-                  Peter Guba spent 8 years at Google managing 1,000+ ad accounts across startups, scale-ups, and enterprise giants. He&apos;s helped companies launch their first campaigns, refine multimillion-dollar ad strategies, and build repeatable revenue engines. Before Google, Peter worked at and co-founded startups, giving him a front-row seat to the challenges founders face at every stage of growth. Today, he leads Profit Mill with one goal: helping ambitious B2B companies turn ad spend into profitable growth.
+                  Peter spent 8 years at Google managing 1,000+ accounts, ranging from first-time startup launches to $50M/year global ad spends for brands like Air Canada and Four Seasons.
+                  <br /><br />
+                  At Profit Mill, he leads the team with a performance-first mindset, focusing exclusively on turning paid ads spend into measurable, profitable growth.
+                  <br /><br />
+                  When he isn&apos;t focusing on his team, Peter is likely traveling with his wife and toddler—taking full advantage of the remote-work lifestyle to spend extended time on either coast.
                 </p>
               </div>
             </div>
 
-            {/* Alex Gubecka */}
+            {/* Nikolina Piplica */}
             <div
               ref={setTeamMemberRef(1)}
               className="flex flex-col gap-6 items-start justify-start w-full lg:flex-1"
@@ -112,7 +116,7 @@ export default function OurPeople({ className = '' }: OurPeopleProps) {
               <div className="relative w-full lg:w-[225px] aspect-square rounded-[10px] overflow-hidden bg-center bg-cover bg-no-repeat">
                 <Image
                   src={imgPeterGreen6}
-                  alt="Alex Gubecka, Director of Paid Media"
+                  alt="Nikolina Piplica, Account Executive"
                   fill
                   className="object-cover"
                 />
@@ -120,16 +124,18 @@ export default function OurPeople({ className = '' }: OurPeopleProps) {
               <div className="flex flex-col gap-6 items-start justify-start w-full">
                 <div className="flex flex-col gap-2 items-start justify-start w-full">
                   <h3 className="font-semibold text-[#006840] text-[24px] leading-[1.5] w-full">
-                    Alex Gubecka
+                    Nikolina Piplica
                   </h3>
                   <p className="font-normal text-[#001109] text-[18px] leading-[1.5] w-full">
-                    Director of Paid Media
+                    Account Executive
                   </p>
                 </div>
                 <p className="font-normal text-[#001109] text-[16px] leading-[1.5] w-full">
-                  A performance marketing strategist with over 10 years of experience helping startups and B2B companies accelerate growth through smarter digital advertising. He specializes in Google Ads, LinkedIn Ads, and Meta Ads—designing campaigns that maximize ROI, scale customer acquisition, and connect brands with the right audiences.
+                  Nikolina has spent 6+ years managing multi-million dollar B2B campaigns across the healthcare and technology sectors.
                   <br /><br />
-                  With a background in PHP and JavaScript development, Alex brings a deep technical understanding of how the web works under the hood. He also has managerial experience leading PPC teams and, as part of a venture capital environment, has helped dozens of startups scale efficiently—turning ambitious goals into measurable results.
+                  While a specialist in data-driven ad strategy, she is an elite project manager at her core—a combination that allows her to turn client growth opportunities into practical execution. At Profit Mill, Nikolina acts as a seamless extension of her clients&apos; teams, ensuring every campaign is as organized as it is profitable.
+                  <br /><br />
+                  When she&apos;s not strategizing with clients, you&apos;ll find her mastering Mario Kart while her three cats provide expert commentary.
                 </p>
               </div>
             </div>

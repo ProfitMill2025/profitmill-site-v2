@@ -75,10 +75,10 @@ export default function TestimonialsSection({
             <div className="bg-[#F1FFF5] p-6 rounded-lg md:col-span-2">
               <div className="grid md:grid-cols-2 gap-6 mb-4">
                 <h3 className="text-xl font-semibold text-emerald-800">
-                  Turned Google Ads around in just a month.
+                  Profit Mill Turned Google Ads around in just a month.
                 </h3>
                 <blockquote className="text-[#001109]">
-                  &quot;We dabbled with Google Ads for two and a half years and received very few quality leads and a lot of spam leads. Peter turned that around in just a month, generating a healthy volume of inbound leads that actually turned into customers! 6 months into our work together, we&apos;ve now doubled our monthly investment into Google Ads and are super excited to keep working with him.&quot;
+                  &quot;We dabbled with Google Ads for two and a half years and received very few quality leads and a lot of spam leads. Profit Mill turned that around in just a month, generating a healthy volume of inbound leads that actually turned into customers! 6 months into our work together, we&apos;ve now doubled our monthly investment into Google Ads and are super excited to keep working with them.&quot;
                 </blockquote>
               </div>
               <footer className="text-sm text-emerald-700">
@@ -119,7 +119,7 @@ export default function TestimonialsSection({
                   10x better than any other agency
                 </h3>
                 <blockquote className="text-[#001109]">
-                  &quot;Amazing contractor for google ads. He will help you scale your startup from thousands of dollars to millions. Peter is truly a superstar and 10x better than any other agency.&quot;
+                  &quot;Amazing contractor for Google Ads. They will help you scale your startup from thousands of dollars to millions. Peter is truly a superstar and 10x better than any other agency.&quot;
                 </blockquote>
               </div>
               <footer className="text-sm text-emerald-700">
@@ -146,7 +146,7 @@ export default function TestimonialsSection({
                 Ended up with a profitable and scalable system in the first year
               </h3>
               <blockquote className="text-[#001109] mb-4">
-                &quot;Can&apos;t recommend working with Peter enough! The results have been even better than we could have imagined. We relaunched Google ads with him and ended up with a profitable and scalable system in the first year! He does so much more than just paid ads - he&apos;s helped us think strategically about different ways to scale our business, he&apos;s helped us technically optimize our systems, and he&apos;s generally just been a fantastic problem solver. It feels like he&apos;s a member of the team. I feel really lucky to have him in our corner!&quot;
+                &quot;Can&apos;t recommend working with Profit Mill enough! The results have been even better than we could have imagined. We relaunched Google Ads with them and ended up with a profitable and scalable system in the first year! They do so much more than just paid ads - they&apos;ve helped us think strategically about different ways to scale our business, technically optimize our systems, and generally just been fantastic problem solvers. It feels like they&apos;re a member of the team. I feel really lucky to have them in our corner!&quot;
               </blockquote>
               <footer className="text-sm text-emerald-700">
                 - Eli Gladstone, Co-Founder &amp; CEO at Speaker Labs

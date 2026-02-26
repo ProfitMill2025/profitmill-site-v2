@@ -7,6 +7,8 @@ import HowWeWork from '@/components/v2/what-we-do/how-we-work'
 import FaqsSection from '@/components/v2/what-we-do/faqs-section'
 import CaseStudiesSection from '@/components/v2/case-studies-section'
 import CtaSection from '@/components/v2/cta-section'
+import { client } from '@/sanity/lib/client'
+import { pageFaqsQuery } from '@/sanity/lib/queries'
 
 const services = {
   'google-ads': {
@@ -80,6 +82,10 @@ export default async function ServicePage({
     notFound()
   }
 
+  const faqDoc = await client.fetch(pageFaqsQuery, { pageSlug: slug }, {
+    next: { tags: ['pageFaqs', `pageFaqs-${slug}`] }
+  })
+
   return (
     <div className="min-h-screen bg-white">
       <PageHeader
@@ -93,7 +99,7 @@ export default async function ServicePage({
       <HowWeWork channel={slug} />
       <WhyProfitMill channel={slug} />
       <CaseStudiesSection title="Not to brag... but we deliver results" />
-      <FaqsSection channel={slug} />
+      {faqDoc?.faqs && <FaqsSection faqData={faqDoc.faqs} />}
       <CtaSection channel={slug} />
     </div>
   )

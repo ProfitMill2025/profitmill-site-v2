@@ -13,6 +13,45 @@
  */
 
 // Source: ../sanity.schema.json
+export type PageFaqs = {
+  _id: string
+  _type: 'pageFaqs'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  pageTitle: string
+  pageSlug: Slug
+  faqs?: Array<{
+    question: string
+    answer: Array<{
+      children?: Array<{
+        marks?: Array<string>
+        text?: string
+        _type: 'span'
+        _key: string
+      }>
+      style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+      listItem?: 'bullet' | 'number'
+      markDefs?: Array<{
+        href?: string
+        _type: 'link'
+        _key: string
+      }>
+      level?: number
+      _type: 'block'
+      _key: string
+    }>
+    defaultOpen?: boolean
+    _key: string
+  }>
+}
+
+export type Slug = {
+  _type: 'slug'
+  current: string
+  source?: string
+}
+
 export type Terms = {
   _id: string
   _type: 'terms'
@@ -268,12 +307,6 @@ export type WhoWeWorkWith = {
     subtitle: string
     buttonText: string
   }
-}
-
-export type Slug = {
-  _type: 'slug'
-  current: string
-  source?: string
 }
 
 export type CaseStudy = {
@@ -735,6 +768,7 @@ export type SanityImageMetadata = {
   palette?: SanityImagePalette
   lqip?: string
   blurHash?: string
+  thumbHash?: string
   hasAlpha?: boolean
   isOpaque?: boolean
 }
@@ -799,6 +833,8 @@ export type Geopoint = {
 }
 
 export type AllSanitySchemaTypes =
+  | PageFaqs
+  | Slug
   | Terms
   | PrivacyPolicy
   | Podcast
@@ -809,7 +845,6 @@ export type AllSanitySchemaTypes =
   | SanityImageHotspot
   | Tool
   | WhoWeWorkWith
-  | Slug
   | CaseStudy
   | AuthorReference
   | BlogPostReference

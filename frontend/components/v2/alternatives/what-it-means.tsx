@@ -23,12 +23,12 @@ const cardsData: CardData[] = [
   {
     number: '1',
     title: 'Strategy based on insider knowledge, not guesswork.',
-    description: "Most agencies rely on limited experience and trial & error. We've seen behind the curtain at Google and LinkedIn, which means we know how leading ad platforms measure success, and which strategies drive profitable growth over time."
+    description: "Most agencies rely on limited experience and trial & error. We've been behind the curtain at leading ad platforms like Google, LinkedIn, and Reddit, which means we know how they measure success and which strategies drive profitable growth over time."
   },
   {
     number: '2',
     title: 'Paid ad specialists, not marketing generalists.',
-    description: 'A lot of agencies try to do everything: SEO, web design, content, paid ads. We focus on paid ads for B2B businesses, with deep expertise in Google and LinkedIn. If paid ads are your growth lever, you want specialists, not generalists.'
+    description: 'A lot of agencies try to do everything: SEO, web design, content, paid ads. We focus on paid ads for B2B businesses backed by deep platform expertise. If paid ads are your growth lever, you want specialists, not generalists.'
   },
   {
     number: '3',

@@ -184,7 +184,7 @@ export default function CaseStudiesSection({
               {/* Content */}
               <div className="flex flex-col gap-4">
                 <div className="text-[#B6FFCE] text-[12px] font-extrabold uppercase tracking-[2.16px] leading-[1.3]">
-                  CASE STUDY
+                  case study
                 </div>
 
                 <h3 className="text-white text-[18px] font-normal leading-[1.5]">

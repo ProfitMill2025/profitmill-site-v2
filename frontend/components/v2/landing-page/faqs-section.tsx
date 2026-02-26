@@ -9,11 +9,18 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { FaqItem } from '@/data/faqs';
+import { FaqPortableText } from '@/components/v2/faq-portable-text';
+
+export interface SanityFaqItem {
+  question: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  answer: any[];
+  defaultOpen?: boolean | null;
+}
 
 interface FaqsSectionProps {
   className?: string;
-  faqData: FaqItem[];
+  faqData: SanityFaqItem[];
 }
 
 export default function FaqsSection({ className = "", faqData }: FaqsSectionProps) {
@@ -54,8 +61,12 @@ export default function FaqsSection({ className = "", faqData }: FaqsSectionProp
     return () => ctx.revert();
   }, []);
 
+  if (!faqData || faqData.length === 0) {
+    return null;
+  }
+
   return (
-    <section 
+    <section
       ref={sectionRef}
       className={`relative overflow-hidden bg-white ${className}`}
     >
@@ -64,7 +75,7 @@ export default function FaqsSection({ className = "", faqData }: FaqsSectionProp
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col gap-12 items-center justify-start w-full">
           {/* Title */}
-          <h2 
+          <h2
             ref={titleRef}
             className="font-['Sora',_sans-serif] font-bold text-[42px] leading-[1.2] text-[#001109] text-center w-full"
           >
@@ -76,14 +87,14 @@ export default function FaqsSection({ className = "", faqData }: FaqsSectionProp
             ref={accordionRef}
             className="w-full"
           >
-            <Accordion 
-              type="single" 
-              collapsible 
+            <Accordion
+              type="single"
+              collapsible
               defaultValue={faqData.find(faq => faq.defaultOpen)?.question}
               className="flex flex-col gap-4"
             >
               {faqData.map((faq, index) => (
-                <AccordionItem 
+                <AccordionItem
                   key={faq.question}
                   value={faq.question}
                   className={`border-none rounded-[10px] ${
@@ -103,11 +114,7 @@ export default function FaqsSection({ className = "", faqData }: FaqsSectionProp
                   <AccordionContent className="px-6 pb-5">
                     <div className="ml-10">
                       <div className="font-['Sora',_sans-serif] font-normal text-[16px] leading-[1.5] text-white">
-                        {typeof faq.answer === 'string' ? (
-                          <p>{faq.answer}</p>
-                        ) : (
-                          faq.answer
-                        )}
+                        <FaqPortableText value={faq.answer} />
                       </div>
                     </div>
                   </AccordionContent>
@@ -124,7 +131,7 @@ export default function FaqsSection({ className = "", faqData }: FaqsSectionProp
         <div className="max-w-7xl mx-auto">
         <div className="flex flex-col gap-12 items-center justify-start w-full">
           {/* Title */}
-          <h2 
+          <h2
             ref={titleRef}
             className="font-['Sora',_sans-serif] font-bold text-[32px] leading-[1.2] text-[#001109] text-center w-full"
           >
@@ -136,14 +143,14 @@ export default function FaqsSection({ className = "", faqData }: FaqsSectionProp
             ref={accordionRef}
             className="w-full"
           >
-            <Accordion 
-              type="single" 
-              collapsible 
+            <Accordion
+              type="single"
+              collapsible
               defaultValue={faqData.find(faq => faq.defaultOpen)?.question}
               className="flex flex-col gap-4"
             >
               {faqData.map((faq, index) => (
-                <AccordionItem 
+                <AccordionItem
                   key={faq.question}
                   value={faq.question}
                   className={`border-none rounded-[10px] ${
@@ -163,11 +170,7 @@ export default function FaqsSection({ className = "", faqData }: FaqsSectionProp
                   <AccordionContent className="px-6 pb-5">
                     <div className="ml-10">
                       <div className="font-['Sora',_sans-serif] font-normal text-[16px] leading-[1.5] text-white">
-                        {typeof faq.answer === 'string' ? (
-                          <p>{faq.answer}</p>
-                        ) : (
-                          faq.answer
-                        )}
+                        <FaqPortableText value={faq.answer} />
                       </div>
                     </div>
                   </AccordionContent>
