@@ -18,7 +18,7 @@ import {
 import {assist} from '@sanity/assist'
 
 // Environment variables for project configuration
-const projectId = process.env.SANITY_STUDIO_PROJECT_ID || 'your-projectID'
+const projectId = process.env.SANITY_STUDIO_PROJECT_ID || 'ce4idxlh'
 const dataset = process.env.SANITY_STUDIO_DATASET || 'production'
 
 // URL for preview functionality, defaults to localhost:3000 if not set
@@ -30,16 +30,16 @@ const homeLocation = {
   href: '/',
 } satisfies DocumentLocation
 
-// resolveHref() is a convenience function that resolves the URL
-// path for different document types and used in the presentation tool.
+// resolveHref() resolves the URL path for different document types
 function resolveHref(documentType?: string, slug?: string): string | undefined {
   switch (documentType) {
-    case 'post':
-      return slug ? `/posts/${slug}` : undefined
-    case 'page':
-      return slug ? `/${slug}` : undefined
+    case 'blogPost':
+      return slug ? `/resources/blog/${slug}` : undefined
+    case 'caseStudy':
+      return slug ? `/case-studies/${slug}` : undefined
+    case 'whoWeWorkWith':
+      return slug ? `/who-we-work-with/${slug}` : undefined
     default:
-      console.warn('Invalid document type:', documentType)
       return undefined
   }
 }
@@ -47,7 +47,7 @@ function resolveHref(documentType?: string, slug?: string): string | undefined {
 // Main Sanity configuration
 export default defineConfig({
   name: 'default',
-  title: 'Sanity + Next.js Starter Template',
+  title: 'Profit Mill v2 Site',
 
   projectId,
   dataset,
@@ -62,43 +62,22 @@ export default defineConfig({
         },
       },
       resolve: {
-        // The Main Document Resolver API provides a method of resolving a main document from a given route or route pattern. https://www.sanity.io/docs/visual-editing/presentation-resolver-api#57720a5678d9
         mainDocuments: defineDocuments([
           {
-            route: '/',
-            filter: `_type == "settings" && _id == "siteSettings"`,
+            route: '/resources/blog/:slug',
+            filter: `_type == "blogPost" && slug.current == $slug`,
           },
           {
-            route: '/:slug',
-            filter: `_type == "page" && slug.current == $slug || _id == $slug`,
+            route: '/case-studies/:slug',
+            filter: `_type == "caseStudy" && slug.current == $slug`,
           },
           {
-            route: '/posts/:slug',
-            filter: `_type == "post" && slug.current == $slug || _id == $slug`,
+            route: '/who-we-work-with/:slug',
+            filter: `_type == "whoWeWorkWith" && slug.current == $slug`,
           },
         ]),
-        // Locations Resolver API allows you to define where data is being used in your application. https://www.sanity.io/docs/visual-editing/presentation-resolver-api#8d8bca7bfcd7
         locations: {
-          settings: defineLocations({
-            locations: [homeLocation],
-            message: 'This document is used on all pages',
-            tone: 'positive',
-          }),
-          page: defineLocations({
-            select: {
-              name: 'name',
-              slug: 'slug.current',
-            },
-            resolve: (doc) => ({
-              locations: [
-                {
-                  title: doc?.name || 'Untitled',
-                  href: resolveHref('page', doc?.slug)!,
-                },
-              ],
-            }),
-          }),
-          post: defineLocations({
+          blogPost: defineLocations({
             select: {
               title: 'title',
               slug: 'slug.current',
@@ -107,28 +86,53 @@ export default defineConfig({
               locations: [
                 {
                   title: doc?.title || 'Untitled',
-                  href: resolveHref('post', doc?.slug)!,
+                  href: resolveHref('blogPost', doc?.slug)!,
                 },
-                {
-                  title: 'Home',
-                  href: '/',
-                } satisfies DocumentLocation,
+                homeLocation,
               ].filter(Boolean) as DocumentLocation[],
+            }),
+          }),
+          caseStudy: defineLocations({
+            select: {
+              title: 'title',
+              slug: 'slug.current',
+            },
+            resolve: (doc) => ({
+              locations: [
+                {
+                  title: doc?.title || 'Untitled',
+                  href: resolveHref('caseStudy', doc?.slug)!,
+                },
+              ],
+            }),
+          }),
+          whoWeWorkWith: defineLocations({
+            select: {
+              title: 'title',
+              slug: 'slug.current',
+            },
+            resolve: (doc) => ({
+              locations: [
+                {
+                  title: doc?.title || 'Untitled',
+                  href: resolveHref('whoWeWorkWith', doc?.slug)!,
+                },
+              ],
             }),
           }),
         },
       },
     }),
     structureTool({
-      structure, // Custom studio structure configuration, imported from ./src/structure.ts
+      structure,
     }),
-    // Additional plugins for enhanced functionality
+    // Additional plugins
     unsplashImageAsset(),
     assist(),
     visionTool(),
   ],
 
-  // Schema configuration, imported from ./src/schemaTypes/index.ts
+  // Schema configuration
   schema: {
     types: schemaTypes,
   },

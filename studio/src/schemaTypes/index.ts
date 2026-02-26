@@ -1,28 +1,23 @@
-import {person} from './documents/person'
-import {page} from './documents/page'
-import {post} from './documents/post'
-import {callToAction} from './objects/callToAction'
-import {infoSection} from './objects/infoSection'
-import {settings} from './singletons/settings'
-import {link} from './objects/link'
-import {blockContent} from './objects/blockContent'
-import button from './objects/button'
-import {blockContentTextOnly} from './objects/blockContentTextOnly'
+import {blogPost} from './documents/blogPost'
+import {author} from './documents/author'
+import {caseStudy} from './documents/caseStudy'
+import {whoWeWorkWith} from './documents/whoWeWorkWith'
+import {tool} from './documents/tool'
+import {playbook} from './documents/playbook'
+import {podcast} from './documents/podcast'
+import {privacyPolicy} from './documents/privacyPolicy'
+import {terms} from './documents/terms'
 
-// Export an array of all the schema types.  This is used in the Sanity Studio configuration. https://www.sanity.io/docs/studio/schema-types
-
+// Export an array of all the schema types. This is used in the Sanity Studio configuration.
 export const schemaTypes = [
-  // Singletons
-  settings,
   // Documents
-  page,
-  post,
-  person,
-  // Objects
-  button,
-  blockContent,
-  blockContentTextOnly,
-  infoSection,
-  callToAction,
-  link,
+  blogPost,
+  author,
+  caseStudy,
+  whoWeWorkWith,
+  tool,
+  playbook,
+  podcast,
+  privacyPolicy,
+  terms,
 ]
