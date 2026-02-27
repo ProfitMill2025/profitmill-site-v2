@@ -220,6 +220,18 @@ export const pageFaqsQuery = defineQuery(`
   }
 `)
 
+export const pageLogosQuery = defineQuery(`
+  *[_type == "pageLogos" && page == $page][0] {
+    _id,
+    page,
+    logoSectionTitle,
+    "logos": logos[] {
+      name,
+      "logoUrl": logo.asset->url
+    }
+  }
+`)
+
 export const whoWeWorkWithQuery = defineQuery(`
   *[_type == "whoWeWorkWith" && slug.current == $slug][0] {
     ...,

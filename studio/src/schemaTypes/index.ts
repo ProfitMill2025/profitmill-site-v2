@@ -8,6 +8,7 @@ import {podcast} from './documents/podcast'
 import {privacyPolicy} from './documents/privacyPolicy'
 import {terms} from './documents/terms'
 import {pageFaqs} from './documents/pageFaqs'
+import {pageLogos} from './documents/pageLogos'
 
 // Export an array of all the schema types. This is used in the Sanity Studio configuration.
 export const schemaTypes = [
@@ -22,4 +23,5 @@ export const schemaTypes = [
   privacyPolicy,
   terms,
   pageFaqs,
+  pageLogos,
 ]

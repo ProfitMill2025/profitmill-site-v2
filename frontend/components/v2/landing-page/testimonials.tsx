@@ -25,7 +25,7 @@ export default function TestimonialsSection({
             stroke="#006840"
             strokeWidth="0.5"
           />
-          
+
           {/* Diagonal line from top-right to bottom-left */}
           <line
             x1="1100"
@@ -68,79 +68,68 @@ export default function TestimonialsSection({
           <p className="text-lg text-[#001109] mb-12 text-center">
             {description}
           </p>
-  
+
           {/* Testimonials grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* First testimonial */}
-            <div className="bg-[#F1FFF5] p-6 rounded-lg md:col-span-2">
-              <div className="grid md:grid-cols-2 gap-6 mb-4">
-                <h3 className="text-xl font-semibold text-emerald-800">
-                  Profit Mill Turned Google Ads around in just a month.
-                </h3>
-                <blockquote className="text-[#001109]">
-                  &quot;We dabbled with Google Ads for two and a half years and received very few quality leads and a lot of spam leads. Profit Mill turned that around in just a month, generating a healthy volume of inbound leads that actually turned into customers! 6 months into our work together, we&apos;ve now doubled our monthly investment into Google Ads and are super excited to keep working with them.&quot;
-                </blockquote>
-              </div>
-              <footer className="text-sm text-emerald-700">
-                - Shawn Watts, CEO &amp; Founder at Corfix
-              </footer>
-            </div>
-  
-            {/* Second testimonial */}
+            {/* First testimonial - Michael Harding */}
             <div className="bg-[#F1FFF5] p-6 rounded-lg">
               <h3 className="text-xl font-semibold text-emerald-800 mb-4">
-                Made Google ads the most profitable and largest revenue driving stream
+                10x better than any other agency
               </h3>
               <blockquote className="text-[#001109] mb-4">
-                &quot;Peter is an expert at what he does and brings incredible insights and execution to every team he helps out with. He has made our Google ads the most profitable and largest revenue driving stream in our organization.&quot;
+                &quot;Amazing contractor for Google Ads. They will help you scale your startup from thousands of dollars to millions. Peter is truly a superstar and 10x better than any other agency.&quot;
               </blockquote>
-              <footer className="text-sm text-emerald-700">
-                - Connor Moynihan, Former Social Media Manager at Let&apos;s Roam
-              </footer>
-            </div>
-
-            {/* Third testimonial */}
-            <div className="bg-[#F1FFF5] p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-emerald-800 mb-4">
-                Achieved growth we&apos;d never thought possible
-              </h3>
-              <blockquote className="text-[#001109] mb-4">
-                &quot;They were instrumental at my last company in helping us scale our ad spend multiple times over. Their strategic insights, coupled with a hands-on approach to campaign management, allowed us to achieve growth that we had never thought possible.&quot;
-              </blockquote>
-              <footer className="text-sm text-emerald-700">
-                - Jordan Stella, Former VP of Marketing at Let&apos;s Roam
-              </footer>
-            </div>
-  
-            {/* Fourth testimonial */}
-            <div className="bg-[#F1FFF5] p-6 rounded-lg md:col-span-2">
-              <div className="grid md:grid-cols-2 gap-6 mb-4">
-                <h3 className="text-xl font-semibold text-emerald-800">
-                  10x better than any other agency
-                </h3>
-                <blockquote className="text-[#001109]">
-                  &quot;Amazing contractor for Google Ads. They will help you scale your startup from thousands of dollars to millions. Peter is truly a superstar and 10x better than any other agency.&quot;
-                </blockquote>
-              </div>
               <footer className="text-sm text-emerald-700">
                 - Michael Harding, CEO &amp; Founder at Let&apos;s Roam
               </footer>
             </div>
-  
-            {/* Fifth testimonial */}
+
+            {/* Second testimonial - Shawn Watts */}
             <div className="bg-[#F1FFF5] p-6 rounded-lg">
               <h3 className="text-xl font-semibold text-emerald-800 mb-4">
-                A game changer for our organization
+                Profit Mill Turned Google Ads around in just a month.
               </h3>
               <blockquote className="text-[#001109] mb-4">
-                &quot;Working with Peter was a game changer for our organization. With his help, we were not only able to drive incremental leads for our sales staff but he also provided guidance and strategic direction for increasing our conversions. He always brought fresh ideas to the table while rooting every decision in data backed insights. I would highly recommend working with him and his team.&quot;
+                &quot;We dabbled with Google Ads for two and a half years and received very few quality leads and a lot of spam leads. Profit Mill turned that around in just a month, generating a healthy volume of inbound leads that actually turned into customers! With our work together, we&apos;ve now doubled our monthly investment into Google Ads and are super excited to keep working with them.&quot;
               </blockquote>
               <footer className="text-sm text-emerald-700">
-                - Scott Bradley, Former Head of Sales at Let&apos;s Roam
+                - Shawn Watts, CEO &amp; Founder at Corfix
               </footer>
             </div>
-  
-            {/* Sixth testimonial */}
+
+            {/* Third testimonial - Nicola Ciardiello-Hardy */}
+            <div className="bg-[#F1FFF5] p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-emerald-800 mb-4">
+                We were impressed with Profit Mill&apos;s depth of knowledge, the time they spent with our team, and their dedication to our success.
+              </h3>
+              <blockquote className="text-[#001109] mb-4">
+                &quot;Profit Mill&apos;s project management was amazing. The team delivered on time and reconciled well to our needs. We were impressed with Profit Mill&apos;s depth of knowledge, the time they spent with our team, and their dedication to our success.&quot;
+              </blockquote>
+              <footer className="text-sm text-emerald-700">
+                - Nicola Ciardiello-Hardy, VP of Marketing at Easyjet Holidays
+              </footer>
+            </div>
+
+            {/* Fourth testimonial - Luke Piestz */}
+            <div className="bg-[#F1FFF5] p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-emerald-800 mb-4">
+                If you&apos;re looking for someone who can handle both the technical side and provide real strategic value, I can&apos;t recommend Profit Mill enough.
+              </h3>
+              <blockquote className="text-[#001109] mb-4">
+                &quot;Working with Peter at Profit Mill has been a game-changer for our ad campaigns. He really knows his stuff when it comes to Google Ads and brought a strategic approach that actually delivered results. What impressed me most was when we hit those analytics attribution problems — Peter immediately connected us with experts who diagnosed and fixed everything.&quot;
+              </blockquote>
+              <blockquote className="text-[#001109] mb-4">
+                &quot;What sets Peter apart is how he applies his broad experience to one specific situation. He doesn&apos;t just run campaigns — he offers practical advice that&apos;s helped us see the bigger marketing picture. He&apos;s super responsive, easy to work with, and genuinely seems to care about our success.&quot;
+              </blockquote>
+              <blockquote className="text-[#001109] mb-4">
+                &quot;If you&apos;re looking for someone who can handle both the technical side and provide real strategic value, I can&apos;t recommend Peter and Profit Mill enough. They&apos;ve made a huge difference for our business.&quot;
+              </blockquote>
+              <footer className="text-sm text-emerald-700">
+                - Luke Piestz, Head of Growth &amp; Marketing at BuzzRail
+              </footer>
+            </div>
+
+            {/* Fifth testimonial - Eli Gladstone */}
             <div className="bg-[#F1FFF5] p-6 rounded-lg">
               <h3 className="text-xl font-semibold text-emerald-800 mb-4">
                 Ended up with a profitable and scalable system in the first year
@@ -152,11 +141,22 @@ export default function TestimonialsSection({
                 - Eli Gladstone, Co-Founder &amp; CEO at Speaker Labs
               </footer>
             </div>
+
+            {/* Sixth testimonial - Cristina Burne */}
+            <div className="bg-[#F1FFF5] p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-emerald-800 mb-4">
+                Always on time, always thorough, Profit Mill consistently pushed us to do more and think bigger.
+              </h3>
+              <blockquote className="text-[#001109] mb-4">
+                &quot;Always on time, always thorough, Profit Mill consistently pushed us to do more and think bigger. Their responses were quick, their guidance productive, and they operated like an embedded part of our team, not an external agency. Their willingness to iterate and learn with us stood out. As an early stage startup, our priorities shifted constantly, and things were often chaotic. Profit Mill stayed flexible, adapted quickly, and never made us feel like we were asking for too much. That kind of partnership is rare.&quot;
+              </blockquote>
+              <footer className="text-sm text-emerald-700">
+                - Cristina Burne, Head of Marketing at Paraform
+              </footer>
+            </div>
           </div>
         </div>
       </section>
     </div>
   )
 }
-  
-  

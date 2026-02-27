@@ -13,6 +13,50 @@
  */
 
 // Source: ../sanity.schema.json
+export type SanityImageAssetReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+}
+
+export type PageLogos = {
+  _id: string
+  _type: 'pageLogos'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  page: 'homepage' | 'case-studies'
+  logoSectionTitle: string
+  logos?: Array<{
+    name: string
+    logo: {
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      _type: 'image'
+    }
+    _key: string
+  }>
+}
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top: number
+  bottom: number
+  left: number
+  right: number
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x: number
+  y: number
+  height: number
+  width: number
+}
+
 export type PageFaqs = {
   _id: string
   _type: 'pageFaqs'
@@ -128,13 +172,6 @@ export type SanityFileAssetReference = {
   [internalGroqTypeReferenceTo]?: 'sanity.fileAsset'
 }
 
-export type SanityImageAssetReference = {
-  _ref: string
-  _type: 'reference'
-  _weak?: boolean
-  [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-}
-
 export type Playbook = {
   _id: string
   _type: 'playbook'
@@ -174,22 +211,6 @@ export type Playbook = {
   order?: number
   featured?: boolean
   isActive?: boolean
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top: number
-  bottom: number
-  left: number
-  right: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x: number
-  y: number
-  height: number
-  width: number
 }
 
 export type Tool = {
@@ -833,16 +854,17 @@ export type Geopoint = {
 }
 
 export type AllSanitySchemaTypes =
+  | SanityImageAssetReference
+  | PageLogos
+  | SanityImageCrop
+  | SanityImageHotspot
   | PageFaqs
   | Slug
   | Terms
   | PrivacyPolicy
   | Podcast
   | SanityFileAssetReference
-  | SanityImageAssetReference
   | Playbook
-  | SanityImageCrop
-  | SanityImageHotspot
   | Tool
   | WhoWeWorkWith
   | CaseStudy
@@ -1143,6 +1165,19 @@ export type PageFaqsQueryResult = {
 } | null
 
 // Source: sanity/lib/queries.ts
+// Variable: pageLogosQuery
+// Query: *[_type == "pageLogos" && page == $page][0] {    _id,    page,    logoSectionTitle,    "logos": logos[] {      name,      "logoUrl": logo.asset->url    }  }
+export type PageLogosQueryResult = {
+  _id: string
+  page: 'case-studies' | 'homepage'
+  logoSectionTitle: string
+  logos: Array<{
+    name: string
+    logoUrl: string | null
+  }> | null
+} | null
+
+// Source: sanity/lib/queries.ts
 // Variable: whoWeWorkWithQuery
 // Query: *[_type == "whoWeWorkWith" && slug.current == $slug][0] {    ...,    "processedLogos": hero.logos[] {      name,      "logoUrl": logo.asset->url    }  }
 export type WhoWeWorkWithQueryResult = {
@@ -1256,6 +1291,7 @@ declare module '@sanity/client' {
     '\n  *[_type == "author" && slug.current == $slug][0] {\n    _id,\n    name,\n    slug,\n    title,\n    profileImage,\n    bio,\n    linkedinUrl,\n    twitterUrl,\n    email,\n    "blogPosts": *[_type == "blogPost" && references(^._id)] | order(publishedAt desc) {\n      _id,\n      title,\n      subtitle,\n      slug,\n      publishedAt,\n      categories,\n      tags,\n      heroImage,\n      featured\n    }\n  }\n': AuthorQueryResult
     '\n  *[_type == "author"].slug.current\n': AuthorSlugsQueryResult
     '\n  *[_type == "pageFaqs" && pageSlug.current == $pageSlug][0] {\n    _id,\n    pageTitle,\n    "pageSlug": pageSlug.current,\n    faqs[] {\n      question,\n      answer,\n      defaultOpen\n    }\n  }\n': PageFaqsQueryResult
+    '\n  *[_type == "pageLogos" && page == $page][0] {\n    _id,\n    page,\n    logoSectionTitle,\n    "logos": logos[] {\n      name,\n      "logoUrl": logo.asset->url\n    }\n  }\n': PageLogosQueryResult
     '\n  *[_type == "whoWeWorkWith" && slug.current == $slug][0] {\n    ...,\n    "processedLogos": hero.logos[] {\n      name,\n      "logoUrl": logo.asset->url\n    }\n  }\n': WhoWeWorkWithQueryResult
     '\n  *[_type == "whoWeWorkWith" && isActive == true].slug.current\n': WhoWeWorkWithSlugsQueryResult
     '\n  *[_type == "caseStudy" && isActive == true] | order(_createdAt desc) {\n    _id,\n    title,\n    slug,\n    excerpt,\n    clientName,\n    image,\n    order,\n    isActive\n  }\n': AllCaseStudiesQueryResult

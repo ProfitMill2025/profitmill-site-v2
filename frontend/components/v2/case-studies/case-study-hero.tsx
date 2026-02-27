@@ -3,43 +3,17 @@
 import { Button } from "@/components/ui/button"
 import ClutchWidget from '@/components/v2/clutch-widget'
 
-// Company logos from Cloudinary
-const img1 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1737137435/logo1_zgvgof.png"
-const img2 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1737137489/logo2_zoejfy.png"
-const img3 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1737137505/logo3_webuzi.png"
-const img4 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1744813063/forum_ventures_logo_lpg0nr.png"
-const img5 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1737137530/logo5_ogqiby.png"
-const img6 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1737137537/logo6_xkvmk3.png"
-const img7 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1737137544/logo7_fvlsjv.png"
-const img8 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1737137552/logo8_l342ig.png"
-const img9 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1744813063/nudge_ai_logo_fa8rd3.png"
-const img10 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1737137561/logo9_bu8jdq.png"
-const img11 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1737137569/logo10_ytdciy.png"
-const img12 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1737137579/logo11_i2kpc5.png"
-const img13 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1744813063/paraform_logo_j6pdwk.png"
-const img14 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1737137586/logo12_avc5tk.png"
-const img15 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1744813063/womp_logo_vfwlsi.png"
-const img16 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1756844385/00b2276afac21c91f3bf88b1d7a4bf2618953099_of0fav.png"
+const bgImage = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1756844385/00b2276afac21c91f3bf88b1d7a4bf2618953099_of0fav.png"
 
-const companies = [
-  { name: "Careerflow", logo: img1 },
-  { name: "Corfix", logo: img2 },
-  { name: "EliseAI", logo: img3 },
-  { name: "Forum Ventures", logo: img4 },
-  { name: "Insurify", logo: img5 },
-  { name: "JungleAI", logo: img6 },
-  { name: "Let's Roam", logo: img7 },
-  { name: "MeetingPulse", logo: img8 },
-  { name: "Nudge", logo: img9 },
-  { name: "OpticOdds", logo: img10 },
-  { name: "Paraform", logo: img13 },
-  { name: "Speaker Labs", logo: img11 },
-  { name: "TeamLinkt", logo: img12 },
-  { name: "ULF", logo: img14 },
-  { name: "Womp", logo: img15 },
-]
+interface CaseStudyHeroProps {
+  logoSectionTitle?: string
+  logos?: Array<{
+    name: string
+    logoUrl: string
+  }>
+}
 
-export default function HomepageHero() {
+export default function CaseStudyHero({ logoSectionTitle, logos = [] }: CaseStudyHeroProps) {
   return (
     <section className="pt-[120px] md:pt-[161px] pb-8 bg-white">
       <div className="mx-auto px-4 md:px-8">
@@ -75,33 +49,35 @@ export default function HomepageHero() {
           </div>
 
           {/* Company Logos Section */}
-          <div className="mt-16 flex flex-col gap-6 items-center px-4 md:px-8 relative z-10">
-            <p className="font-extrabold text-[#b6ffce] text-[12px] text-center tracking-[2.16px] uppercase">
-              We&apos;ve managed 1000+ ad accounts for companies like:
-            </p>
+          {logoSectionTitle && logos.length > 0 && (
+            <div className="mt-16 flex flex-col gap-6 items-center px-4 md:px-8 relative z-10">
+              <p className="font-extrabold text-[#b6ffce] text-[12px] text-center tracking-[2.16px] uppercase">
+                {logoSectionTitle}
+              </p>
 
-            {/* Logo Grid */}
-            <div className="flex flex-wrap justify-center items-center gap-x-2 md:gap-x-4 gap-y-0">
-              {companies.map((company, index) => (
-                <div key={index} className="h-[60px] md:h-[82px] w-[calc(33.333%-8px)] md:w-[160px] flex items-center justify-center">
-                  <img
-                    src={company.logo}
-                    alt={`${company.name} logo`}
-                    className={`object-contain opacity-80 ${
-                      company.name === "Nudge"
-                        ? "max-w-[60px] max-h-[25px] md:max-w-[100px] md:max-h-[42px]"
-                        : "max-w-[80px] max-h-[40px] md:max-w-[150px] md:max-h-[70px]"
-                    }`}
-                  />
-                </div>
-              ))}
+              {/* Logo Grid */}
+              <div className="flex flex-wrap justify-center items-center gap-x-2 md:gap-x-4 gap-y-0">
+                {logos.map((company, index) => (
+                  <div key={index} className="h-[60px] md:h-[82px] w-[calc(33.333%-8px)] md:w-[160px] flex items-center justify-center">
+                    <img
+                      src={company.logoUrl}
+                      alt={`${company.name} logo`}
+                      className={`object-contain opacity-80 ${
+                        company.name === "Nudge"
+                          ? "max-w-[60px] max-h-[25px] md:max-w-[100px] md:max-h-[42px]"
+                          : "max-w-[80px] max-h-[40px] md:max-w-[150px] md:max-h-[70px]"
+                      }`}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Background Images */}
           <div
             className="absolute inset-0 md:bg-left md:bg-contain bg-center bg-cover bg-no-repeat md:h-[1200px] md:left-[-400px] mix-blend-lighten opacity-50 md:top-[100px] md:w-[1000px] z-[2] pointer-events-none"
-            style={{ backgroundImage: `url('${img16}')` }}
+            style={{ backgroundImage: `url('${bgImage}')` }}
           />
           <div
             className="hidden md:block absolute w-[1454px] h-[1454px] right-[-952px] top-[-256px] rounded-full z-[1] pointer-events-none"

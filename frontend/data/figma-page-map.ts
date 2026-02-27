@@ -4,6 +4,7 @@
  */
 export const figmaPageMap = [
   { route: '/', figmaNodeId: '667:2085', figmaPageName: 'desktop-home', contentType: 'Static + FAQ' },
+  { route: '/ (FAQ)', figmaNodeId: '667:4495', figmaPageName: 'homepage FAQ', contentType: 'FAQ' },
   { route: '/about', figmaNodeId: '668:4590', figmaPageName: 'about', contentType: 'Static' },
   { route: '/paid-ads-pricing', figmaNodeId: '1702:4457', figmaPageName: 'pricing', contentType: 'Static + Table' },
   { route: '/paid-ads-pricing (FAQ)', figmaNodeId: '1540:5746', figmaPageName: 'pricing FAQ', contentType: 'FAQ' },

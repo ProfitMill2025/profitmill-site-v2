@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { client } from '@/sanity/lib/client'
+import { pageLogosQuery } from '@/sanity/lib/queries'
 import CaseStudyHero from '@/components/v2/case-studies/case-study-hero'
 import CaseStudyList from '@/components/v2/case-studies/case-study-list'
 import ClutchReviews from '@/components/v2/clutch-reviews'
@@ -34,7 +35,12 @@ async function getAllCaseStudies() {
 }
 
 export default async function CaseStudiesPage() {
-  const sanityData = await getAllCaseStudies()
+  const [sanityData, logosDoc] = await Promise.all([
+    getAllCaseStudies(),
+    client.fetch(pageLogosQuery, { page: 'case-studies' }, {
+      next: { tags: ['pageLogos', 'pageLogos-case-studies'] }
+    }),
+  ])
 
   const caseStudies = sanityData.map((study: any) => ({
     _id: study._id,
@@ -48,9 +54,14 @@ export default async function CaseStudiesPage() {
     excerpt: study.excerpt
   }))
 
+  const logos = logosDoc?.logos?.filter((l: any): l is { name: string; logoUrl: string } => l.logoUrl !== null) || []
+
   return (
     <div className="min-h-screen bg-white">
-      <CaseStudyHero />
+      <CaseStudyHero
+        logoSectionTitle={logosDoc?.logoSectionTitle}
+        logos={logos}
+      />
       <CaseStudyList caseStudies={caseStudies} />
       <ClutchReviews companyId="2504132" />
       <TestimonialsSection />

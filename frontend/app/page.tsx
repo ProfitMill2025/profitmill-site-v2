@@ -11,7 +11,7 @@ import CaseStudiesSection from '@/components/v2/case-studies-section'
 import FaqsSection from '@/components/v2/landing-page/faqs-section'
 import CtaSection from '@/components/v2/cta-section'
 import { client } from '@/sanity/lib/client'
-import { pageFaqsQuery } from '@/sanity/lib/queries'
+import { pageFaqsQuery, pageLogosQuery } from '@/sanity/lib/queries'
 
 export const metadata: Metadata = {
   title: 'Paid Ads Experts for B2B Growth | Profit Mill',
@@ -22,13 +22,23 @@ export const metadata: Metadata = {
 }
 
 export default async function Homepage() {
-  const faqDoc = await client.fetch(pageFaqsQuery, { pageSlug: 'homepage' }, {
-    next: { tags: ['pageFaqs', 'pageFaqs-homepage'] }
-  })
+  const [faqDoc, logosDoc] = await Promise.all([
+    client.fetch(pageFaqsQuery, { pageSlug: 'homepage' }, {
+      next: { tags: ['pageFaqs', 'pageFaqs-homepage'] }
+    }),
+    client.fetch(pageLogosQuery, { page: 'homepage' }, {
+      next: { tags: ['pageLogos', 'pageLogos-homepage'] }
+    }),
+  ])
+
+  const logos = logosDoc?.logos?.filter((l: any): l is { name: string; logoUrl: string } => l.logoUrl !== null) || []
 
   return (
     <>
-      <HomepageHero />
+      <HomepageHero
+        logoSectionTitle={logosDoc?.logoSectionTitle}
+        logos={logos}
+      />
       <Intro />
       <ScalingChannels />
       <WhoWeWorkWith />
