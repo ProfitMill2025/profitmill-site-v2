@@ -55,7 +55,7 @@ export default function WhyClientsSection({ lightBackground = false, className =
   const clientReasons = [
     {
       title: "ROI Obsessed",
-      description: "We're here to increase your profit, not just your ad spend. That's why we're called Profit Mill—our ultimate goal is to help B2B businesses generate profit from paid ads."
+      description: "We're here to increase your profit, not just your ad spend. That's why we offer performance-based fees that are linked directly to the revenue we help you generate from ads."
     },
     {
       title: "Ad platform experts",

@@ -6,6 +6,9 @@ import OurPeople from '@/components/v2/about/our-people'
 import TestimonialsSection from '@/components/v2/landing-page/testimonials'
 import OurDogs from '@/components/v2/about/our-dogs'
 import CtaSection from '@/components/v2/cta-section'
+import { sanityFetch } from '@/sanity/lib/live'
+import { allTeamMembersQuery, allTeamPetsQuery } from '@/sanity/lib/queries'
+import { urlForImage } from '@/sanity/lib/utils'
 
 export const metadata: Metadata = {
   title: 'Strategic Paid Media Growth for Startups | Profit Mill',
@@ -15,7 +18,27 @@ export const metadata: Metadata = {
   },
 }
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const [{ data: rawMembers }, { data: rawPets }] = await Promise.all([
+    sanityFetch({ query: allTeamMembersQuery }),
+    sanityFetch({ query: allTeamPetsQuery }),
+  ])
+
+  const members = (rawMembers ?? []).map((m: Record<string, unknown>) => ({
+    _id: m._id as string,
+    name: m.name as string | null,
+    jobTitle: m.jobTitle as string | null,
+    bio: m.bio as string | null,
+    photoUrl: m.photo ? urlForImage(m.photo).width(450).height(450).url() : null,
+  }))
+
+  const pets = (rawPets ?? []).map((p: Record<string, unknown>) => ({
+    _id: p._id as string,
+    name: p.name as string | null,
+    jobTitle: p.jobTitle as string | null,
+    photoUrl: p.photo ? urlForImage(p.photo).width(450).height(450).url() : null,
+  }))
+
   return (
     <div className="min-h-screen bg-white">
       <PageHeader
@@ -29,10 +52,10 @@ export default function AboutPage() {
       <WhatWeStandFor />
 
       <div className="px-6 py-8">
-        <OurPeople />
+        <OurPeople members={members} />
       </div>
       <div className="px-6 py-8">
-        <OurDogs />
+        <OurDogs pets={pets} />
       </div>
 
       <TestimonialsSection />

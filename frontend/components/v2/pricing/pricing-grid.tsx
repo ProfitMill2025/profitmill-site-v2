@@ -251,7 +251,7 @@ export default function PricingGrid({ tiers = defaultTiers, className = '' }: Pr
                 <div
                   key={index}
                   ref={setCardRef(index)}
-                  className={`bg-white shadow-[0px_1px_2px_0px_rgba(0,0,0,0.15)] overflow-hidden flex-1 md:max-w-[352px] relative ${
+                  className={`bg-[#f5f5f5] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.15)] overflow-hidden flex-1 md:max-w-[352px] relative flex flex-col ${
                     isFirst ? 'rounded-tl-[10px] rounded-bl-[10px]' : ''
                   } ${isLast ? 'rounded-br-[10px]' : ''}`}
                 >
@@ -266,7 +266,7 @@ export default function PricingGrid({ tiers = defaultTiers, className = '' }: Pr
                   </div>
 
               {/* Content */}
-              <div className="bg-neutral-100 px-8 py-4">
+              <div className="bg-[#f5f5f5] px-8 py-4 flex-1">
                 {/* Pricing */}
                 <div className="text-center mb-8">
                   <div className="text-[#006840] text-[24px] md:text-[32px] font-semibold leading-[1.25] mb-0">
@@ -278,7 +278,7 @@ export default function PricingGrid({ tiers = defaultTiers, className = '' }: Pr
                 </div>
 
                 {/* Description */}
-                <div className="text-[#001109] text-[16px] leading-[1.5] mb-6">
+                <div className="text-[#001109] text-[16px] leading-[1.5]">
                   <p className="mb-2">{tier.description}</p>
                   <p>
                     <span className="font-bold text-[14px]">{tier.stage}</span>

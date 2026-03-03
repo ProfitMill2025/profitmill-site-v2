@@ -258,3 +258,22 @@ export const allCaseStudiesQuery = defineQuery(`
     isActive
   }
 `)
+
+export const allTeamMembersQuery = defineQuery(`
+  *[_type == "teamMember" && isActive == true] | order(coalesce(order, 999) asc, _createdAt asc) {
+    _id,
+    name,
+    jobTitle,
+    bio,
+    photo
+  }
+`)
+
+export const allTeamPetsQuery = defineQuery(`
+  *[_type == "teamPet" && isActive == true] | order(coalesce(order, 999) asc, _createdAt asc) {
+    _id,
+    name,
+    jobTitle,
+    photo
+  }
+`)

@@ -10,15 +10,20 @@ const sora = Sora({ subsets: ['latin'] })
 
 gsap.registerPlugin(ScrollTrigger)
 
-// Asset constants (uploaded to Cloudinary)
-const imgPeterGreen4 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1757282683/figma-components/our-people/our-people-image-1.jpg"
-const imgPeterGreen6 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v1757282683/figma-components/our-people/our-people-image-3.jpg"
+interface TeamMember {
+  _id: string
+  name: string | null
+  jobTitle: string | null
+  bio: string | null
+  photoUrl: string | null
+}
 
 interface OurPeopleProps {
   className?: string
+  members: TeamMember[]
 }
 
-export default function OurPeople({ className = '' }: OurPeopleProps) {
+export default function OurPeople({ className = '', members }: OurPeopleProps) {
   const sectionRef = useRef(null)
   const headingRef = useRef(null)
   const teamMembersRef = useRef<(HTMLDivElement | null)[]>([])
@@ -41,7 +46,7 @@ export default function OurPeople({ className = '' }: OurPeopleProps) {
       })
 
       // Team members stagger animation
-      gsap.from(teamMembersRef.current, {
+      gsap.from(teamMembersRef.current.filter(Boolean), {
         y: 40,
         opacity: 0,
         duration: 0.8,
@@ -54,21 +59,23 @@ export default function OurPeople({ className = '' }: OurPeopleProps) {
     })
 
     return () => ctx.revert()
-  }, [])
+  }, [members])
+
+  if (members.length === 0) return null
 
   return (
-    <section 
-      ref={sectionRef} 
+    <section
+      ref={sectionRef}
       className={`${sora.className} bg-[#f1fff5] py-16 md:py-20 px-4 md:px-8 rounded-[32px] ${className}`}
     >
       <div className="max-w-7xl mx-auto w-full">
         <div className="flex flex-col gap-12 md:gap-16 items-center justify-start w-full">
           {/* Section Heading */}
-          <h2 
+          <h2
             ref={headingRef}
             className="font-bold text-[#001109] text-center leading-[1.2] w-full"
-            style={{ 
-              fontSize: 'clamp(32px, 4vw, 42px)' 
+            style={{
+              fontSize: 'clamp(32px, 4vw, 42px)'
             }}
           >
             Meet our team of growth experts
@@ -76,69 +83,44 @@ export default function OurPeople({ className = '' }: OurPeopleProps) {
 
           {/* Team Grid */}
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start justify-start w-full">
-            {/* Peter Guba */}
-            <div 
-              ref={setTeamMemberRef(0)}
-              className="flex flex-col gap-6 items-start justify-start w-full lg:flex-1"
-            >
-              <div className="relative w-full lg:w-[225px] aspect-square rounded-[10px] overflow-hidden bg-center bg-cover bg-no-repeat">
-                <Image
-                  src={imgPeterGreen4}
-                  alt="Peter Guba, Founder & CEO"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="flex flex-col gap-6 items-start justify-start w-full">
-                <div className="flex flex-col gap-2 items-start justify-start w-full">
-                  <h3 className="font-semibold text-[#006840] text-[24px] leading-[1.5] w-full">
-                    Peter Guba
-                  </h3>
-                  <p className="font-normal text-[#001109] text-[18px] leading-[1.5] w-full">
-                    Founder &amp; CEO
-                  </p>
+            {members.map((member, index) => (
+              <div
+                key={member._id}
+                ref={setTeamMemberRef(index)}
+                className="flex flex-col gap-6 items-start justify-start w-full lg:flex-1"
+              >
+                {member.photoUrl && (
+                  <div className="relative w-full lg:w-[225px] aspect-square rounded-[10px] overflow-hidden bg-center bg-cover bg-no-repeat">
+                    <Image
+                      src={member.photoUrl}
+                      alt={`${member.name}, ${member.jobTitle}`}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                )}
+                <div className="flex flex-col gap-6 items-start justify-start w-full">
+                  <div className="flex flex-col gap-2 items-start justify-start w-full">
+                    <h3 className="font-semibold text-[#006840] text-[24px] leading-[1.5] w-full">
+                      {member.name}
+                    </h3>
+                    <p className="font-normal text-[#001109] text-[18px] leading-[1.5] w-full">
+                      {member.jobTitle}
+                    </p>
+                  </div>
+                  {member.bio && (
+                    <p className="font-normal text-[#001109] text-[16px] leading-[1.5] w-full">
+                      {member.bio.split('\n\n').map((paragraph, i) => (
+                        <span key={i}>
+                          {i > 0 && <><br /><br /></>}
+                          {paragraph}
+                        </span>
+                      ))}
+                    </p>
+                  )}
                 </div>
-                <p className="font-normal text-[#001109] text-[16px] leading-[1.5] w-full">
-                  Peter spent 8 years at Google managing 1,000+ accounts, ranging from first-time startup launches to $50M/year global ad spends for brands like Air Canada and Four Seasons.
-                  <br /><br />
-                  At Profit Mill, he leads the team with a performance-first mindset, focusing exclusively on turning paid ads spend into measurable, profitable growth.
-                  <br /><br />
-                  When he isn&apos;t focusing on his team, Peter is likely traveling with his wife and toddler—taking full advantage of the remote-work lifestyle to spend extended time on either coast.
-                </p>
               </div>
-            </div>
-
-            {/* Nikolina Piplica */}
-            <div
-              ref={setTeamMemberRef(1)}
-              className="flex flex-col gap-6 items-start justify-start w-full lg:flex-1"
-            >
-              <div className="relative w-full lg:w-[225px] aspect-square rounded-[10px] overflow-hidden bg-center bg-cover bg-no-repeat">
-                <Image
-                  src={imgPeterGreen6}
-                  alt="Nikolina Piplica, Account Executive"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="flex flex-col gap-6 items-start justify-start w-full">
-                <div className="flex flex-col gap-2 items-start justify-start w-full">
-                  <h3 className="font-semibold text-[#006840] text-[24px] leading-[1.5] w-full">
-                    Nikolina Piplica
-                  </h3>
-                  <p className="font-normal text-[#001109] text-[18px] leading-[1.5] w-full">
-                    Account Executive
-                  </p>
-                </div>
-                <p className="font-normal text-[#001109] text-[16px] leading-[1.5] w-full">
-                  Nikolina has spent 6+ years managing multi-million dollar B2B campaigns across the healthcare and technology sectors.
-                  <br /><br />
-                  While a specialist in data-driven ad strategy, she is an elite project manager at her core—a combination that allows her to turn client growth opportunities into practical execution. At Profit Mill, Nikolina acts as a seamless extension of her clients&apos; teams, ensuring every campaign is as organized as it is profitable.
-                  <br /><br />
-                  When she&apos;s not strategizing with clients, you&apos;ll find her mastering Mario Kart while her three cats provide expert commentary.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

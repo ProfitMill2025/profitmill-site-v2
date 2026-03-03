@@ -101,7 +101,7 @@ export default function FaqsSection({ className = "", faqData }: FaqsSectionProp
                     index % 2 === 0 ? 'bg-[#006840]' : 'bg-[#00351f]'
                   }`}
                 >
-                  <AccordionTrigger className="px-6 py-5 text-white hover:no-underline group [&[data-state=open]>svg]:rotate-180">
+                  <AccordionTrigger className="px-6 py-5 text-white hover:no-underline cursor-pointer group [&[data-state=open]>svg]:rotate-180">
                     <div className="flex gap-4 items-start justify-start w-full">
                       <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200 text-white mt-1" />
                       <div className="flex-1 text-left">
@@ -157,7 +157,7 @@ export default function FaqsSection({ className = "", faqData }: FaqsSectionProp
                     index % 2 === 0 ? 'bg-[#006840]' : 'bg-[#00351f]'
                   }`}
                 >
-                  <AccordionTrigger className="px-6 py-5 text-white hover:no-underline group [&[data-state=open]>svg]:rotate-180">
+                  <AccordionTrigger className="px-6 py-5 text-white hover:no-underline cursor-pointer group [&[data-state=open]>svg]:rotate-180">
                     <div className="flex gap-4 items-start justify-start w-full">
                       <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200 text-white mt-1" />
                       <div className="flex-1 text-left">

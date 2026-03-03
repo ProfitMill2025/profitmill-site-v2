@@ -1271,6 +1271,16 @@ export type AllCaseStudiesQueryResult = Array<{
   isActive: true
 }>
 
+// Source: sanity/lib/queries.ts
+// Variable: allTeamMembersQuery
+// Query: *[_type == "teamMember" && isActive == true] | order(coalesce(order, 999) asc, _createdAt asc) {    _id,    name,    jobTitle,    bio,    photo  }
+export type AllTeamMembersQueryResult = Array<never>
+
+// Source: sanity/lib/queries.ts
+// Variable: allTeamPetsQuery
+// Query: *[_type == "teamPet" && isActive == true] | order(coalesce(order, 999) asc, _createdAt asc) {    _id,    name,    jobTitle,    photo  }
+export type AllTeamPetsQueryResult = Array<never>
+
 // Query TypeMap
 import '@sanity/client'
 declare module '@sanity/client' {
@@ -1295,5 +1305,7 @@ declare module '@sanity/client' {
     '\n  *[_type == "whoWeWorkWith" && slug.current == $slug][0] {\n    ...,\n    "processedLogos": hero.logos[] {\n      name,\n      "logoUrl": logo.asset->url\n    }\n  }\n': WhoWeWorkWithQueryResult
     '\n  *[_type == "whoWeWorkWith" && isActive == true].slug.current\n': WhoWeWorkWithSlugsQueryResult
     '\n  *[_type == "caseStudy" && isActive == true] | order(_createdAt desc) {\n    _id,\n    title,\n    slug,\n    excerpt,\n    clientName,\n    image,\n    order,\n    isActive\n  }\n': AllCaseStudiesQueryResult
+    '\n  *[_type == "teamMember" && isActive == true] | order(coalesce(order, 999) asc, _createdAt asc) {\n    _id,\n    name,\n    jobTitle,\n    bio,\n    photo\n  }\n': AllTeamMembersQueryResult
+    '\n  *[_type == "teamPet" && isActive == true] | order(coalesce(order, 999) asc, _createdAt asc) {\n    _id,\n    name,\n    jobTitle,\n    photo\n  }\n': AllTeamPetsQueryResult
   }
 }
