@@ -178,6 +178,9 @@ export default function Footer({ className = '' }: FooterProps) {
                   <Link href="/resources/blog" className="leading-[24px] text-nowrap hover:text-white transition-colors">
                     Blog
                   </Link>
+                  <Link href="/resources/guides-playbooks" className="leading-[24px] text-nowrap hover:text-white transition-colors">
+                    Guides & Playbooks
+                  </Link>
                   <div className="leading-[24px] text-nowrap">
                     <Link href="/resources/alternatives" className="hover:text-white transition-colors">
                       Alternatives &<br />Comparisons
@@ -315,6 +318,9 @@ export default function Footer({ className = '' }: FooterProps) {
                   </Link>
                   <Link href="/resources/blog" className="leading-[24px] text-nowrap hover:text-white transition-colors">
                     Blog
+                  </Link>
+                  <Link href="/resources/guides-playbooks" className="leading-[24px] text-nowrap hover:text-white transition-colors">
+                    Guides & Playbooks
                   </Link>
                   <div className="leading-[24px] text-nowrap">
                     <Link href="/resources/alternatives" className="hover:text-white transition-colors">

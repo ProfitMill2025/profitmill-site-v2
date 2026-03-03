@@ -27,7 +27,8 @@ export default function HomepageHero({ logoSectionTitle, logos = [] }: HomepageH
                 <span className="block mb-2">Profitable paid ads</span>
                 <span className="block mb-2">
                   <span className="block sm:inline">Backed by</span>
-                  <span className="text-[#ceff00] block sm:inline sm:ml-2">
+                  {' '}
+                  <span className="text-[#ceff00] block sm:inline sm:ml-0">
                     ex-Google
                   </span>
                 </span>
