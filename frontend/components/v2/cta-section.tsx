@@ -62,7 +62,7 @@ export default function CtaSection({
 
   // Use explicit props first, then channel config, then defaults
   const displayTitle = title || channelConfig?.title || defaultContent.title
-  const displaySubtitle = subtitle || channelConfig?.subtitle || defaultContent.subtitle
+  const displaySubtitle = subtitle !== undefined ? subtitle : (channelConfig?.subtitle || defaultContent.subtitle)
   const displayButtonText = buttonText || channelConfig?.buttonText || defaultContent.buttonText
   const sectionRef = useRef(null)
   const headingRef = useRef(null)
@@ -187,12 +187,14 @@ export default function CtaSection({
               >
                 {displayTitle}
               </h2>
-              <p
-                ref={subheadingRef}
-                className="font-normal text-[16px] leading-[1.5] text-white"
-              >
-                {displaySubtitle}
-              </p>
+              {displaySubtitle && (
+                <p
+                  ref={subheadingRef}
+                  className="font-normal text-[16px] leading-[1.5] text-white"
+                >
+                  {displaySubtitle}
+                </p>
+              )}
             </div>
 
             <div className="relative w-full md:w-auto">

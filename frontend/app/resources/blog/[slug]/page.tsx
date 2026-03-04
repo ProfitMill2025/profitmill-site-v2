@@ -314,9 +314,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </div>
 
       <CtaSection
-        title="Ready to make paid ads work for you?"
-        subtitle="Book a free ad audit and our performance experts will assess your setup and show you exactly where you're leaving money on the table—and how to fix it."
-        buttonText="Book your free audit"
+        title="Want to see what a performance-driven Google Ads strategy can do for your business?"
+        subtitle=""
+        buttonText="Let's chat"
         buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
       />
     </div>
