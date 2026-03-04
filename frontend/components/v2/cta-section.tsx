@@ -18,8 +18,8 @@ const imgFrame166 = "https://res.cloudinary.com/dzn9bpr2h/image/upload/v17580407
 const channelCtaConfigs = {
   'google-ads': {
     title: "Get a free Google Ads audit",
-    subtitle: "Share read-only access to your Google account and we'll show you the gaps, quick wins, and biggest growth opportunities—free of charge.",
-    buttonText: "Book your free Google Ads audit"
+    subtitle: "Share read-only access to your Google account and we'll show you the gaps, quick wins, and biggest growth opportunities that you might be missing out on.",
+    buttonText: "Book your free audit"
   },
   'linkedin-ads': {
     title: "Get a free LinkedIn Ads audit",
