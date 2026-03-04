@@ -70,9 +70,9 @@ export default function SegmentHero({
               </p>
 
               {/* Logo Grid */}
-              <div className="flex flex-wrap justify-center items-center gap-x-2 md:gap-x-4 gap-y-0">
+              <div className="flex flex-wrap justify-center items-center gap-x-2 md:gap-x-5 gap-y-0">
                 {logos.map((company, index) => (
-                  <div key={index} className="h-[60px] md:h-[82px] w-[calc(33.333%-8px)] md:w-[160px] flex items-center justify-center">
+                  <div key={index} className="h-[60px] md:h-[82px] w-[calc(33.333%-8px)] md:w-[175px] flex items-center justify-center">
                     <img
                       src={company.logoUrl}
                       alt={`${company.name} logo`}

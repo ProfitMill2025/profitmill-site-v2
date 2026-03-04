@@ -169,17 +169,8 @@ export default function Footer({ className = '' }: FooterProps) {
                   <span className="leading-[24px] text-nowrap font-medium">Resources</span>
                 </div>
                 <div className="flex flex-col gap-[21px]">
-                  <Link href="/resources/podcasts" className="leading-[24px] text-nowrap hover:text-white transition-colors">
-                    Podcasts
-                  </Link>
-                  <Link href="/resources/tools-templates" className="leading-[24px] text-nowrap hover:text-white transition-colors">
-                    Tools & Templates
-                  </Link>
                   <Link href="/resources/blog" className="leading-[24px] text-nowrap hover:text-white transition-colors">
                     Blog
-                  </Link>
-                  <Link href="/resources/guides-playbooks" className="leading-[24px] text-nowrap hover:text-white transition-colors">
-                    Guides & Playbooks
                   </Link>
                   <div className="leading-[24px] text-nowrap">
                     <Link href="/resources/alternatives" className="hover:text-white transition-colors">
@@ -310,17 +301,8 @@ export default function Footer({ className = '' }: FooterProps) {
                   <span className="leading-[24px] text-nowrap font-medium">Resources</span>
                 </div>
                 <div className="flex flex-col gap-4">
-                  <Link href="/resources/podcasts" className="leading-[24px] text-nowrap hover:text-white transition-colors">
-                    Podcasts
-                  </Link>
-                  <Link href="/resources/tools-templates" className="leading-[24px] text-nowrap hover:text-white transition-colors">
-                    Tools & Templates
-                  </Link>
                   <Link href="/resources/blog" className="leading-[24px] text-nowrap hover:text-white transition-colors">
                     Blog
-                  </Link>
-                  <Link href="/resources/guides-playbooks" className="leading-[24px] text-nowrap hover:text-white transition-colors">
-                    Guides & Playbooks
                   </Link>
                   <div className="leading-[24px] text-nowrap">
                     <Link href="/resources/alternatives" className="hover:text-white transition-colors">

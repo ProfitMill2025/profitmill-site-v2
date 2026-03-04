@@ -210,8 +210,6 @@ export default function NavbarV2() {
               </div>
               {openDropdown === 'resources' && (
                 <div className="absolute left-0 right-0 top-full bg-[#f1fff5] rounded-b-[10px] p-6 shadow-lg z-[200]">
-                  <Link href="/resources/podcasts" className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32] mb-4">Podcasts</Link>
-                  <Link href="/resources/tools-templates" className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32] mb-4">Tools & Templates</Link>
                   <Link href="/resources/blog" className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32] mb-4">Blog</Link>
                   <Link href="/resources/alternatives" className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32]">Alternatives</Link>
                 </div>
@@ -376,12 +374,6 @@ export default function NavbarV2() {
                       <>
                         <div className="border-b border-[#006840] mt-4" />
                         <div className="flex flex-col gap-8 pl-6 mt-4 pb-6">
-                          <Link href="/resources/podcasts" className="text-white hover:text-white/80 text-[18px]" onClick={() => setIsSheetOpen(false)}>
-                            Podcasts
-                          </Link>
-                          <Link href="/resources/tools-templates" className="text-white hover:text-white/80 text-[18px]" onClick={() => setIsSheetOpen(false)}>
-                            Tools & Templates
-                          </Link>
                           <Link href="/resources/blog" className="text-white hover:text-white/80 text-[18px]" onClick={() => setIsSheetOpen(false)}>
                             Blog
                           </Link>
