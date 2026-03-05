@@ -52,9 +52,9 @@ const defaultTiers: PricingTier[] = [
     arrDetail: " Up to $1M",
     headerBgColor: "#006840",
     details: [
-      ["Google Ads OR LinkedIn Ads", "Text + Image Ads", "Landing page advice"],
-      ["Ad spend = $30K USD/mo", "Full performance visibility", "Bi-weekly meetings + Slack and email access"],
-      ["Client side tracking, offline conversion, & server side consultation", "CDPs, GA4, CRM integrations", "Up to $100 in lead list credits"]
+      ["1 ad channel", "Ad spend of <$30K USD/mo", "1 custom landing page", "› Strategy, copy, design, dev", "› Monthly conversion experiment"],
+      ["Text + Image Ads", "Full performance visibility in ad platform", "Bi-weekly meetings + Unlimited Slack and email access"],
+      ["Client side conversion tracking, offline conversion import, or full server side setup", "CDPs, GA4, CRM integrations"]
     ]
   },
   {
@@ -71,9 +71,9 @@ const defaultTiers: PricingTier[] = [
     headerBgColor: "#00351f",
     isPopular: true,
     details: [
-      ["Google Ads + LinkedIn Ads + 1 other", "Text + Image Ads", "1x/mo landing page"],
-      ["Ad spend = $30K USD - $100K USD/mo", "Full performance visibility + dashboard", "Bi-weekly meetings + Slack and email access"],
-      ["Client side tracking, offline conversion, & full server side setup", "CDPs, GA4, CRM integrations", "Up to $200 in lead list credits"]
+      ["3 ad channels", "Ad spend of $30K USD - $100K USD/mo", "1 custom landing page", "› Up to 5 custom-lite landing pages", "› Monthly conversion experiment"],
+      ["Text + Image Ads + Video Ads", "Full performance visibility in ads platforms + Looker dashboard", "Weekly meetings + Unlimited Slack and email access"],
+      ["Client side conversion tracking, offline conversion import, or full server side setup", "CDPs, GA4, CRM integrations"]
     ]
   },
   {
@@ -90,9 +90,9 @@ const defaultTiers: PricingTier[] = [
     headerBgColor: "#001109",
     isHighestValue: true,
     details: [
-      ["Full multi-channel: Google, Meta, LinkedIn, YouTube, etc.", "Text + Image Ads", "Unlimited landing pages"],
-      ["Ad spend = $100K+ USD/mo", "Full performance visibility + custom dashboard", "Weekly meetings + Slack and email access"],
-      ["Client side tracking, offline conversion, & full server side setup", "CDPs, GA4, CRM integrations", "Up to $300 in lead list credits"]
+      ["Unlimited ad channels", "Ad spend of $100K+ USD/mo", "3 custom landing pages", "› Up to 5 custom-lite landing pages", "› Monthly conversion experiment"],
+      ["Text + Image Ads + Video Ads", "Full performance visibility in ad platforms + Premium dashboard", "Weekly meetings + Unlimited Slack and email access"],
+      ["Client side conversion tracking, offline conversion import, or full server side setup", "CDPs, GA4, CRM integrations"]
     ]
   }
 ]
@@ -266,9 +266,9 @@ export default function PricingGrid({ tiers = defaultTiers, className = '' }: Pr
                   </div>
 
               {/* Content */}
-              <div className="bg-[#f5f5f5] px-8 py-4 flex-1">
+              <div className="bg-[#f5f5f5] px-8 pt-8 pb-6 flex-1">
                 {/* Pricing */}
-                <div className="text-center mb-8">
+                <div className="text-center mb-6">
                   <div className="text-[#006840] text-[24px] md:text-[32px] font-semibold leading-[1.25] mb-0">
                     {tier.price}
                   </div>
@@ -319,7 +319,7 @@ export default function PricingGrid({ tiers = defaultTiers, className = '' }: Pr
                       >
                         <button
                           onClick={() => toggleSection(sectionIndex)}
-                          className="w-full px-8 py-4 flex items-center justify-between text-white hover:opacity-80 transition-opacity"
+                          className="w-full px-8 py-4 flex items-center justify-center gap-2 text-white hover:opacity-80 transition-opacity"
                         >
                           <span className="text-[12px] font-extrabold uppercase tracking-[2.16px] leading-[1.3]">
                             {sectionLabels[sectionIndex]}
@@ -350,12 +350,16 @@ export default function PricingGrid({ tiers = defaultTiers, className = '' }: Pr
                           style={{ backgroundColor: bgColors[sectionIndex] }}
                         >
                           <ul className="space-y-2">
-                            {tier.details?.[sectionIndex]?.map((detail, detailIndex) => (
-                              <li key={detailIndex} className="text-[14px] leading-[1.4] flex items-start">
-                                <span className="text-white mr-2">•</span>
-                                <span>{detail}</span>
-                              </li>
-                            ))}
+                            {tier.details?.[sectionIndex]?.map((detail, detailIndex) => {
+                              const isSubItem = detail.startsWith('› ')
+                              const displayText = isSubItem ? detail.slice(2) : detail
+                              return (
+                                <li key={detailIndex} className={`text-[14px] leading-[1.4] flex items-start ${isSubItem ? 'ml-4' : ''}`}>
+                                  <span className="text-white mr-2">{isSubItem ? '◦' : '•'}</span>
+                                  <span>{displayText}</span>
+                                </li>
+                              )
+                            })}
                           </ul>
                         </div>
                       )
