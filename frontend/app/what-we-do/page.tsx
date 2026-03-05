@@ -8,7 +8,7 @@ import CtaSection from '@/components/v2/cta-section'
 
 export const metadata: Metadata = {
   title: 'We Help Companies Profit From Paid Ads | Profit Mill',
-  description: 'See how Profit Mill delivers results through full-funnel strategy, Google & LinkedIn Ads, and profit-focused performance tracking. Built for startups and scaleups.',
+  description: 'Ready for paid ads but not sure where to start? Profit Mill helps ambitious teams scale smarter with full-funnel paid ad strategy and technical setup.',
   alternates: {
     canonical: 'https://www.profitmill.io/what-we-do',
   },

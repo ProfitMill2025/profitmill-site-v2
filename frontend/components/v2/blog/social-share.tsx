@@ -19,7 +19,7 @@ export default function SocialShare({ url, title, description }: SocialShareProp
 
   const shareUrl = typeof window !== 'undefined'
     ? `${window.location.origin}${url}`
-    : `https://profitmill.io${url}`
+    : `https://www.profitmill.io${url}`
 
   const shareLinks = {
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,

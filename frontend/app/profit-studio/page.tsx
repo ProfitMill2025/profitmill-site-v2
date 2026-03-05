@@ -6,8 +6,8 @@ import Details from '@/components/v2/profit-studio/details'
 import WhateverStage from '@/components/v2/profit-studio/whatever-stage'
 
 export const metadata: Metadata = {
-  title: 'Grow with Experts Who\'ve Built, Funded, and Scaled | Profit Mill',
-  description: 'Profit Studio is a hands-on venture studio for founders who want more than funding. Access 10+ years of go-to-market expertise and scale with strategic partners.',
+  title: 'Hands-On Venture Studio for B2B Founders | Profit Mill',
+  description: "Profit Studio partners with early-stage B2B founders to launch and grow smarter. We bring 10+ years of go-to-market experience\u2014funding, strategy, and firepower included.",
   alternates: {
     canonical: 'https://www.profitmill.io/profit-studio',
   },

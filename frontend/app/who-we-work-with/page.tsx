@@ -6,8 +6,8 @@ import CaseStudiesSection from '@/components/v2/case-studies-section'
 import CtaSection from '@/components/v2/cta-section'
 
 export const metadata: Metadata = {
-  title: 'B2B Paid Ads Management for Companies Ready to Profit | Profit Mill',
-  description: 'Profit Mill works with SaaS, PLG, and service companies ready to scale paid ads. We bring strategy, tracking, and growth expertise to turn spend into revenue.',
+  title: 'Paid Ads Agency for High-Growth Companies | Profit Mill',
+  description: 'We help ambitious PLG startups, B2B SaaS, and service businesses turn ad spend into real revenue. See if Profit Mill is the right fit for your growth goals.',
   alternates: {
     canonical: 'https://www.profitmill.io/who-we-work-with',
   },

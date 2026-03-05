@@ -9,8 +9,8 @@ import FeatureBlog from '@/components/v2/blog/feature-blog'
 import imageUrlBuilder from '@sanity/image-url'
 
 export const metadata: Metadata = {
-  title: 'B2B Paid Ads Strategy Insights | Profit Mill',
-  description: 'Read expert takes on paid ads for B2B growth. Get insights on Google Ads, LinkedIn, funnel strategy, and campaign optimization from Profit Mill.',
+  title: 'The Paid Growth Blog For B2B Marketers | Profit Mill',
+  description: "Fresh takes on paid growth from the team that's spent 10 years managing 1000+ ad accounts. Built for B2B marketers and founders who want to make paid ads profitable.",
   alternates: {
     canonical: 'https://www.profitmill.io/resources/blog',
   },

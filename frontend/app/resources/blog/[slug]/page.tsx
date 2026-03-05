@@ -147,6 +147,7 @@ function createPortableTextComponents() {
     types: {
       image: ({ value }: any) => (
         <div className="my-8">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={urlFor(value).width(800).url()}
             alt={value.alt || ''}
@@ -196,9 +197,47 @@ const mockBlogPost = {
   relatedPosts: []
 }
 
-export const metadata: Metadata = {
-  title: 'Blog Post - Profit Mill',
-  description: 'Read our latest insights on growth marketing and paid media',
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+
+  let post = null
+  try {
+    post = await getBlogPost(slug)
+  } catch {
+    // Fall through to defaults
+  }
+
+  const title = post?.seoTitle || post?.title
+    ? `${post?.seoTitle || post?.title} | Profit Mill`
+    : 'Blog Post | Profit Mill'
+  const description = post?.seoDescription || post?.subtitle || 'Read our latest insights on growth marketing and paid media'
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://www.profitmill.io/resources/blog/${slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      url: `https://www.profitmill.io/resources/blog/${slug}`,
+      ...(post?.heroImage && {
+        images: [{
+          url: urlFor(post.heroImage).width(1200).height(630).url(),
+          width: 1200,
+          height: 630,
+          alt: post.heroImage.alt || post.title,
+        }],
+      }),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
+  }
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -278,7 +317,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
             <div className="mt-12">
               <SocialShare
-                url={`https://profitmill.io/resources/blog/${slug}`}
+                url={`/resources/blog/${slug}`}
                 title={blogData.title}
               />
             </div>

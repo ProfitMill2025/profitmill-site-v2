@@ -24,7 +24,6 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
     const extractedHeadings: TOCItem[]= []
 
     if (!content || !Array.isArray(content)) {
-      console.log('TOC: No content or content is not an array', content)
       return
     }
 
@@ -44,7 +43,6 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
       }
     })
 
-    console.log('TOC: Extracted headings:', extractedHeadings)
     setHeadings(extractedHeadings)
 
     // Intersection Observer for active section highlighting

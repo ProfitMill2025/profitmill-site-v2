@@ -8,8 +8,8 @@ import CaseStudiesSection from '@/components/v2/case-studies-section'
 import CtaSection from '@/components/v2/cta-section'
 
 export const metadata: Metadata = {
-  title: 'Find the Best Paid Ads Agency for Your B2B Business | Profit Mill',
-  description: 'See how Profit Mill compares to other paid ads agencies. Ex-Google experts, B2B focus, and a track record of turning ad spend into revenue.',
+  title: 'B2B Paid Ads Agency Comparisons & Alternatives | Profit Mill',
+  description: "Freelancer, in-house, or agency? See how the top B2B paid ads options stack up and why Profit Mill's revenue-obsessed might be the best move.",
   alternates: {
     canonical: 'https://www.profitmill.io/resources/alternatives',
   },

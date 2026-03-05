@@ -13,10 +13,10 @@ import { pageFaqsQuery } from '@/sanity/lib/queries'
 
 export const metadata: Metadata = {
   title: 'Paid Ads That Pay For Themselves | Profit Mill',
-  description: 'See pricing plans for growth-ready teams. Profit Mill\'s PROFIT Plan turns paid ad investment into real ROI with expert strategy, tracking, and results.',
+  description: 'See pricing plans for growth-ready teams. Profit Mill\'s PROFIT Plan\u2122 turns paid ad investment into real ROI with expert strategy, tracking, and results.',
   openGraph: {
     title: 'Paid Ads That Pay For Themselves | Profit Mill',
-    description: 'See pricing plans for growth-ready teams. Profit Mill\'s PROFIT Plan turns paid ad investment into real ROI with expert strategy, tracking, and results.',
+    description: 'See pricing plans for growth-ready teams. Profit Mill\'s PROFIT Plan\u2122 turns paid ad investment into real ROI with expert strategy, tracking, and results.',
     type: 'website',
     locale: 'en_US',
     url: 'https://www.profitmill.io/paid-ads-pricing',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Paid Ads That Pay For Themselves | Profit Mill',
-    description: 'See pricing plans for growth-ready teams. Profit Mill\'s PROFIT Plan turns paid ad investment into real ROI with expert strategy, tracking, and results.',
+    description: 'See pricing plans for growth-ready teams. Profit Mill\'s PROFIT Plan\u2122 turns paid ad investment into real ROI with expert strategy, tracking, and results.',
     images: [
       {
         url: 'https://res.cloudinary.com/dzn9bpr2h/image/upload/v1736439657/profitmill-opengraph_q2k1uu.png',

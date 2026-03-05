@@ -20,6 +20,61 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 }
 
+export type TeamPet = {
+  _id: string
+  _type: 'teamPet'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  jobTitle: string
+  photo: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  order?: number
+  isActive?: boolean
+}
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top: number
+  bottom: number
+  left: number
+  right: number
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x: number
+  y: number
+  height: number
+  width: number
+}
+
+export type TeamMember = {
+  _id: string
+  _type: 'teamMember'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  jobTitle: string
+  bio?: string
+  photo: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  order?: number
+  isActive?: boolean
+}
+
 export type PageLogos = {
   _id: string
   _type: 'pageLogos'
@@ -39,22 +94,6 @@ export type PageLogos = {
     }
     _key: string
   }>
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top: number
-  bottom: number
-  left: number
-  right: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x: number
-  y: number
-  height: number
-  width: number
 }
 
 export type PageFaqs = {
@@ -855,9 +894,11 @@ export type Geopoint = {
 
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
-  | PageLogos
+  | TeamPet
   | SanityImageCrop
   | SanityImageHotspot
+  | TeamMember
+  | PageLogos
   | PageFaqs
   | Slug
   | Terms
@@ -1274,12 +1315,35 @@ export type AllCaseStudiesQueryResult = Array<{
 // Source: sanity/lib/queries.ts
 // Variable: allTeamMembersQuery
 // Query: *[_type == "teamMember" && isActive == true] | order(coalesce(order, 999) asc, _createdAt asc) {    _id,    name,    jobTitle,    bio,    photo  }
-export type AllTeamMembersQueryResult = Array<never>
+export type AllTeamMembersQueryResult = Array<{
+  _id: string
+  name: string
+  jobTitle: string
+  bio: string | null
+  photo: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+}>
 
 // Source: sanity/lib/queries.ts
 // Variable: allTeamPetsQuery
 // Query: *[_type == "teamPet" && isActive == true] | order(coalesce(order, 999) asc, _createdAt asc) {    _id,    name,    jobTitle,    photo  }
-export type AllTeamPetsQueryResult = Array<never>
+export type AllTeamPetsQueryResult = Array<{
+  _id: string
+  name: string
+  jobTitle: string
+  photo: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+}>
 
 // Query TypeMap
 import '@sanity/client'
