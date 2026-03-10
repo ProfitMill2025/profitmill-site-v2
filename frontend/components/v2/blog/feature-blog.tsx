@@ -86,10 +86,6 @@ export default function FeatureBlog({ posts, title = "Featured articles" }: Feat
   const displayPosts = posts.slice(0, 3)
   const [featuredPost, ...secondaryPosts] = displayPosts
 
-  if (displayPosts.length === 0) {
-    return null
-  }
-
   return (
     <section
       ref={sectionRef}
@@ -105,7 +101,10 @@ export default function FeatureBlog({ posts, title = "Featured articles" }: Feat
               </h2>
             </div>
 
-            {/* Cards Container */}
+            {displayPosts.length === 0 ? (
+              <p className="text-[#001109]/60 text-base text-center md:text-left">No active posts</p>
+            ) : (
+            /* Cards Container */
             <div className="flex flex-col gap-6 md:gap-8 w-full">
             {/* Featured Card - Desktop: Horizontal, Mobile: Vertical */}
             {featuredPost && (
@@ -287,6 +286,7 @@ export default function FeatureBlog({ posts, title = "Featured articles" }: Feat
               </div>
             )}
             </div>
+            )}
           </div>
         </div>
       </div>

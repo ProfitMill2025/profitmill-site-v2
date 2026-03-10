@@ -275,6 +275,13 @@ export const blogPost = defineType({
       initialValue: true,
     }),
     defineField({
+      name: 'isActive',
+      title: 'Is Active',
+      type: 'boolean',
+      description: 'Show this post on the website',
+      initialValue: true,
+    }),
+    defineField({
       name: 'featured',
       title: 'Featured Post',
       type: 'boolean',
@@ -321,14 +328,16 @@ export const blogPost = defineType({
       authorName: 'author.name',
       publishedAt: 'publishedAt',
       featured: 'featured',
+      isActive: 'isActive',
     },
     prepare(selection) {
-      const { title, subtitle, media, authorName, publishedAt, featured } = selection
+      const { title, subtitle, media, authorName, publishedAt, featured, isActive } = selection
       const date = publishedAt ? new Date(publishedAt).toLocaleDateString() : 'Draft'
+      const inactive = isActive === false ? ' • Inactive' : ''
 
       return {
         title: `${featured ? '⭐ ' : ''}${title}`,
-        subtitle: `${date} • ${authorName || 'No author'} ${subtitle ? `• ${subtitle}` : ''}`,
+        subtitle: `${date} • ${authorName || 'No author'}${subtitle ? ` • ${subtitle}` : ''}${inactive}`,
         media,
       }
     },

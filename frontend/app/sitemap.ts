@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 import { client } from '@/sanity/lib/client'
-import { sitemapData } from '@/sanity/lib/queries'
+import { authorSlugsQuery, sitemapData } from '@/sanity/lib/queries'
 
 const baseUrl = 'https://www.profitmill.io'
 
@@ -21,6 +21,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/profit-studio',
     '/terms-conditions',
     '/what-we-do',
+    '/what-we-do/google-ads',
+    '/what-we-do/linkedin-ads',
+    '/what-we-do/other-channels',
     '/who-we-work-with',
     '/resources/blog',
     '/resources/podcasts',
@@ -28,13 +31,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/resources/alternatives',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date().toISOString(),
     changeFrequency: 'weekly' as const,
     priority: route === '' ? 1 : 0.8,
   }))
 
   // Dynamic routes from Sanity
-  const dynamicContent = await client.fetch<Array<{ slug: string; _type: string; _updatedAt: string }>>(sitemapData)
+  const [dynamicContent, authorSlugs] = await Promise.all([
+    client.fetch<Array<{ slug: string; _type: string; _updatedAt: string }>>(sitemapData),
+    client.fetch<Array<string>>(authorSlugsQuery),
+  ])
+
   const dynamicRoutes = dynamicContent.map((item) => {
     const prefix = routeMap[item._type] || ''
     return {
@@ -45,5 +51,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   })
 
-  return [...staticRoutes, ...dynamicRoutes]
+  const authorRoutes = authorSlugs.map((slug) => ({
+    url: `${baseUrl}/resources/author/${slug}`,
+    changeFrequency: 'weekly' as const,
+    priority: 0.6,
+  }))
+
+  return [...staticRoutes, ...dynamicRoutes, ...authorRoutes]
 }

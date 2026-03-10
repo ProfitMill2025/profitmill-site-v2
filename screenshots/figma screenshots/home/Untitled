@@ -1,0 +1,16 @@
+❯ /copy-compare all                                                                                                                                             
+                                                                                                                                                                
+⏺ Launching 15 parallel agents to compare copy across all pages. Each agent reads source files + Figma screenshots and produces a section-by-section diff.      
+                                                                                                                                                                
+⏺ 2 Task agents launched (ctrl+o to expand)                                                                                                                     
+   ├─ Compare copy: pricing page                                                                                                                                
+   │  ⎿  Running in the background (↓ to manage)                                                                                                                
+   └─ Compare copy: what-we-do page                                                                                                                             
+      ⎿  Running in the background (↓ to manage)                                                                                                                
+                                                                                                                                                                
+✻ Pondering… (1m 32s · ↓ 6.4k tokens · thought for 5s)                                                                                                          
+                                                                                                                                                                
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯                                                                                                                                                               
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  9 local agents · esc to interrupt

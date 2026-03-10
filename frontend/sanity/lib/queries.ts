@@ -58,7 +58,7 @@ export const getPageQuery = defineQuery(`
 `)
 
 export const sitemapData = defineQuery(`
-  *[_type in ["blogPost", "caseStudy", "whoWeWorkWith"] && defined(slug.current)] | order(_type asc) {
+  *[_type in ["blogPost", "caseStudy", "whoWeWorkWith"] && defined(slug.current) && isActive == true] | order(_type asc) {
     "slug": slug.current,
     _type,
     _updatedAt,
@@ -105,7 +105,7 @@ export const pagesSlugs = defineQuery(`
 `)
 
 export const allBlogPostsQuery = defineQuery(`
-  *[_type == "blogPost"] | order(publishedAt desc) {
+  *[_type == "blogPost" && isActive == true] | order(publishedAt desc) {
     _id,
     title,
     subtitle,
@@ -189,7 +189,7 @@ export const authorQuery = defineQuery(`
     linkedinUrl,
     twitterUrl,
     email,
-    "blogPosts": *[_type == "blogPost" && references(^._id)] | order(publishedAt desc) {
+    "blogPosts": *[_type == "blogPost" && isActive == true && references(^._id)] | order(publishedAt desc) {
       _id,
       title,
       subtitle,

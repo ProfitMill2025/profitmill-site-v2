@@ -22,7 +22,7 @@ function urlFor(source: any) {
 }
 
 async function getBlogPost(slug: string) {
-  const query = `*[_type == "blogPost" && slug.current == $slug][0]{
+  const query = `*[_type == "blogPost" && isActive == true && slug.current == $slug][0]{
     _id,
     title,
     subtitle,
@@ -45,7 +45,7 @@ async function getBlogPost(slug: string) {
       email,
       slug
     },
-    "relatedPosts": *[_type == "blogPost" && slug.current != $slug && defined(publishedAt)] | order(publishedAt desc)[0...3]{
+    "relatedPosts": *[_type == "blogPost" && isActive == true && slug.current != $slug && defined(publishedAt)] | order(publishedAt desc)[0...3]{
       _id,
       title,
       slug,

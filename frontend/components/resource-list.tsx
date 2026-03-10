@@ -546,18 +546,22 @@ export default function ResourceList({
 
             {/* Resources Grid */}
             <div ref={cardsGridRef} className="content-stretch flex flex-col gap-[32px] items-start justify-start relative shrink-0 w-full mb-12">
-              {/* Responsive Grid: 1 column mobile, 2 columns tablet/md, 3 columns large+ */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[24px] sm:gap-[32px] w-full items-start">
-                {currentPageItems.map((resource, index) => (
-                  <ResourceCard
-                    key={resource._id || resource.id || `resource-${index}`}
-                    resource={resource}
-                    index={index}
-                    setContentRef={setContentRef}
-                    cardType={actualCardType}
-                  />
-                ))}
-              </div>
+              {currentPageItems.length === 0 ? (
+                <p className="text-[#001109]/60 text-base w-full">No active posts</p>
+              ) : (
+                /* Responsive Grid: 1 column mobile, 2 columns tablet/md, 3 columns large+ */
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[24px] sm:gap-[32px] w-full items-start">
+                  {currentPageItems.map((resource, index) => (
+                    <ResourceCard
+                      key={resource._id || resource.id || `resource-${index}`}
+                      resource={resource}
+                      index={index}
+                      setContentRef={setContentRef}
+                      cardType={actualCardType}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Pagination - Only show if enabled and more than one page */}

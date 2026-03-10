@@ -24,6 +24,8 @@ async function getAuthor(slug: string) {
   return author
 }
 
+type AuthorBlogPost = NonNullable<Awaited<ReturnType<typeof getAuthor>>>['blogPosts'][number]
+
 export async function generateStaticParams() {
   const slugs = await client.fetch(authorSlugsQuery)
 
@@ -110,7 +112,7 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
     linkedinUrl: author.linkedinUrl ?? undefined,
     twitterUrl: author.twitterUrl ?? undefined,
     email: author.email ?? undefined,
-    blogPosts: author.blogPosts?.map((post) => ({
+    blogPosts: author.blogPosts?.map((post: AuthorBlogPost) => ({
       id: post._id,
       title: post.title,
       subtitle: post.subtitle ?? undefined,

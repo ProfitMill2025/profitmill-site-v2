@@ -66,6 +66,7 @@ export default function ComparisonIntro({ className = '' }: ComparisonIntroProps
         duration: 0.8,
         delay: 0.5,
         ease: "power2.out",
+        clearProps: "transform,opacity",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 80%',
@@ -118,15 +119,13 @@ export default function ComparisonIntro({ className = '' }: ComparisonIntroProps
                 >
                   The biggest difference is
                   <br />
+                  our{' '}
                   <span className="relative inline-block">
-                    our insider knowledge
+                    insider knowledge
                     {/* Animated underline */}
                     <div
                       ref={underlineRef}
-                      className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[110%] h-[35px] pointer-events-none"
-                      style={{
-                        transform: 'translateX(-50%) rotate(2.735deg)',
-                      }}
+                      className="absolute -bottom-6 md:-bottom-8 left-[10%] md:left-[-5%] w-[80%] md:w-[110%] h-[20px] md:h-[35px] pointer-events-none rotate-[2.735deg]"
                     >
                       <UnderlineSVG />
                     </div>
@@ -135,7 +134,7 @@ export default function ComparisonIntro({ className = '' }: ComparisonIntroProps
               </div>
 
               {/* Body text */}
-              <div className="space-y-6 text-[#001109] max-w-3xl mx-auto mt-32">
+              <div className="space-y-6 text-[#001109] max-w-3xl mx-auto mt-12 md:mt-16">
                 <p
                   ref={el => {if (el) paragraphRefs.current[0] = el}}
                   className="text-[16px] md:text-[18px] leading-[1.5] text-left"

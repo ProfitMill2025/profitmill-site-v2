@@ -31,6 +31,8 @@ async function getBlogPosts() {
   })
 }
 
+type BlogPost = Awaited<ReturnType<typeof getBlogPosts>>[number]
+
 function calculateReadTime(subtitle?: string | null): string {
   return '5 min'
 }
@@ -38,7 +40,7 @@ function calculateReadTime(subtitle?: string | null): string {
 export default async function BlogPage() {
   const blogPosts = await getBlogPosts()
 
-  const featuredPosts = blogPosts.slice(0, 3).map(post => ({
+  const featuredPosts = blogPosts.slice(0, 3).map((post: BlogPost) => ({
     _id: post._id,
     title: post.title,
     subtitle: post.subtitle ?? undefined,
@@ -47,12 +49,13 @@ export default async function BlogPage() {
     category: post.categories?.[0] || 'Blog Post',
   }))
 
-  const transformedPosts = blogPosts.map(post => ({
+  const transformedPosts = blogPosts.map((post: BlogPost) => ({
     _id: post._id,
     type: post.categories?.[0]?.toUpperCase() || 'ARTICLE',
     title: post.title,
     text: post.subtitle || '',
     tags: post.tags?.join(', '),
+    url: `/resources/blog/${post.slug.current}`,
     slug: post.slug,
     duration: calculateReadTime(post.subtitle),
     date: new Date(post.publishedAt).toLocaleDateString('en-US', {
@@ -65,8 +68,8 @@ export default async function BlogPage() {
     author: post.author?.name,
   }))
 
-  const allCategories = blogPosts.flatMap(post => post.categories || [])
-  const allTags = blogPosts.flatMap(post => post.tags || [])
+  const allCategories = blogPosts.flatMap((post: BlogPost) => post.categories || [])
+  const allTags = blogPosts.flatMap((post: BlogPost) => post.tags || [])
   const uniqueFilters = ['All', ...Array.from(new Set([...allCategories, ...allTags])).sort()]
 
   return (
