@@ -14,7 +14,7 @@ export const homepageFaqs: FaqItem[] = [
           <a href="/paid-ads-pricing" className="text-[#ffba0a] font-medium hover:opacity-80 transition-opacity">Pricing page</a>.
         </p>
         <p>
-          Not sure what&apos;s right for you? <a href="https://app.hellobonsai.com/s/profitmill/googleadsaudit" className="text-[#ffba0a] font-medium hover:opacity-80 transition-opacity">Book a free audit</a> and we&apos;ll point you in the right direction.
+          Not sure what&apos;s right for you? <a href="https://app.hellobonsai.com/s/profitmill/paidadsaudit" className="text-[#ffba0a] font-medium hover:opacity-80 transition-opacity">Book a free audit</a> and we&apos;ll point you in the right direction.
         </p>
       </div>
     ),

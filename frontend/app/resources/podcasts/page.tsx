@@ -45,7 +45,7 @@ export default async function PodcastsPage() {
         title="Need help scaling your paid ads profitably?"
         subtitle="We work with B2B teams to turn underperforming ad accounts into profitable growth channels. Book a free ad audit, and we'll walk you through what's working, what's not, and what to fix first."
         buttonText="Book your free audit"
-        buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+        buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
       />
     </div>
   )

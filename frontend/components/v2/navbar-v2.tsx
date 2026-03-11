@@ -225,7 +225,7 @@ export default function NavbarV2() {
           </div>
 
           <Link
-            href="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+            href="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
             className="hidden xl:flex items-center justify-center bg-[#FFBA0A] hover:bg-[#FFBA0A]/90 text-black px-6 h-[49px] rounded-[8px] transition-colors font-semibold text-sm"
           >
             Book a call
@@ -397,7 +397,7 @@ export default function NavbarV2() {
 
                 <div className="px-5 pb-10 mt-12">
                   <Link
-                    href="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+                    href="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
                     onClick={() => setIsSheetOpen(false)}
                     className="block text-center border-2 border-[#FFBA0A] text-white hover:bg-[#FFBA0A]/10 px-8 py-3.5 rounded-[2px] font-semibold text-[14px] transition-colors"
                   >

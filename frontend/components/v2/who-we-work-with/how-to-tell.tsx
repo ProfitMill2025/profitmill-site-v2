@@ -98,7 +98,7 @@ export default function HowToTell({ className = '' }: HowToTellProps) {
 
             {/* Book a call button */}
             <button
-              onClick={() => window.open('https://app.hellobonsai.com/s/profitmill/googleadsaudit', '_blank')}
+              onClick={() => window.open('https://app.hellobonsai.com/s/profitmill/paidadsaudit', '_blank')}
               className="bg-[#ffba0a] hover:bg-[#ffba0a]/90 transition-colors px-8 py-3.5 rounded-[2px] cursor-pointer"
             >
               <span className="font-semibold text-[14px] text-black">
@@ -190,7 +190,7 @@ export default function HowToTell({ className = '' }: HowToTellProps) {
             {/* Book a call button */}
             <div className="mt-8">
               <button
-                onClick={() => window.open('https://app.hellobonsai.com/s/profitmill/googleadsaudit', '_blank')}
+                onClick={() => window.open('https://app.hellobonsai.com/s/profitmill/paidadsaudit', '_blank')}
                 className="bg-[#ffba0a] hover:bg-[#ffba0a]/90 transition-colors px-8 py-3.5 rounded-[2px] w-full cursor-pointer"
               >
                 <span className="font-semibold text-[14px] text-black">

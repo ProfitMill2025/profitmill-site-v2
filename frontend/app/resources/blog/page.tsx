@@ -78,7 +78,7 @@ export default async function BlogPage() {
         title="Unfiltered perspectives on profitable paid growth"
         description="Built for marketers and founders who want less theory, and more ROI. Get fresh takes on the tactics and strategy we use to help our clients achieve profitable growth with paid ads."
         buttonText="Get a free paid ad audit"
-        buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+        buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
       />
 
       <div className="max-w-[2000px] mx-auto px-4 md:px-8">
@@ -103,7 +103,7 @@ export default async function BlogPage() {
         title="Ready to make paid ads work for you?"
         subtitle="Book a free ad audit and our performance experts will assess your setup and show you exactly where you're leaving money on the table—and how to fix it."
         buttonText="Book your free audit"
-        buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+        buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
       />
     </div>
   )

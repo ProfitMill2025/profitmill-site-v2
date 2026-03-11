@@ -24,7 +24,7 @@ export default function SegmentHero({
   headline,
   description,
   buttonText,
-  buttonLink = "https://app.hellobonsai.com/s/profitmill/googleadsaudit",
+  buttonLink = "https://app.hellobonsai.com/s/profitmill/paidadsaudit",
   showClutchBadge = true,
   logoSectionTitle,
   logos = []

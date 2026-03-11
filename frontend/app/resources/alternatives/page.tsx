@@ -22,7 +22,7 @@ export default function AlternativesPage() {
         title="How Profit Mill compares to other paid ads agencies"
         description="Looking for someone to scale your paid ads? At Profit Mill we bring nearly a decade of ex-Google experience to help B2B companies grow profitably, not just spend more."
         buttonText="Get a free paid ad audit"
-        buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+        buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
       />
 
       <ComparisonIntro />
@@ -34,7 +34,7 @@ export default function AlternativesPage() {
         title="Ready for paid ads that drive profit?"
         subtitle="Don't just take our word for it. Share read-only access to your ad accounts, and we'll show you exactly where you're leaving money on the table."
         buttonText="Book your free audit"
-        buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+        buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
       />
     </div>
   )

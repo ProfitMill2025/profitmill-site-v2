@@ -68,7 +68,7 @@ export default async function CaseStudiesPage() {
       <CtaSection
         title="Turn your paid ads into qualified pipeline"
         subtitle="Want to see how? Share read-only access to your ad accounts, and we'll show you exactly where you're leaving money on the table."
-        buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+        buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
       />
     </div>
   )

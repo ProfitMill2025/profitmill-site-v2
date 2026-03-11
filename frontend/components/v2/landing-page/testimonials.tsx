@@ -7,9 +7,10 @@ interface Testimonial {
   quote: string | readonly string[]
   name: string
   company: string
+  companyUrl: string
 }
 
-function TestimonialCard({ heading, quote, name, company }: Testimonial) {
+function TestimonialCard({ heading, quote, name, company, companyUrl }: Testimonial) {
   return (
     <div className="bg-[#f1fff5] flex flex-col gap-[16px] px-[30px] py-[20px] rounded-[10px] w-full h-full">
       <div className="flex flex-col md:flex-row gap-[32px] w-full flex-1">
@@ -43,7 +44,7 @@ function TestimonialCard({ heading, quote, name, company }: Testimonial) {
       </div>
       <p className="text-[14px] text-[#006840] leading-[1.5]">
         {' '}- {name} at{' '}
-        <span className="underline">{company}</span>
+        <a href={companyUrl} target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80 transition-opacity">{company}</a>
       </p>
     </div>
   )
@@ -55,18 +56,21 @@ const testimonials = {
     quote: '\u201cAmazing contractor for Google Ads. They will help you scale your startup from thousands of dollars to millions. Peter is truly a superstar and 10x better than any other agency.\u201d',
     name: 'Michael Harding, CEO & Founder',
     company: "Let\u2019s Roam",
+    companyUrl: 'https://www.letsroam.com/',
   },
   alexis: {
     heading: "We were impressed with Profit Mill\u2019s depth of knowledge, the time they spent with our team, and their dedication to our success.",
     quote: "\u201cProfit Mill\u2019s project management was amazing. The team delivered on time and responded well to our needs. We were impressed with Profit Mill\u2019s depth of knowledge, the time they spent with our team, and their dedication to our success.\u201d",
     name: 'Alexis Clarfield-Henry, VP of Marketing',
     company: 'Forum Ventures',
+    companyUrl: 'https://www.forumvc.com/',
   },
   shawn: {
     heading: 'Profit Mill Turned Google Ads around in just a month.',
     quote: "\u201cWe dabbled with Google Ads for two and a half years and received very few quality leads and a lot of spam leads. Profit Mill turned that around in just a month, generating a healthy volume of inbound leads that actually turned into customers! 6 months into our work together, we\u2019ve now doubled our monthly investment into Google Ads and are super excited to keep working with them.\u201d",
     name: 'Shawn Watts, CEO & Founder',
     company: 'Corfix',
+    companyUrl: 'https://www.corfix.com/',
   },
   luke: {
     heading: "If you\u2019re looking for someone who can handle both the technical side and provide real strategic value, I can\u2019t recommend Profit Mill enough.",
@@ -77,18 +81,21 @@ const testimonials = {
     ],
     name: 'Luke Piette, Head of Growth & Marketing',
     company: 'RunPod',
+    companyUrl: 'https://www.runpod.io/',
   },
   eli: {
     heading: 'Ended up with a profitable and scalable system in the first year',
     quote: "\u201cCan\u2019t recommend working with Profit Mill enough! The results have been even better than we could have imagined. We relaunched Google Ads with them and ended up with a profitable and scalable system in the first year! They do so much more than just paid ads \u2013 they\u2019ve helped us think strategically about different ways to scale our business,  technically optimize our systems, and generally just been a fantastic problem solvers. It feels like they\u2019re a member of the team. I feel really lucky to have them in our corner!\u201d",
     name: 'Eli Gladstone, Co-Founder & CEO',
     company: 'Speaker Labs',
+    companyUrl: 'https://speakerlabs.ca/',
   },
   cristina: {
     heading: 'Always on time, always thorough. Profit Mill consistently pushed us to do more and think bigger.',
     quote: "\u201cAlways on time, always thorough. Profit Mill consistently pushed us to do more and think bigger. Their responses were quick, their guidance proactive, and they operated like an embedded part of our team, not an external agency. Their willingness to iterate and learn with us stood out. As an early-stage startup, our priorities shifted constantly, and things were often chaotic. Profit Mill stayed flexible, adapted quickly, and never made us feel like we were asking for too much. That kind of partnership is rare.\u201d",
     name: 'Cristina Bune, Head of Marketing',
     company: 'Paraform',
+    companyUrl: 'https://www.paraform.com/',
   },
 } as const
 

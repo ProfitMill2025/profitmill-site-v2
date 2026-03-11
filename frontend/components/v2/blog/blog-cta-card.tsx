@@ -25,7 +25,7 @@ export default function BlogCTACard() {
         </h3>
 
         <Link
-          href="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+          href="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
           className="w-full bg-[#FFBA0A] hover:bg-[#FFBA0A]/90 text-black px-8 py-3.5 rounded-[2px] font-semibold text-sm transition-colors text-center"
         >
           Book your free audit

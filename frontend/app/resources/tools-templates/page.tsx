@@ -78,7 +78,7 @@ export default async function ToolsTemplatesPage() {
 
 Want an expert to weigh in?`}
         buttonText="Get a free paid ad audit"
-        buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+        buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
       />
 
       <div id="tools">
@@ -108,7 +108,7 @@ Want an expert to weigh in?`}
         title="If you're second-guessing, get a second opinion"
         subtitle="Templates are a great start—but if you want a second set of eyes on your funnel, targeting, or budget, we've got you."
         buttonText="Book your free audit"
-        buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+        buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
       />
     </div>
   )

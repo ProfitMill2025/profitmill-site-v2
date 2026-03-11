@@ -73,7 +73,7 @@ export default async function Homepage() {
       <TestimonialsSection />
       <CaseStudiesSection />
       {faqDoc?.faqs && <FaqsSection faqData={faqDoc.faqs} />}
-      <CtaSection buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit" />
+      <CtaSection buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit" />
     </>
   )
 }

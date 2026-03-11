@@ -46,7 +46,7 @@ export default function HomepageHero({ logoSectionTitle, logos = [] }: HomepageH
               <Button
                 size="lg"
                 className="bg-[#ffba0a] hover:bg-[#ffba0a]/90 text-black font-semibold text-sm px-8 py-3.5 rounded-[2px]"
-                onClick={() => window.open('https://app.hellobonsai.com/s/profitmill/googleadsaudit', '_blank')}
+                onClick={() => window.open('https://app.hellobonsai.com/s/profitmill/paidadsaudit', '_blank')}
               >
                 Get a free paid ads audit
               </Button>

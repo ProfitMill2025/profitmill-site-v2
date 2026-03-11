@@ -20,7 +20,7 @@ export default function ProfitStudioPage() {
         title="For founders looking for more than funding"
         description="Profit Studio is a hands-on venture studio for founders who want strategic partners, not passive investors. We bring 10+ years of go-to-market expertise to help you launch, grow, and win—right off the bat."
         buttonText="Get in touch with Peter"
-        buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+        buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
         showClutchBadge={true}
       />
       <WhatIsProfitStudio />
@@ -30,7 +30,7 @@ export default function ProfitStudioPage() {
         title="Ready to build with us?"
         subtitle="We partner with a small number of founders per year—when the product, timing, and vision align. Got a venture worth building? Send us your pitch and let's talk."
         buttonText="Pitch us your startup"
-        buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+        buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
       />
     </div>
   )

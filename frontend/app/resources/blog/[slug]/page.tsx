@@ -356,7 +356,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         title="Want to see what a performance-driven Google Ads strategy can do for your business?"
         subtitle=""
         buttonText="Let's chat"
-        buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+        buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
       />
     </div>
   )

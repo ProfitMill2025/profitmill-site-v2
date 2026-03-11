@@ -627,6 +627,7 @@ export type BlogPost = {
     } & BlogPostReference
   >
   enableComments?: boolean
+  isActive?: boolean
   featured?: boolean
   beehiveSync?: {
     enabled?: boolean
@@ -949,7 +950,7 @@ export type GetPageQueryResult = null
 
 // Source: sanity/lib/queries.ts
 // Variable: sitemapData
-// Query: *[_type in ["blogPost", "caseStudy", "whoWeWorkWith"] && defined(slug.current)] | order(_type asc) {    "slug": slug.current,    _type,    _updatedAt,  }
+// Query: *[_type in ["blogPost", "caseStudy", "whoWeWorkWith"] && defined(slug.current) && isActive == true] | order(_type asc) {    "slug": slug.current,    _type,    _updatedAt,  }
 export type SitemapDataResult = Array<
   | {
       slug: string
@@ -1000,7 +1001,7 @@ export type PagesSlugsResult = Array<never>
 
 // Source: sanity/lib/queries.ts
 // Variable: allBlogPostsQuery
-// Query: *[_type == "blogPost"] | order(publishedAt desc) {    _id,    title,    subtitle,    slug,    publishedAt,    categories,    tags,    heroImage,    featured,    author->{      name,      title,      profileImage    }  }
+// Query: *[_type == "blogPost" && isActive == true] | order(publishedAt desc) {    _id,    title,    subtitle,    slug,    publishedAt,    categories,    tags,    heroImage,    featured,    author->{      name,      title,      profileImage    }  }
 export type AllBlogPostsQueryResult = Array<{
   _id: string
   title: string
@@ -1131,7 +1132,7 @@ export type AllPodcastsQueryResult = Array<{
 
 // Source: sanity/lib/queries.ts
 // Variable: authorQuery
-// Query: *[_type == "author" && slug.current == $slug][0] {    _id,    name,    slug,    title,    profileImage,    bio,    linkedinUrl,    twitterUrl,    email,    "blogPosts": *[_type == "blogPost" && references(^._id)] | order(publishedAt desc) {      _id,      title,      subtitle,      slug,      publishedAt,      categories,      tags,      heroImage,      featured    }  }
+// Query: *[_type == "author" && slug.current == $slug][0] {    _id,    name,    slug,    title,    profileImage,    bio,    linkedinUrl,    twitterUrl,    email,    "blogPosts": *[_type == "blogPost" && isActive == true && references(^._id)] | order(publishedAt desc) {      _id,      title,      subtitle,      slug,      publishedAt,      categories,      tags,      heroImage,      featured    }  }
 export type AuthorQueryResult = {
   _id: string
   name: string
@@ -1351,18 +1352,18 @@ declare module '@sanity/client' {
   interface SanityQueries {
     '*[_type == "settings"][0]': SettingsQueryResult
     '\n  *[_type == \'page\' && slug.current == $slug][0]{\n    _id,\n    _type,\n    name,\n    slug,\n    heading,\n    subheading,\n    "pageBuilder": pageBuilder[]{\n      ...,\n      _type == "callToAction" => {\n        ...,\n        button {\n          ...,\n          \n  link {\n      ...,\n      \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n      }\n\n        }\n      },\n      _type == "infoSection" => {\n        content[]{\n          ...,\n          markDefs[]{\n            ...,\n            \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n          }\n        }\n      },\n    },\n  }\n': GetPageQueryResult
-    '\n  *[_type in ["blogPost", "caseStudy", "whoWeWorkWith"] && defined(slug.current)] | order(_type asc) {\n    "slug": slug.current,\n    _type,\n    _updatedAt,\n  }\n': SitemapDataResult
+    '\n  *[_type in ["blogPost", "caseStudy", "whoWeWorkWith"] && defined(slug.current) && isActive == true] | order(_type asc) {\n    "slug": slug.current,\n    _type,\n    _updatedAt,\n  }\n': SitemapDataResult
     '\n  *[_type == "caseStudy" && isActive == true && defined(slug.current)].slug.current\n': CaseStudySlugsQueryResult
     '\n  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc) {\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': AllPostsQueryResult
     '\n  *[_type == "post" && _id != $skip && defined(slug.current)] | order(date desc, _updatedAt desc) [0...$limit] {\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': MorePostsQueryResult
     '\n  *[_type == "post" && slug.current == $slug] [0] {\n    content[]{\n    ...,\n    markDefs[]{\n      ...,\n      \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n    }\n  },\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': PostQueryResult
     '\n  *[_type == "post" && defined(slug.current)]\n  {"slug": slug.current}\n': PostPagesSlugsResult
     '\n  *[_type == "page" && defined(slug.current)]\n  {"slug": slug.current}\n': PagesSlugsResult
-    '\n  *[_type == "blogPost"] | order(publishedAt desc) {\n    _id,\n    title,\n    subtitle,\n    slug,\n    publishedAt,\n    categories,\n    tags,\n    heroImage,\n    featured,\n    author->{\n      name,\n      title,\n      profileImage\n    }\n  }\n': AllBlogPostsQueryResult
+    '\n  *[_type == "blogPost" && isActive == true] | order(publishedAt desc) {\n    _id,\n    title,\n    subtitle,\n    slug,\n    publishedAt,\n    categories,\n    tags,\n    heroImage,\n    featured,\n    author->{\n      name,\n      title,\n      profileImage\n    }\n  }\n': AllBlogPostsQueryResult
     '\n  *[_type == "tool" && isActive == true] | order(coalesce(order, 999) asc, _createdAt desc) {\n    _id,\n    title,\n    type,\n    description,\n    downloadFile {\n      asset-> {\n        url,\n        originalFilename\n      }\n    },\n    downloadButtonText,\n    coverImage,\n    tags,\n    category,\n    fileSize,\n    fileFormat,\n    lastUpdated,\n    featured,\n    order\n  }\n': AllToolsQueryResult
     '\n  *[_type == "playbook" && isActive == true] | order(coalesce(order, 999) asc, _createdAt desc) {\n    _id,\n    title,\n    description,\n    downloadFile {\n      asset-> {\n        url,\n        originalFilename\n      }\n    },\n    downloadButtonText,\n    coverImage,\n    industry,\n    tags,\n    pageCount,\n    fileSize,\n    lastUpdated,\n    featured,\n    order\n  }\n': AllPlaybooksQueryResult
     '\n  *[_type == "podcast" && isActive == true && defined(spotifyUrl) && spotifyUrl != ""] | order(_createdAt desc) {\n    _id,\n    title,\n    spotifyUrl\n  }\n': AllPodcastsQueryResult
-    '\n  *[_type == "author" && slug.current == $slug][0] {\n    _id,\n    name,\n    slug,\n    title,\n    profileImage,\n    bio,\n    linkedinUrl,\n    twitterUrl,\n    email,\n    "blogPosts": *[_type == "blogPost" && references(^._id)] | order(publishedAt desc) {\n      _id,\n      title,\n      subtitle,\n      slug,\n      publishedAt,\n      categories,\n      tags,\n      heroImage,\n      featured\n    }\n  }\n': AuthorQueryResult
+    '\n  *[_type == "author" && slug.current == $slug][0] {\n    _id,\n    name,\n    slug,\n    title,\n    profileImage,\n    bio,\n    linkedinUrl,\n    twitterUrl,\n    email,\n    "blogPosts": *[_type == "blogPost" && isActive == true && references(^._id)] | order(publishedAt desc) {\n      _id,\n      title,\n      subtitle,\n      slug,\n      publishedAt,\n      categories,\n      tags,\n      heroImage,\n      featured\n    }\n  }\n': AuthorQueryResult
     '\n  *[_type == "author"].slug.current\n': AuthorSlugsQueryResult
     '\n  *[_type == "pageFaqs" && pageSlug.current == $pageSlug][0] {\n    _id,\n    pageTitle,\n    "pageSlug": pageSlug.current,\n    faqs[] {\n      question,\n      answer,\n      defaultOpen\n    }\n  }\n': PageFaqsQueryResult
     '\n  *[_type == "pageLogos" && page == $page][0] {\n    _id,\n    page,\n    logoSectionTitle,\n    "logos": logos[] {\n      name,\n      "logoUrl": logo.asset->url\n    }\n  }\n': PageLogosQueryResult

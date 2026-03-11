@@ -160,7 +160,7 @@ export default function WhoWeWorkWith() {
           <Button
             size="lg"
             className="w-full sm:w-auto bg-[#ffba0a] hover:bg-[#ffba0a]/90 text-black font-semibold text-sm px-8 py-3.5 rounded-[2px]"
-            onClick={() => window.open('https://app.hellobonsai.com/s/profitmill/googleadsaudit', '_blank')}
+            onClick={() => window.open('https://app.hellobonsai.com/s/profitmill/paidadsaudit', '_blank')}
           >
             Book a call
           </Button>

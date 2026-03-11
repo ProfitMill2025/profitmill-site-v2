@@ -21,7 +21,7 @@ export default function WhatWeDoPage() {
         title="Other agencies run ads. We drive growth."
         description="Tired of burning budget on ads that don't convert? We help B2B teams turn paid media into profit—with strategy, tracking, and funnel support that actually drives results."
         buttonText="Get a free paid ads audit"
-        buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+        buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
         showClutchBadge={true}
       />
       <ProductTable />
@@ -31,7 +31,7 @@ export default function WhatWeDoPage() {
       <CtaSection
         title="Ready for paid ads that drive profit?"
         subtitle="Don't just take our word for it. Share read-only access to your ad accounts, and we'll show you exactly where you're leaving money on the table."
-        buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+        buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
       />
     </div>
   )

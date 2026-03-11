@@ -58,7 +58,7 @@ export default async function PricingPage() {
         title="Paid ads that pay for themselves"
         description="Want ads that bring leads, not just traffic? Profit Mill sets you up with everything—from strategy to tracking—so your paid ads drive real growth."
         buttonText="Get a free paid ads audit"
-        buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+        buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
       />
       <PricingGrid />
       <PricingGridMobile />
@@ -99,7 +99,7 @@ export default async function PricingPage() {
       <CtaSection
         title="Get your free ad audit"
         subtitle="Don't just take our word for it. Share read-only access to your ad accounts, and we'll show you exactly where you're leaving money on the table."
-        buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+        buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
       />
     </div>
   )

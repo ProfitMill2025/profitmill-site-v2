@@ -55,7 +55,7 @@ export default function CtaSection({
   title,
   subtitle,
   buttonText,
-  buttonLink = "https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+  buttonLink = "https://app.hellobonsai.com/s/profitmill/paidadsaudit"
 }: CtaSectionProps) {
   // Get channel config if provided
   const channelConfig = channel ? channelCtaConfigs[channel as keyof typeof channelCtaConfigs] : null

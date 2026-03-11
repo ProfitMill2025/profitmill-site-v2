@@ -68,7 +68,7 @@ export default async function WhoWeWorkWithSegmentPage({ params }: Props) {
           headline={segment.hero.headline}
           description={segment.hero.description}
           buttonText={segment.hero.buttonText}
-          buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+          buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
           showClutchBadge={segment.hero.showClutchBadge}
           logoSectionTitle={segment.hero.logoSectionTitle}
           logos={segment.processedLogos?.filter((l): l is { name: string; logoUrl: string } => l.logoUrl !== null) || []}
@@ -105,7 +105,7 @@ export default async function WhoWeWorkWithSegmentPage({ params }: Props) {
           title={segment.ctaSection.title}
           subtitle={segment.ctaSection.subtitle}
           buttonText={segment.ctaSection.buttonText}
-          buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+          buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
         />
       )}
     </div>

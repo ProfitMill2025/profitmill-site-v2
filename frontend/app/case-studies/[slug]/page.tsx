@@ -244,7 +244,7 @@ export default async function CaseStudyPage({ params }: Props) {
         title={caseStudy.ctaSection?.text || "Want to see what a performance-driven Google Ads strategy can do for your business?"}
         subtitle=""
         buttonText={caseStudy.ctaSection?.buttonText || "Let's chat"}
-        buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+        buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
       />
     </div>
   )

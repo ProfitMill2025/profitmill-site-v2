@@ -92,7 +92,7 @@ export default async function ServicePage({
         title={service.headerTitle}
         description={service.headerDescription}
         buttonText={service.buttonText}
-        buttonLink="https://app.hellobonsai.com/s/profitmill/googleadsaudit"
+        buttonLink="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
         showClutchBadge={true}
       />
       <ProductOverview channel={slug} />

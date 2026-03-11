@@ -37,7 +37,7 @@ export default function CaseStudyHero({ logoSectionTitle, logos = [] }: CaseStud
             <div className="flex flex-col gap-8 items-center">
               <Button
                 size="lg"
-                onClick={() => window.open('https://app.hellobonsai.com/s/profitmill/googleadsaudit', '_blank')}
+                onClick={() => window.open('https://app.hellobonsai.com/s/profitmill/paidadsaudit', '_blank')}
                 className="bg-[#ffba0a] hover:bg-[#ffba0a]/90 text-black font-semibold text-sm px-8 py-3.5 rounded-[2px]"
               >
                 Get a free paid ads audit
