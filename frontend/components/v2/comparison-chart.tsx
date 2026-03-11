@@ -139,8 +139,8 @@ export default function ComparisonChart({ className = '' }: ComparisonChartProps
             How Profit Mill compares to other paid ads service options
           </h2>
 
-          {/* Comparison Table - Desktop */}
-          <div ref={tableRef} className="hidden lg:block overflow-x-auto">
+          {/* Comparison Table */}
+          <div ref={tableRef} className="overflow-x-auto">
             <div className="min-w-[1000px]">
               {/* Headers */}
               <div className="grid grid-cols-5 gap-0">
@@ -194,89 +194,6 @@ export default function ComparisonChart({ className = '' }: ComparisonChartProps
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* Comparison Table - Mobile */}
-          <div ref={tableRef} className="block lg:hidden">
-            {/* Header */}
-            <h3 className="font-semibold text-[18px] text-[#001109] text-center mb-8">
-              How Profit Mill compares to other paid ads service options
-            </h3>
-
-            {/* Mobile Cards - One column for each alternative */}
-            <div className="space-y-8">
-              {/* Alternative #1: In-house hire */}
-              <div>
-                <h4 className="font-bold text-[16px] text-[#001109] text-center mb-4">
-                  Alternative #1<br />In-house hire
-                </h4>
-                <div className="space-y-4">
-                  {chartData.map((row, index) => (
-                    <div key={index} className="border-t border-[#001109] pt-4">
-                      <div className="font-bold text-[16px] text-[#001109] mb-2">{row.category}</div>
-                      <div className="flex gap-2.5 items-start">
-                        <IconComponent type={row.inHouse.icon} />
-                        <span className="text-[16px] text-[#001109] leading-[1.5]">{row.inHouse.text}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Alternative #2: Freelancer */}
-              <div>
-                <h4 className="font-bold text-[16px] text-[#001109] text-center mb-4">
-                  Alternative #2<br />Freelancer
-                </h4>
-                <div className="space-y-4">
-                  {chartData.map((row, index) => (
-                    <div key={index} className="border-t border-[#001109] pt-4">
-                      <div className="font-bold text-[16px] text-[#001109] mb-2">{row.category}</div>
-                      <div className="flex gap-2.5 items-start">
-                        <IconComponent type={row.freelancer.icon} />
-                        <span className="text-[16px] text-[#001109] leading-[1.5]">{row.freelancer.text}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Alternative #3: Traditional agency */}
-              <div>
-                <h4 className="font-bold text-[16px] text-[#001109] text-center mb-4">
-                  Alternative #3<br />Traditional agency
-                </h4>
-                <div className="space-y-4">
-                  {chartData.map((row, index) => (
-                    <div key={index} className="border-t border-[#001109] pt-4">
-                      <div className="font-bold text-[16px] text-[#001109] mb-2">{row.category}</div>
-                      <div className="flex gap-2.5 items-start">
-                        <IconComponent type={row.agency.icon} />
-                        <span className="text-[16px] text-[#001109] leading-[1.5]">{row.agency.text}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Profit Mill - Highlighted */}
-              <div className="bg-[#006840] rounded-[10px] p-4">
-                <h4 className="font-bold text-[16px] text-white text-center mb-4">
-                  Profit Mill
-                </h4>
-                <div className="space-y-4">
-                  {chartData.map((row, index) => (
-                    <div key={index} className={`${index > 0 ? 'border-t border-white/20 pt-4' : ''}`}>
-                      <div className="font-bold text-[16px] text-white mb-2">{row.category}</div>
-                      <div className="flex gap-2.5 items-start">
-                        <IconComponent type={row.profitMill.icon} />
-                        <span className="text-[16px] text-white leading-[1.5]">{row.profitMill.text}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
         </div>
