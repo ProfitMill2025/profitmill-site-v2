@@ -93,7 +93,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
         {/* Usercentrics CMP - Manages consent UI and updates consent state */}
         <Script
           id="usercentrics-cmp"
-          src="https://web.cmp.usercentrics.eu/ui/loader.js"
+          src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
           data-settings-id="I_a86_39BbFm2p"
           {...(!isProduction && {'data-draft': 'true'})}
           strategy="beforeInteractive"
