@@ -19,6 +19,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/roi-calculator',
+        destination: '/roi-calculator.html',
+      },
+    ]
+  },
 }
 
 export default nextConfig
