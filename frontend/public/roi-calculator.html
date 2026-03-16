@@ -1,22 +1,49 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Paid Ads ROI Calculator</title>
   <meta name="description" content="Interactive B2B SaaS paid ads ROI calculator. Full funnel from ad spend to revenue and ROI."/>
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <style>
-    input[type="range"].range{transition:background .15s ease}
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: #e5e7eb;
+      outline: none;
+      transition: background 0.15s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #6366f1;
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #6366f1;
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
     ::-webkit-scrollbar{width:6px}
     ::-webkit-scrollbar-track{background:transparent}
-    ::-webkit-scrollbar-thumb{background:oklch(var(--bc)/.2);border-radius:3px}
-    ::-webkit-scrollbar-thumb:hover{background:oklch(var(--bc)/.3)}
-    .divider{margin-top:.5rem!important;margin-bottom:.5rem!important}
+    ::-webkit-scrollbar-thumb{background:rgba(31,41,55,0.2);border-radius:3px}
+    ::-webkit-scrollbar-thumb:hover{background:rgba(31,41,55,0.3)}
   </style>
 </head>
 <body>
@@ -74,15 +101,13 @@ const Slider=({label,icon,value,min,max,step,unit,tooltip,onChange})=>{
   return(
     <div className="flex flex-col gap-1.5">
       <div className="flex items-center justify-between">
-        <div className="tooltip tooltip-right" data-tip={tooltip}>
-          <label className="flex items-center gap-2 text-sm font-medium text-base-content cursor-help">
-            <span className="opacity-60">{icon}</span>{label}
-          </label>
-        </div>
-        <input type="text" value={fmt(value)} onChange={e=>{const r=e.target.value.replace(/[$%,k]/g,'');const p=parseFloat(r);if(!isNaN(p))onChange(Math.min(max,Math.max(min,p)))}} className="input input-bordered input-sm w-24 text-right font-mono text-sm"/>
+        <label title={tooltip} className="flex items-center gap-2 text-sm font-medium text-gray-800 cursor-help">
+          <span className="opacity-60">{icon}</span>{label}
+        </label>
+        <input type="text" value={fmt(value)} onChange={e=>{const r=e.target.value.replace(/[$%,k]/g,'');const p=parseFloat(r);if(!isNaN(p))onChange(Math.min(max,Math.max(min,p)))}} className="w-24 px-2 py-1 text-right font-mono text-sm border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500"/>
       </div>
-      <input type="range" min={min} max={max} step={step} value={value} onChange={e=>onChange(parseFloat(e.target.value))} className="range range-xs range-primary"/>
-      <div className="flex justify-between text-xs text-base-content/40 px-0.5"><span>{fmt(min)}</span><span>{fmt(max)}</span></div>
+      <input type="range" min={min} max={max} step={step} value={value} onChange={e=>onChange(parseFloat(e.target.value))}/>
+      <div className="flex justify-between text-xs text-gray-400 px-0.5"><span>{fmt(min)}</span><span>{fmt(max)}</span></div>
     </div>
   );
 };
@@ -98,14 +123,14 @@ const InputPanel=({inputs,onChange})=>{
   return(
     <div className="flex flex-col gap-5">
       <div className="flex flex-col gap-2">
-        <span className="text-xs font-semibold uppercase tracking-wider text-base-content/50">Quick Presets</span>
-        <div className="flex gap-2">{PRESETS.map(p=><button key={p.label} className="btn btn-sm btn-outline flex-1" onClick={()=>onChange(p.inputs)}>{p.label}</button>)}</div>
+        <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">Quick Presets</span>
+        <div className="flex gap-2">{PRESETS.map(p=><button key={p.label} className="px-3 py-1.5 text-sm font-medium border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors flex-1" onClick={()=>onChange(p.inputs)}>{p.label}</button>)}</div>
       </div>
-      <div className="divider my-0 text-xs text-base-content/40">Investment</div>
+      <div className="flex items-center gap-3 my-2"><div className="flex-1 h-px bg-gray-200"></div><span className="text-xs text-gray-400">Investment</span><div className="flex-1 h-px bg-gray-200"></div></div>
       <Slider label="Monthly Ad Spend" icon={<DollarSign size={16}/>} value={inputs.monthlyAdSpend} min={500} max={200000} step={500} unit="dollar" tooltip="Total monthly budget for paid ads" onChange={u('monthlyAdSpend')}/>
       <Slider label="Cost Per Click" icon={<MouseClick size={16}/>} value={inputs.costPerClick} min={0.5} max={50} step={0.25} unit="dollar" tooltip="Average CPC across your campaigns" onChange={u('costPerClick')}/>
       <Slider label="Avg Deal Value (ACV)" icon={<Award size={16}/>} value={inputs.averageDealValue} min={1000} max={500000} step={1000} unit="dollar" tooltip="Average annual contract value per closed deal" onChange={u('averageDealValue')}/>
-      <div className="divider my-0 text-xs text-base-content/40">Conversion Rates</div>
+      <div className="flex items-center gap-3 my-2"><div className="flex-1 h-px bg-gray-200"></div><span className="text-xs text-gray-400">Conversion Rates</span><div className="flex-1 h-px bg-gray-200"></div></div>
       <Slider label="Landing Page → Lead" icon={<Target size={16}/>} value={inputs.landingPageConversionRate} min={0.5} max={20} step={0.25} unit="percent" tooltip="% of clicks that convert to a lead" onChange={u('landingPageConversionRate')}/>
       <Slider label="Lead → MQL" icon={<Users size={16}/>} value={inputs.leadToMqlRate} min={5} max={80} step={1} unit="percent" tooltip="% of leads that become MQLs" onChange={u('leadToMqlRate')}/>
       <Slider label="MQL → SQL" icon={<Zap size={16}/>} value={inputs.mqlToSqlRate} min={5} max={80} step={1} unit="percent" tooltip="% of MQLs accepted by sales" onChange={u('mqlToSqlRate')}/>
@@ -115,23 +140,23 @@ const InputPanel=({inputs,onChange})=>{
   );
 };
 
-const SC={primary:'bg-primary',info:'bg-info',secondary:'bg-secondary',accent:'bg-accent',warning:'bg-warning',success:'bg-success'};
-const SB={primary:'bg-primary/10',info:'bg-info/10',secondary:'bg-secondary/10',accent:'bg-accent/10',warning:'bg-warning/10',success:'bg-success/10'};
-const ST={primary:'text-primary',info:'text-info',secondary:'text-secondary',accent:'text-accent',warning:'text-warning',success:'text-success'};
+const SC={primary:'bg-indigo-500',info:'bg-blue-500',secondary:'bg-purple-500',accent:'bg-teal-500',warning:'bg-amber-500',success:'bg-emerald-500'};
+const SB={primary:'bg-indigo-50',info:'bg-blue-50',secondary:'bg-purple-50',accent:'bg-teal-50',warning:'bg-amber-50',success:'bg-emerald-50'};
+const ST={primary:'text-indigo-500',info:'text-blue-500',secondary:'text-purple-500',accent:'text-teal-500',warning:'text-amber-500',success:'text-emerald-500'};
 
 const Funnel=({metrics,monthlyAdSpend})=>{
   const mx=Math.max(...metrics.stages.map(s=>s.value),1);
   return(
     <div className="flex flex-col gap-3">
-      <div className="flex items-center gap-3 p-3 rounded-xl bg-base-300">
-        <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/20"><DollarSign size={20} className="text-primary"/></div>
-        <div className="flex flex-col"><span className="text-xs text-base-content/50 font-medium">Monthly Ad Spend</span><span className="text-xl font-bold">{fC(monthlyAdSpend)}</span></div>
+      <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-200">
+        <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-indigo-100"><DollarSign size={20} className="text-indigo-500"/></div>
+        <div className="flex flex-col"><span className="text-xs text-gray-500 font-medium">Monthly Ad Spend</span><span className="text-xl font-bold">{fC(monthlyAdSpend)}</span></div>
       </div>
       <div className="flex flex-col gap-2">{metrics.stages.map((st,i)=>{
         const w=Math.max(8,(st.value/mx)*100);
         return(<F key={st.label}>
           {i>0&&<div className="flex justify-center"><ArrowDown size={14} className="opacity-30"/></div>}
-          <div className={`rounded-xl p-3 ${SB[st.color]||'bg-base-200'}`}>
+          <div className={`rounded-xl p-3 ${SB[st.color]||'bg-gray-100'}`}>
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm font-semibold">{st.label}</span>
               <div className="flex items-center gap-3">
@@ -139,8 +164,8 @@ const Funnel=({metrics,monthlyAdSpend})=>{
                 <span className="text-lg font-bold">{fN(st.value)}</span>
               </div>
             </div>
-            <div className="w-full bg-base-300/50 rounded-full h-2.5 overflow-hidden">
-              <div className={`h-full rounded-full transition-all duration-500 ease-out ${SC[st.color]||'bg-primary'}`} style={{width:w+'%'}}/>
+            <div className="w-full bg-gray-200/50 rounded-full h-2.5 overflow-hidden">
+              <div className={`h-full rounded-full transition-all duration-500 ease-out ${SC[st.color]||'bg-indigo-500'}`} style={{width:w+'%'}}/>
             </div>
           </div>
         </F>);
@@ -149,15 +174,15 @@ const Funnel=({metrics,monthlyAdSpend})=>{
   );
 };
 
-const VR={success:{bg:'bg-success/10',ic:'text-success'},error:{bg:'bg-error/10',ic:'text-error'},info:{bg:'bg-info/10',ic:'text-info'},neutral:{bg:'bg-base-300',ic:'text-base-content/60'}};
+const VR={success:{bg:'bg-emerald-50',ic:'text-emerald-500'},error:{bg:'bg-red-50',ic:'text-red-500'},info:{bg:'bg-blue-50',ic:'text-blue-500'},neutral:{bg:'bg-gray-100',ic:'text-gray-500'}};
 const Card=({label,value,subtitle,icon,variant,large})=>{
   const v=VR[variant];
   return(<div className={`rounded-xl p-4 ${v.bg} ${large?'col-span-2':''}`}>
     <div className="flex items-start justify-between">
       <div className="flex flex-col gap-1">
-        <span className="text-xs font-medium text-base-content/50 uppercase tracking-wide">{label}</span>
+        <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">{label}</span>
         <span className={`font-bold ${large?'text-3xl':'text-xl'}`}>{value}</span>
-        {subtitle&&<span className="text-xs text-base-content/50">{subtitle}</span>}
+        {subtitle&&<span className="text-xs text-gray-500">{subtitle}</span>}
       </div>
       <div className={v.ic}>{icon}</div>
     </div>
@@ -168,13 +193,13 @@ const Summary=({metrics:m,monthlyAdSpend:s})=>{
   const pos=m.roi>0,profit=m.revenue-s;
   return(
     <div className="flex flex-col gap-3">
-      <div className={`rounded-2xl p-5 text-center ${pos?'bg-success/10':'bg-error/10'}`}>
+      <div className={`rounded-2xl p-5 text-center ${pos?'bg-emerald-50':'bg-red-50'}`}>
         <div className="flex items-center justify-center gap-2 mb-1">
-          {pos?<TrendUp size={24} className="text-success"/>:<TrendDown size={24} className="text-error"/>}
-          <span className="text-xs font-semibold uppercase tracking-wider text-base-content/50">Monthly ROI</span>
+          {pos?<TrendUp size={24} className="text-emerald-500"/>:<TrendDown size={24} className="text-red-500"/>}
+          <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">Monthly ROI</span>
         </div>
-        <div className={`text-5xl font-extrabold ${pos?'text-success':'text-error'}`}>{m.roi>0?'+':''}{m.roi.toFixed(0)}%</div>
-        <div className="text-sm text-base-content/50 mt-1">{pos?'Profitable':'Not yet profitable'} &middot; {fC(profit)} {pos?'profit':'loss'}</div>
+        <div className={`text-5xl font-extrabold ${pos?'text-emerald-500':'text-red-500'}`}>{m.roi>0?'+':''}{m.roi.toFixed(0)}%</div>
+        <div className="text-sm text-gray-500 mt-1">{pos?'Profitable':'Not yet profitable'} &middot; {fC(profit)} {pos?'profit':'loss'}</div>
       </div>
       <div className="grid grid-cols-2 gap-3">
         <Card label="Monthly Revenue" value={fC(m.revenue)} subtitle={`From ${m.closedDeals.toFixed(1)} deals`} icon={<DollarSign size={20}/>} variant={m.revenue>s?'success':'neutral'} large/>
@@ -183,12 +208,12 @@ const Summary=({metrics:m,monthlyAdSpend:s})=>{
         <Card label="Cost Per Lead" value={m.costPerLead>0?fC(m.costPerLead):'\u2014'} icon={<Pct size={20}/>} variant="neutral"/>
         <Card label="Cost Per MQL" value={m.costPerMql>0?fC(m.costPerMql):'\u2014'} icon={<Pct size={20}/>} variant="neutral"/>
       </div>
-      <div className="rounded-xl bg-base-300 p-4">
-        <span className="text-xs font-semibold uppercase tracking-wider text-base-content/50">Funnel Efficiency</span>
+      <div className="rounded-xl bg-gray-200 p-4">
+        <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">Funnel Efficiency</span>
         <div className="grid grid-cols-3 gap-4 mt-3">
-          <div className="text-center"><div className="text-lg font-bold">{m.clicks>0?((m.closedDeals/m.clicks)*100).toFixed(2):'0'}%</div><div className="text-xs text-base-content/50">Click &rarr; Deal</div></div>
-          <div className="text-center"><div className="text-lg font-bold">{m.leads>0?((m.closedDeals/m.leads)*100).toFixed(1):'0'}%</div><div className="text-xs text-base-content/50">Lead &rarr; Deal</div></div>
-          <div className="text-center"><div className="text-lg font-bold">{m.mqls>0?((m.closedDeals/m.mqls)*100).toFixed(1):'0'}%</div><div className="text-xs text-base-content/50">MQL &rarr; Deal</div></div>
+          <div className="text-center"><div className="text-lg font-bold">{m.clicks>0?((m.closedDeals/m.clicks)*100).toFixed(2):'0'}%</div><div className="text-xs text-gray-500">Click &rarr; Deal</div></div>
+          <div className="text-center"><div className="text-lg font-bold">{m.leads>0?((m.closedDeals/m.leads)*100).toFixed(1):'0'}%</div><div className="text-xs text-gray-500">Lead &rarr; Deal</div></div>
+          <div className="text-center"><div className="text-lg font-bold">{m.mqls>0?((m.closedDeals/m.mqls)*100).toFixed(1):'0'}%</div><div className="text-xs text-gray-500">MQL &rarr; Deal</div></div>
         </div>
       </div>
     </div>
@@ -201,25 +226,25 @@ const App=()=>{
   const m=useMemo(()=>calc(inputs),[inputs]);
   const tabs=[{id:'inputs',label:'Inputs',icon:<SlidersH size={16}/>},{id:'funnel',label:'Funnel',icon:<BarChart3 size={16}/>},{id:'results',label:'Results',icon:<Calc size={16}/>}];
   return(
-    <div className="min-h-screen bg-base-100 flex flex-col">
-      <div className="md:hidden sticky top-0 z-10 bg-base-200 border-b border-base-300">
-        <div className="flex">{tabs.map(t=><button key={t.id} className={`flex-1 flex items-center justify-center gap-1.5 py-3 text-sm font-medium transition-colors ${tab===t.id?'text-primary border-b-2 border-primary':'text-base-content/50'}`} onClick={()=>setTab(t.id)}>{t.icon}{t.label}</button>)}</div>
+    <div className="min-h-screen bg-white flex flex-col">
+      <div className="md:hidden sticky top-0 z-10 bg-gray-100 border-b border-gray-200">
+        <div className="flex">{tabs.map(t=><button key={t.id} className={`flex-1 flex items-center justify-center gap-1.5 py-3 text-sm font-medium transition-colors ${tab===t.id?'text-indigo-500 border-b-2 border-indigo-500':'text-gray-500'}`} onClick={()=>setTab(t.id)}>{t.icon}{t.label}</button>)}</div>
       </div>
       <div className="hidden md:flex flex-1 overflow-hidden">
-        <div className="w-[380px] flex-shrink-0 overflow-y-auto border-r border-base-300 p-5 bg-base-100">
-          <div className="flex items-center gap-2 mb-4"><SlidersH size={18} className="text-primary"/><h2 className="text-sm font-bold uppercase tracking-wider text-base-content/60">Inputs</h2></div>
+        <div className="w-[380px] flex-shrink-0 overflow-y-auto border-r border-gray-200 p-5 bg-white">
+          <div className="flex items-center gap-2 mb-4"><SlidersH size={18} className="text-indigo-500"/><h2 className="text-sm font-bold uppercase tracking-wider text-gray-600">Inputs</h2></div>
           <InputPanel inputs={inputs} onChange={setInputs}/>
         </div>
         <div className="flex-1 overflow-y-auto p-5">
           <div className="max-w-2xl mx-auto flex flex-col gap-6">
             <Summary metrics={m} monthlyAdSpend={inputs.monthlyAdSpend}/>
-            <div className="flex items-center gap-2 mt-2"><BarChart3 size={18} className="text-primary"/><h2 className="text-sm font-bold uppercase tracking-wider text-base-content/60">Conversion Funnel</h2></div>
+            <div className="flex items-center gap-2 mt-2"><BarChart3 size={18} className="text-indigo-500"/><h2 className="text-sm font-bold uppercase tracking-wider text-gray-600">Conversion Funnel</h2></div>
             <Funnel metrics={m} monthlyAdSpend={inputs.monthlyAdSpend}/>
           </div>
         </div>
       </div>
       <div className="md:hidden flex-1 overflow-y-auto p-4">
-        {tab==='inputs'&&<div><InputPanel inputs={inputs} onChange={setInputs}/><div className="mt-4"><button className="btn btn-primary btn-block" onClick={()=>setTab('funnel')}>View Funnel <ChevRight size={16}/></button></div></div>}
+        {tab==='inputs'&&<div><InputPanel inputs={inputs} onChange={setInputs}/><div className="mt-4"><button className="w-full px-4 py-2.5 text-sm font-medium text-white bg-indigo-500 rounded-lg hover:bg-indigo-600 transition-colors flex items-center justify-center gap-1" onClick={()=>setTab('funnel')}>View Funnel <ChevRight size={16}/></button></div></div>}
         {tab==='funnel'&&<Funnel metrics={m} monthlyAdSpend={inputs.monthlyAdSpend}/>}
         {tab==='results'&&<Summary metrics={m} monthlyAdSpend={inputs.monthlyAdSpend}/>}
       </div>
