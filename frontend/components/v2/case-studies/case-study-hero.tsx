@@ -24,7 +24,7 @@ export default function CaseStudyHero({ logoSectionTitle, logos = [] }: CaseStud
             <div className="w-full max-w-4xl">
               <h1 className="font-bold leading-[1.2] text-[50px] sm:text-[60px] lg:text-[72px] text-white tracking-[0.72px]">
                 <span className="block mb-2">Make paid ads</span>
-                <span className="block">worth the spend</span>
+                <span className="block">{' '}worth the spend</span>
               </h1>
             </div>
 

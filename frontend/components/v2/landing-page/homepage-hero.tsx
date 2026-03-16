@@ -32,7 +32,7 @@ export default function HomepageHero({ logoSectionTitle, logos = [] }: HomepageH
                     ex-Google
                   </span>
                 </span>
-                <span className="block">talent</span>
+                <span className="block">{' '}talent</span>
               </h1>
             </div>
 

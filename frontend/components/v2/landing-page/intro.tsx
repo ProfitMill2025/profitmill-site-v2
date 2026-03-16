@@ -77,7 +77,7 @@ export default function Intro() {
           <div ref={setCardRef(0)} className="bg-[#E7FFF5] rounded-2xl p-6">
             <div className="md:grid md:grid-cols-3 md:gap-8 lg:block md:items-center">
               <h2 className="text-[#006840] text-xl md:text-2xl font-medium mb-4 md:mb-0 lg:mb-4 text-center md:text-left lg:text-center">
-                Scale profit,<br />not just ad spend
+                Scale profit,<br /> not just ad spend
               </h2>
               <div className="relative w-full aspect-video mb-6 md:mb-0 lg:mb-8">
                 <Image
@@ -97,7 +97,7 @@ export default function Intro() {
           <div ref={setCardRef(1)} className="bg-[#E7FFF5] rounded-2xl p-6">
             <div className="md:grid md:grid-cols-3 md:gap-8 lg:block md:items-center">
               <h2 className="text-[#006840] text-xl md:text-2xl font-medium mb-4 md:mb-0 lg:mb-4 text-center md:text-left lg:text-center">
-                Lean on a growth<br />partner
+                Lean on a growth<br /> partner
               </h2>
               <div className="relative w-full aspect-video mb-6 md:mb-0 lg:mb-8">
                 <Image
