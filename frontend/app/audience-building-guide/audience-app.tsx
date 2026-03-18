@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import PlatformAudiences from './components/PlatformAudiences';
 import ToolsMatrix from './components/ToolsMatrix';
@@ -36,15 +38,13 @@ const tabs = [
   },
 ];
 
-import { createRoot } from 'react-dom/client';
-
-function App() {
+export default function AudienceApp() {
   const [activeTab, setActiveTab] = useState('platforms');
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#ffffff' }}>
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <div className="border-b" style={{ borderColor: '#e5e7eb' }}>
+      <div className="border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 py-5">
           <div className="mb-1">
             <h1
@@ -93,7 +93,7 @@ function App() {
       </div>
 
       {/* Footer */}
-      <div className="border-t mt-8 py-4 px-4" style={{ borderColor: '#e5e7eb' }}>
+      <div className="border-t border-gray-200 mt-8 py-4 px-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between text-[10px] opacity-40">
           <span>© {new Date().getFullYear()} ProfitMill • B2B Audience Building Guide</span>
           <span>Data last updated: March 2026</span>
@@ -102,6 +102,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
-createRoot(document.getElementById('root')!).render(<App />);
