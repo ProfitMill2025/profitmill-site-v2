@@ -1,8 +1,6 @@
-'use client';
-
 import React, { useState } from 'react';
 import { platformData } from '../utils/data';
-import type { AudienceType } from '../types';
+import type { PlatformData, AudienceType } from '../types';
 
 const platformColors: Record<string, string> = {
   'Google Ads': '#4285F4',
@@ -20,7 +18,7 @@ const platformIcons: Record<string, string> = {
   'X (Twitter) Ads': '𝕏',
 };
 
-function AudienceCard({ audience, platformColor }: { audience: AudienceType; platformColor: string }) {
+function AudienceCard({ audience, platformColor }: { audience: AudienceType; platformColor: string; key?: React.Key }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -63,7 +61,7 @@ function AudienceCard({ audience, platformColor }: { audience: AudienceType; pla
       </div>
 
       {expanded && (
-        <div className="px-4 pb-4 ml-4 border-t border-gray-100">
+        <div className="px-4 pb-4 ml-4 border-t border-gray-200">
           <div className="grid gap-3 mt-3">
             {/* Data Required */}
             <div>
