@@ -1,7 +1,7 @@
 'use client'
 
 import { Sora } from 'next/font/google'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -76,10 +76,10 @@ const principlesData = [
 function BoldText({ text, boldWords }: { text: string; boldWords: string[] }) {
   if (!boldWords.length) return <>{}</>
   
-  let result: (string | JSX.Element)[] = [text]
+  let result: (string | ReactNode)[] = [text]
   
   boldWords.forEach((word, i) => {
-    const newResult: (string | JSX.Element)[] = []
+    const newResult: (string | ReactNode)[] = []
     result.forEach((part) => {
       if (typeof part === 'string') {
         const idx = part.indexOf(word)
