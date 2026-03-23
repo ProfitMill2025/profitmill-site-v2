@@ -2,6 +2,7 @@
 
 import { Sora } from 'next/font/google'
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -34,10 +35,10 @@ function ImageLightbox({ example, onClose }: { example: BadExample; onClose: () 
     }
   }, [handleKeyDown])
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={onClose}>
       <div className="relative max-w-4xl w-full mx-4" onClick={(e) => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute -top-12 right-0 text-white text-2xl hover:text-gray-300 transition-colors">✕</button>
+        <button onClick={onClose} className="absolute -top-12 right-0 text-white text-2xl hover:text-gray-300 transition-colors cursor-pointer">✕</button>
         <div className="bg-white rounded-2xl overflow-hidden">
           <img
             src={example.src}
@@ -50,7 +51,8 @@ function ImageLightbox({ example, onClose }: { example: BadExample; onClose: () 
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 
@@ -88,7 +90,7 @@ function ExpandableCard({ example, index }: { example: BadExample; index: number
         {/* Expandable text area */}
         <button
           onClick={() => setExpanded(!expanded)}
-          className="w-full text-left"
+          className="w-full text-left cursor-pointer"
         >
           <div className="p-5 flex items-center justify-between">
             <div className="flex items-center gap-3">
