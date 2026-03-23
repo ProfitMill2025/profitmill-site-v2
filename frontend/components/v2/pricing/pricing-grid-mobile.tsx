@@ -82,15 +82,15 @@ const defaultTiers: PricingTier[] = [
     period: "USD/month",
     description: "Often selected by teams driving hyper-growth and peak expansion",
     stage: "Common Stage:",
-    stageDetail: " Series B and beyond",
+    stageDetail: " Series B",
     arr: "Common Revenue:",
-    arrDetail: " $10M+",
+    arrDetail: " $10-50M",
     highlight: "highest value",
     highlightColor: "#b6ffce",
     headerBgColor: "#001109",
     isHighestValue: true,
     details: [
-      ["Unlimited ad channels", "Ad spend of $100K+ USD/mo", "3 custom landing pages", "› Up to 5 custom-lite landing pages", "› Monthly conversion experiment"],
+      ["Unlimited ad channels", "Ad spend of $100K - $500k USD/mo", "3 custom landing pages", "› Up to 5 custom-lite landing pages", "› Monthly conversion experiment"],
       ["Text + Image Ads + Video Ads", "Full performance visibility in ad platforms + Premium dashboard", "Weekly meetings + Unlimited Slack and email access"],
       ["Client side conversion tracking, offline conversion import, or full server side setup", "CDPs, GA4, CRM integrations"]
     ]
