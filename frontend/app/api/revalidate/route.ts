@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
           revalidatedPaths.push(`/case-studies/${slug.current}`)
         }
         revalidatePath('/', 'page')
-        revalidateTag('case-studies')
+        revalidateTag('case-studies', { expire: 0 })
         revalidatedPaths.push('/')
         break
 
@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
           revalidatedPaths.push(`/resources/blog/${slug.current}`)
         }
         revalidatePath('/resources/blog', 'page')
-        revalidateTag('blog-posts')
+        revalidateTag('blog-posts', { expire: 0 })
         revalidatedPaths.push('/resources/blog')
         break
 
@@ -64,13 +64,13 @@ export async function POST(request: NextRequest) {
 
       case 'pageFaqs':
         revalidatePath('/', 'page')
-        revalidateTag('pageFaqs')
+        revalidateTag('pageFaqs', { expire: 0 })
         revalidatedPaths.push('/')
         break
 
       case 'pageLogos':
         revalidatePath('/', 'page')
-        revalidateTag('pageLogos')
+        revalidateTag('pageLogos', { expire: 0 })
         revalidatedPaths.push('/')
         break
 
