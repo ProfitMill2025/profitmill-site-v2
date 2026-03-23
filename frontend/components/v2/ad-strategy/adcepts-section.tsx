@@ -2,6 +2,7 @@
 
 import { Sora } from 'next/font/google'
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -136,11 +137,19 @@ const adceptsData = [
 function Lightbox({ examples, initialIndex, onClose }: { examples: Example[]; initialIndex: number; onClose: () => void }) {
   const [currentIdx, setCurrentIdx] = useState(initialIndex)
 
+  const goPrev = useCallback(() => {
+    setCurrentIdx((i) => Math.max(i - 1, 0))
+  }, [])
+
+  const goNext = useCallback(() => {
+    setCurrentIdx((i) => Math.min(i + 1, examples.length - 1))
+  }, [examples.length])
+
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape') onClose()
-    if (e.key === 'ArrowRight') setCurrentIdx((i) => Math.min(i + 1, examples.length - 1))
-    if (e.key === 'ArrowLeft') setCurrentIdx((i) => Math.max(i - 1, 0))
-  }, [examples.length, onClose])
+    if (e.key === 'ArrowRight') goNext()
+    if (e.key === 'ArrowLeft') goPrev()
+  }, [onClose, goNext, goPrev])
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown)
@@ -153,10 +162,10 @@ function Lightbox({ examples, initialIndex, onClose }: { examples: Example[]; in
 
   const example = examples[currentIdx]
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={onClose}>
       <div className="relative max-w-4xl w-full mx-4" onClick={(e) => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute -top-12 right-0 text-white text-2xl hover:text-gray-300 transition-colors">✕</button>
+        <button onClick={onClose} className="absolute -top-12 right-0 text-white text-2xl hover:text-gray-300 transition-colors cursor-pointer">✕</button>
         <div className="bg-white rounded-2xl overflow-hidden">
           <img
             src={example.src}
@@ -167,17 +176,17 @@ function Lightbox({ examples, initialIndex, onClose }: { examples: Example[]; in
             <p className="text-gray-600 text-sm md:text-base">{example.caption}</p>
             <div className="flex items-center justify-between mt-4">
               <button
-                onClick={() => setCurrentIdx((i) => Math.max(i - 1, 0))}
+                onClick={(e) => { e.stopPropagation(); goPrev(); }}
                 disabled={currentIdx === 0}
-                className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
               >
                 ← Previous
               </button>
               <span className="text-gray-400 text-sm">{currentIdx + 1} / {examples.length}</span>
               <button
-                onClick={() => setCurrentIdx((i) => Math.min(i + 1, examples.length - 1))}
+                onClick={(e) => { e.stopPropagation(); goNext(); }}
                 disabled={currentIdx === examples.length - 1}
-                className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
               >
                 Next →
               </button>
@@ -185,7 +194,8 @@ function Lightbox({ examples, initialIndex, onClose }: { examples: Example[]; in
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 
