@@ -38,7 +38,7 @@ interface PricingGridProps {
   className?: string
 }
 
-const sectionLabels = ["KEY PLAN DIFFERENCES", "INCREMENTAL DIFFERENCES", "ALWAYS INCLUDED"]
+const sectionLabels = ["KEY PLAN DIFFERENCES", "ADDED DIFFERENCES", "ALWAYS INCLUDED"]
 
 const defaultTiers: PricingTier[] = [
   {
@@ -63,7 +63,7 @@ const defaultTiers: PricingTier[] = [
     period: "USD/month",
     description: "Often selected by teams with PMF looking to accelerate scale",
     stage: "Common Stage:",
-    stageDetail: " Seed to Series A",
+    stageDetail: " Series A",
     arr: "Common Revenue:",
     arrDetail: " $1M - $10M",
     highlight: "most popular",
@@ -101,7 +101,7 @@ const defaultTiers: PricingTier[] = [
     period: "USD/month",
     description: "Often selected by teams committed to winning their market at all costs",
     stage: "Common Stage:",
-    stageDetail: " Series C and beyond",
+    stageDetail: " Series C+",
     arr: "Common Revenue:",
     arrDetail: " $50M+",
     highlight: "highest value",
