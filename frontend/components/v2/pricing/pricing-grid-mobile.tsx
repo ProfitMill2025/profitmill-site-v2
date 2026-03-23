@@ -47,7 +47,7 @@ const defaultTiers: PricingTier[] = [
     period: "USD/month",
     description: "Often selected by teams testing channel fit and early traction",
     stage: "Common Stage:",
-    stageDetail: " Pre-seed / self-funded",
+    stageDetail: " Pre-seed",
     arr: "Common Revenue:",
     arrDetail: " Up to $1M",
     headerBgColor: "#006840",
@@ -90,7 +90,7 @@ const defaultTiers: PricingTier[] = [
     headerBgColor: "#001109",
     isHighestValue: true,
     details: [
-      ["Unlimited ad channels", "Ad spend of $100K - $500k USD/mo", "3 custom landing pages", "› Up to 5 custom-lite landing pages", "› Monthly conversion experiment"],
+      ["5 ad channels", "Ad spend of $100K - $500k USD/mo", "3 custom landing pages", "› Up to 5 custom-lite landing pages", "› Monthly conversion experiment"],
       ["Text + Image Ads + Video Ads", "Full performance visibility in ad platforms + Premium dashboard", "Weekly meetings + Unlimited Slack and email access"],
       ["Client side conversion tracking, offline conversion import, or full server side setup", "CDPs, GA4, CRM integrations"]
     ]
