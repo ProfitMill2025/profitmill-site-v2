@@ -19,14 +19,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  async rewrites() {
-    return [
-      {
-        source: '/ad-strategy',
-        destination: '/ad-strategy/index.html',
-      },
-    ]
-  },
 }
 
 export default nextConfig
