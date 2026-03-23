@@ -154,9 +154,9 @@ function Lightbox({ examples, initialIndex, onClose }: { examples: Example[]; in
   const example = examples[currentIdx]
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={onClose}>
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={onClose}>
       <div className="relative max-w-4xl w-full mx-4" onClick={(e) => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute -top-12 right-0 text-white text-2xl hover:text-gray-300">✕</button>
+        <button onClick={onClose} className="absolute -top-12 right-0 text-white text-2xl hover:text-gray-300 transition-colors">✕</button>
         <div className="bg-white rounded-2xl overflow-hidden">
           <img
             src={example.src}
@@ -169,7 +169,7 @@ function Lightbox({ examples, initialIndex, onClose }: { examples: Example[]; in
               <button
                 onClick={() => setCurrentIdx((i) => Math.max(i - 1, 0))}
                 disabled={currentIdx === 0}
-                className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed"
+                className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               >
                 ← Previous
               </button>
@@ -177,7 +177,7 @@ function Lightbox({ examples, initialIndex, onClose }: { examples: Example[]; in
               <button
                 onClick={() => setCurrentIdx((i) => Math.min(i + 1, examples.length - 1))}
                 disabled={currentIdx === examples.length - 1}
-                className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed"
+                className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               >
                 Next →
               </button>
