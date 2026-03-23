@@ -94,6 +94,25 @@ const defaultTiers: PricingTier[] = [
       ["Text + Image Ads + Video Ads", "Full performance visibility in ad platforms + Premium dashboard", "Weekly meetings + Unlimited Slack and email access"],
       ["Client side conversion tracking, offline conversion import, or full server side setup", "CDPs, GA4, CRM integrations"]
     ]
+  },
+  {
+    name: "Dominate",
+    price: "Custom",
+    period: "USD/month",
+    description: "Often selected by teams committed to winning their market at all costs",
+    stage: "Common Stage:",
+    stageDetail: " Series C and beyond",
+    arr: "Common Revenue:",
+    arrDetail: " $50M+",
+    highlight: "highest value",
+    highlightColor: "#b6ffce",
+    headerBgColor: "#000905",
+    isHighestValue: true,
+    details: [
+      ["Unlimited ad channels across all digital paid media formats", "Ad spend of $500K+ USD/month", "Custom landing page strategy with full CRO and A/B testing"],
+      ["Any ad format, fully supported", "Comprehensive reporting tailored to your stack, cadence, or future-state plan", "Weekly + ad hoc meetings and unlimited Slack and email access \u2014 we operate as an extension of your team"],
+      ["Full bottoms-up tech stack audit: client-side tracking, offline conversion imports, or server-side setup", "CDPs, GA4, CRM integrations \u2014 plus platform research and evaluation where a refresh is needed, with no platform bias"]
+    ]
   }
 ]
 
