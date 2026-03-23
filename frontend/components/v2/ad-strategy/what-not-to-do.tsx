@@ -50,7 +50,7 @@ function ExpandableCard({ example, index }: { example: BadExample; index: number
       </button>
       {expanded && (
         <div className="px-5 pb-5 border-t border-gray-100 pt-4">
-          <h4 className="font-bold text-[#0d0e12] mb-2">{example.title}</h4>
+          <h4 className="font-bold text-[#001109] mb-2">{example.title}</h4>
           <p className="text-gray-600 text-sm leading-relaxed">{example.description}</p>
         </div>
       )}
@@ -75,7 +75,7 @@ export default function WhatNotToDo() {
     <section ref={sectionRef} className={`${sora.className} py-16 md:py-24 bg-[#f8faf9]`}>
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-[32px] md:text-[48px] font-bold text-[#0d0e12] leading-[1.2] mb-4">
+          <h2 className="text-[32px] md:text-[48px] font-bold text-[#001109] leading-[1.2] mb-4">
             What Not to Do
           </h2>
           <p className="text-gray-600 text-lg max-w-3xl mx-auto">
