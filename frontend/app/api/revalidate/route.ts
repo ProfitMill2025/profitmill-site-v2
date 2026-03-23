@@ -1,20 +1,47 @@
+import crypto from 'crypto'
 import { revalidatePath, revalidateTag } from 'next/cache'
 import { NextRequest, NextResponse } from 'next/server'
 
-// Verify webhook signature (optional but recommended for security)
 const WEBHOOK_SECRET = process.env.SANITY_WEBHOOK_SECRET
+
+/**
+ * Verify the Sanity webhook signature using HMAC-SHA256.
+ * Sanity signs the request body with the shared secret and sends
+ * the hex-encoded HMAC in the 'sanity-webhook-signature' header.
+ */
+function isValidSignature(
+  rawBody: string,
+  signature: string | null,
+  secret: string,
+): boolean {
+  if (!signature) return false
+
+  const hmac = crypto.createHmac('sha256', secret)
+  const expectedSignature = hmac.update(rawBody).digest('hex')
+
+  // Use timingSafeEqual to prevent timing attacks
+  const expected = Buffer.from(expectedSignature)
+  const received = Buffer.from(signature)
+
+  if (expected.length !== received.length) return false
+  return crypto.timingSafeEqual(expected, received)
+}
 
 export async function POST(request: NextRequest) {
   try {
+    // Read raw body for signature verification
+    const rawBody = await request.text()
+
     // Verify the webhook secret if configured
     if (WEBHOOK_SECRET) {
       const signature = request.headers.get('sanity-webhook-signature')
-      if (signature !== WEBHOOK_SECRET) {
+      if (!isValidSignature(rawBody, signature, WEBHOOK_SECRET)) {
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
       }
     }
 
-    const body = await request.json()
+    // Parse the body from raw text (can't use request.json() after request.text())
+    const body = JSON.parse(rawBody)
     const { _type, slug } = body
 
     console.log('Revalidating:', { _type, slug })
