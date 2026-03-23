@@ -109,7 +109,7 @@ const defaultTiers: PricingTier[] = [
     headerBgColor: "#000905",
     isHighestValue: true,
     details: [
-      ["Unlimited ad channels across all digital paid media formats", "Ad spend of $500K+ USD/month", "Custom landing page strategy with full CRO and A/B testing"],
+      ["Unlimited ad channels across all digital paid media formats", "Ad spend of $500K+ USD/mo", "Custom landing page strategy with full CRO and A/B testing"],
       ["Any ad format, fully supported", "Comprehensive reporting tailored to your stack, cadence, or future-state plan", "Weekly + ad hoc meetings and unlimited Slack and email access \u2014 we operate as an extension of your team"],
       ["Full bottoms-up tech stack audit: client-side tracking, offline conversion imports, or server-side setup", "CDPs, GA4, CRM integrations \u2014 plus platform research and evaluation where a refresh is needed, with no platform bias"]
     ]
