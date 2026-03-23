@@ -1,7 +1,7 @@
 'use client'
 
 import { Sora } from 'next/font/google'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -74,12 +74,12 @@ const principlesData = [
 ]
 
 function BoldText({ text, boldWords }: { text: string; boldWords: string[] }) {
-  if (!boldWords.length) return <>{}</>
+  if (!boldWords.length) return <>{}</>  
   
-  let result: (string | JSX.Element)[] = [text]
+  let result: (string | ReactNode)[] = [text]
   
   boldWords.forEach((word, i) => {
-    const newResult: (string | JSX.Element)[] = []
+    const newResult: (string | ReactNode)[] = []
     result.forEach((part) => {
       if (typeof part === 'string') {
         const idx = part.indexOf(word)
@@ -123,7 +123,7 @@ export default function PrinciplesSection() {
     <section id="our-principles" ref={sectionRef} className={`${sora.className} py-16 md:py-24 bg-[#f8faf9]`}>
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-[32px] md:text-[48px] font-bold text-[#0d0e12] leading-[1.2] mb-4">
+          <h2 className="text-[32px] md:text-[48px] font-bold text-[#001109] leading-[1.2] mb-4">
             Our Principles
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
@@ -140,7 +140,7 @@ export default function PrinciplesSection() {
             >
               <div className="flex items-start gap-4 mb-4">
                 <span className="text-[#006840] font-bold text-lg shrink-0">{idx + 1}.</span>
-                <h3 className="text-xl md:text-2xl font-bold text-[#0d0e12]">{principle.title}</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-[#001109]">{principle.title}</h3>
               </div>
               <p className="text-gray-600 leading-relaxed mb-6 ml-8">
                 <BoldText text={principle.body} boldWords={principle.bodyBold} />

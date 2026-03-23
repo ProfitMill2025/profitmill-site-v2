@@ -26,12 +26,12 @@ const adceptsData = [
     description: "Ads that use natural language in a readable sentence to succinctly communicate the value proposition. Table stakes, but effective — if the person is already interested, they'll respond. At minimum, the ad makes it unmistakably clear what's being offered.",
     verdict: "Solid baseline",
     examples: [
-      { src: "/assets/straight-1-HCnKVuZi.png", caption: "Growmodo — \"Working on Creative Projects? We\'ve Got The Talent You Need.\" — clean, direct" },
+      { src: "/assets/straight-1-HCnKVuZi.png", caption: "Growmodo — \"Working on Creative Projects? We've Got The Talent You Need.\" — clean, direct" },
       { src: "/assets/straight-2-DgSE2cG1.png", caption: "Pavago — \"Hire Elite Sales Talent for $1,000/mo\" — price anchor with strikethrough" },
       { src: "/assets/straight-3-nR67UUSd.png", caption: "Daniel Iles — \"WE GET YOU NOTICED\" — bold typography, 1M views guaranteed" },
       { src: "/assets/straight-4-BLREOhhx.png", caption: "Feedbird — \"I need a designer to post on social media\" — crossed out pain, starting at $99/mo" },
       { src: "/assets/straight-5-hNN2X6Gw.png", caption: "Abe — \"We run LinkedIn ads for the biggest B2B brands\" — authority + Lincoln visual" },
-      { src: "/assets/straight-6-D67znF2w.png", caption: "30characters — \"My boss thinks I\'m a speedy ad copy genius\" — Reddit native ad with product screenshot" },
+      { src: "/assets/straight-6-D67znF2w.png", caption: "30characters — \"My boss thinks I'm a speedy ad copy genius\" — Reddit native ad with product screenshot" },
       { src: "/assets/straight-7-D7AazTUu.png", caption: "Ownr — \"From Weekend Hobby to Full-time Business\" — aspirational with clear CTA" }
     ]
   },
@@ -48,7 +48,7 @@ const adceptsData = [
       { src: "/assets/pain-7-DfALAPrt.png", caption: "Agri Lead — \"Stop wasting time on tire-kickers\" with visual funnel" },
       { src: "/assets/pain-8-BGYAjWIH.png", caption: "Apple — \"Your PC needs a security update\" — competitor pain point play" },
       { src: "/assets/pain-9-7tG6w1uF.png", caption: "Ratio Fellowship — \"We scale SaaS startups through profitable paid ads\"" },
-      { src: "/assets/pain-10-DQhaTlMl.png", caption: "Willful — \"Last year you said \'this year\'\" — emotional urgency with strikethrough" }
+      { src: "/assets/pain-10-DQhaTlMl.png", caption: "Willful — \"Last year you said 'this year'\" — emotional urgency with strikethrough" }
     ]
   },
   {
@@ -61,7 +61,7 @@ const adceptsData = [
       { src: "/assets/persona-callout-3-CdG0UMeD.png", caption: "Motion.io — \"Loved by Agencies Like Yours\" with social proof stats" },
       { src: "/assets/persona-callout-4-Bj4k4QLd.png", caption: "VXT — \"How law firms are using call routing\" targets a specific vertical" },
       { src: "/assets/persona-callout-5-DSZqZSCc.png", caption: "Soblu — \"Marketing Agency Owners\" with a bold, clear offer" },
-      { src: "/assets/persona-callout-6-CKtdQEaS.png", caption: "XTiles — \"The founder is not an administrator\" speaks to the persona\'s pain" }
+      { src: "/assets/persona-callout-6-CKtdQEaS.png", caption: "XTiles — \"The founder is not an administrator\" speaks to the persona's pain" }
     ]
   },
   {
@@ -71,8 +71,8 @@ const adceptsData = [
     examples: [
       { src: "/assets/competitor-1-CN_9zo86.png", caption: "Statusbrew — \"Sprout Called. They Want Their Users Back.\" bold competitor callout" },
       { src: "/assets/competitor-2-BvM0dvJT.png", caption: "HeyOrca — \"Add more team members without paying more\" — undercutting competitor pricing" },
-      { src: "/assets/competitor-3-Bf8pN77q.png", caption: "IClosed — \"You\'re Losing Money With Calendly\" — direct competitor attack with product demo" },
-      { src: "/assets/competitor-4-BIF9JcVS.png", caption: "IClosed — \"You\'re Losing Money With Calendly (Proof Below)\" — competitor teardown with testimonial" },
+      { src: "/assets/competitor-3-Bf8pN77q.png", caption: "IClosed — \"You're Losing Money With Calendly\" — direct competitor attack with product demo" },
+      { src: "/assets/competitor-4-BIF9JcVS.png", caption: "IClosed — \"You're Losing Money With Calendly (Proof Below)\" — competitor teardown with testimonial" },
       { src: "/assets/competitor-5-CWcUIhNo.png", caption: "Instantly.ai — \"Some outreach tools fill inboxes… Instantly fills calendars\" — subtle competitor dig" },
       { src: "/assets/competitor-6-B0r7MW4m.png", caption: "HeyOrca — \"So your social media tool just hiked its prices, eh?\" — capitalizing on competitor price hike" }
     ]
@@ -98,7 +98,7 @@ const adceptsData = [
       { src: "/assets/report-2-gKxalsIX.png", caption: "Ryan Stewart — \"ONE SOP. Unlimited Local SEO Clients.\" — bold, direct offer with price" },
       { src: "/assets/report-3-C9VSLSNK.png", caption: "Instantly.ai — \"Cold Email Benchmark Report 2026\" — data-driven gated content" },
       { src: "/assets/report-4-BgxBhBfy.png", caption: "Vanta — \"SOC 2 Compliance Checklist\" — free checklist download with 338 submits" },
-      { src: "/assets/report-5-CsCJePhL.png", caption: "Procore — \"Canada\'s Construction Forecast for 2025\" — industry report with magazine preview" },
+      { src: "/assets/report-5-CsCJePhL.png", caption: "Procore — \"Canada's Construction Forecast for 2025\" — industry report with magazine preview" },
       { src: "/assets/report-6-Dpg1mbXk.png", caption: "Vanta — \"ISO 42001: Your AI compliance checklist\" — compliance guide download" }
     ]
   },
@@ -107,7 +107,7 @@ const adceptsData = [
     description: "Attaching your message to real-world moments — holidays, summer slowdowns, industry events. Most brands don't do this, which makes it a great way to stand out. August is slow? Make an ad about it.",
     verdict: "Underutilized",
     examples: [
-      { src: "/assets/seasonal-1-BkKYUiMD.png", caption: "Hike SEO — \"Life\'s back on schedule. Make sure your SEO is too\" — back-to-school seasonal tie-in" }
+      { src: "/assets/seasonal-1-BkKYUiMD.png", caption: "Hike SEO — \"Life's back on schedule. Make sure your SEO is too\" — back-to-school seasonal tie-in" }
     ]
   },
   {
@@ -120,7 +120,7 @@ const adceptsData = [
       { src: "/assets/social-3-VuB1K6B3.png", caption: "Koala Insulation — \"High Insulation Demand in Windsor!\" — local social proof with geo-targeting" },
       { src: "/assets/social-4-je1hjpRq.png", caption: "Pressmaster.ai — \"The Highest-Rated Content Tool for Agencies\" — G2 rating + award badges" },
       { src: "/assets/social-5-UNZtBAev.png", caption: "Wing Assistant — client reviews from Google, Capterra, Clutch with highlighted quotes" },
-      { src: "/assets/social-6-AWTTWET9.png", caption: "Mews — \"The Hotel Next Door Uses Mews. Why Don\'t You?\" — bold peer pressure play" }
+      { src: "/assets/social-6-AWTTWET9.png", caption: "Mews — \"The Hotel Next Door Uses Mews. Why Don't You?\" — bold peer pressure play" }
     ]
   },
   {
@@ -222,7 +222,7 @@ function AdceptCard({ category, index }: { category: AdceptCategory; index: numb
         )}
         <div className="p-5">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-bold text-[#0d0e12]">{category.title}</h3>
+            <h3 className="font-bold text-[#001109]">{category.title}</h3>
             <span className="text-xs font-semibold text-[#006840] bg-[#006840]/10 px-2.5 py-1 rounded-full">
               {category.examples.length}
             </span>
@@ -250,7 +250,7 @@ export default function AdceptsSection() {
     <section className={`${sora.className} py-16 md:py-24 bg-white`}>
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         <div className="text-center mb-6">
-          <h2 className="text-[32px] md:text-[48px] font-bold text-[#0d0e12] leading-[1.2] mb-4">
+          <h2 className="text-[32px] md:text-[48px] font-bold text-[#001109] leading-[1.2] mb-4">
             Adcepts: Patterns That Work
           </h2>
           <p className="text-gray-600 text-lg max-w-3xl mx-auto">

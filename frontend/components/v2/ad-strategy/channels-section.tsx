@@ -131,7 +131,7 @@ export default function ChannelsSection() {
     <section ref={sectionRef} className={`${sora.className} py-16 md:py-24 bg-white`}>
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-[32px] md:text-[48px] font-bold text-[#0d0e12] leading-[1.2] mb-4">
+          <h2 className="text-[32px] md:text-[48px] font-bold text-[#001109] leading-[1.2] mb-4">
             The Channels We Work With
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
@@ -154,7 +154,7 @@ export default function ChannelsSection() {
         {/* Channel Content Card */}
         <div className="bg-gray-50 rounded-2xl p-6 md:p-10">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-2xl font-bold text-[#0d0e12]">{activeChannel}</h3>
+            <h3 className="text-2xl font-bold text-[#001109]">{activeChannel}</h3>
             <a
               href={learnMoreUrls[activeChannel]}
               target="_blank"
@@ -187,7 +187,7 @@ export default function ChannelsSection() {
                 {activeFormat.specs.map((spec) => (
                   <div key={spec.label} className="bg-white rounded-xl p-4">
                     <div className="text-xs text-gray-500 font-medium mb-1">{spec.label}</div>
-                    <div className="text-sm font-semibold text-[#0d0e12]">{spec.value}</div>
+                    <div className="text-sm font-semibold text-[#001109]">{spec.value}</div>
                   </div>
                 ))}
               </div>

@@ -35,7 +35,7 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className={`${sora.className} pt-[120px] md:pt-[161px] pb-8 bg-white`}>
+    <section ref={sectionRef} className={`${sora.className} pb-8 bg-white`}>
       <div className="mx-auto px-4 md:px-8">
         <div className="bg-[#00351f] box-border flex flex-col items-center justify-center overflow-clip px-0 py-14 md:py-[104px] relative rounded-[20px] md:rounded-[32px] w-full">
           <div className="flex flex-col gap-12 items-center justify-center px-5 md:px-8 relative w-full z-[5]">
