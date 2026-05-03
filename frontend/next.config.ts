@@ -51,6 +51,15 @@ const nextConfig: NextConfig = {
         source: '/api/sync',
         destination: 'https://profitmill-os.vercel.app/api/sync',
       },
+      // Password reset API routes
+      {
+        source: '/api/forgot-password',
+        destination: 'https://profitmill-os.vercel.app/api/forgot-password',
+      },
+      {
+        source: '/api/reset-password',
+        destination: 'https://profitmill-os.vercel.app/api/reset-password',
+      },
       // Static assets from profitmill-os
       {
         source: '/main-icon.png',
