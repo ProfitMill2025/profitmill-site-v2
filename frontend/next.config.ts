@@ -19,6 +19,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/os/:path*',
+        destination: 'https://profitmill-os.vercel.app/os/:path*',
+      },
+    ]
+  },
 }
 
 export default nextConfig
