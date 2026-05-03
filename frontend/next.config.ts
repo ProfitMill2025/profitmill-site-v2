@@ -21,9 +21,35 @@ const nextConfig: NextConfig = {
   },
   async rewrites() {
     return [
+      // ProfitMill OS pages
       {
         source: '/os/:path*',
         destination: 'https://profitmill-os.vercel.app/os/:path*',
+      },
+      // NextAuth API routes (login, session, CSRF, callbacks)
+      {
+        source: '/api/auth/:path*',
+        destination: 'https://profitmill-os.vercel.app/api/auth/:path*',
+      },
+      // Registration API
+      {
+        source: '/api/register',
+        destination: 'https://profitmill-os.vercel.app/api/register',
+      },
+      // 2FA setup & verify API
+      {
+        source: '/api/2fa/:path*',
+        destination: 'https://profitmill-os.vercel.app/api/2fa/:path*',
+      },
+      // Budget data API
+      {
+        source: '/api/budget-data',
+        destination: 'https://profitmill-os.vercel.app/api/budget-data',
+      },
+      // Sync API (for Tasklet daily trigger)
+      {
+        source: '/api/sync',
+        destination: 'https://profitmill-os.vercel.app/api/sync',
       },
     ]
   },
