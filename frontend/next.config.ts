@@ -51,6 +51,11 @@ const nextConfig: NextConfig = {
         source: '/api/sync',
         destination: 'https://profitmill-os.vercel.app/api/sync',
       },
+      // Static assets from profitmill-os
+      {
+        source: '/main-icon.png',
+        destination: 'https://profitmill-os.vercel.app/main-icon.png',
+      },
     ]
   },
 }
