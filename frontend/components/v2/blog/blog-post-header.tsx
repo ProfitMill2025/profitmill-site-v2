@@ -7,7 +7,7 @@ const sora = Sora({ subsets: ['latin'] })
 
 interface BlogPostHeaderProps {
   title: string
-  heroImage: string
+  heroImage?: string | null
   heroImageAlt?: string
 }
 
@@ -71,20 +71,22 @@ export default function BlogPostHeader({ title, heroImage, heroImageAlt }: BlogP
         </div>
       </div>
 
-      {/* Hero image */}
-      <div
-        className="relative h-[300px] md:h-[400px] w-full z-[3] rounded-bl-[20px] md:rounded-bl-[32px] rounded-br-[20px] md:rounded-br-[32px] overflow-hidden"
-        data-name="image"
-      >
-        <Image
-          src={heroImage}
-          alt={heroImageAlt || title}
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
-      </div>
+      {/* Hero image - only rendered when a hero image is provided */}
+      {heroImage && (
+        <div
+          className="relative h-[300px] md:h-[400px] w-full z-[3] rounded-bl-[20px] md:rounded-bl-[32px] rounded-br-[20px] md:rounded-br-[32px] overflow-hidden"
+          data-name="image"
+        >
+          <Image
+            src={heroImage}
+            alt={heroImageAlt || title}
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+        </div>
+      )}
         </div>
       </div>
     </section>
