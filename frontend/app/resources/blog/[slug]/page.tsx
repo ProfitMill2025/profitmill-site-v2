@@ -276,7 +276,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       day: 'numeric',
     }) : mockBlogPost.publishedAt,
     readTime: calculateReadTime(post.content),
-    heroImage: post.heroImage ? urlFor(post.heroImage).width(1200).url() : mockBlogPost.heroImage,
+    heroImage: post.heroImage ? urlFor(post.heroImage).width(1200).url() : null,
     content: post.content,
     relatedPosts: post.relatedPosts?.map((related: any) => ({
       id: related._id,
