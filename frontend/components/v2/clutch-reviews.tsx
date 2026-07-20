@@ -1,8 +1,7 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import Script from "next/script"
-
+import { useRef } from "react"
+import { useClutchInit } from "./use-clutch-init"
 
 type Props = {
   companyId?: string
@@ -10,29 +9,10 @@ type Props = {
 
 export default function ClutchReviews({ companyId = "2504132" }: Props) {
   const widgetRef = useRef<HTMLDivElement | null>(null)
-
-  useEffect(() => {
-    const ensureScript = () => {
-      if (document.getElementById("clutch-widget-js")) return Promise.resolve()
-      return new Promise<void>((resolve) => {
-        const s = document.createElement("script")
-        s.id = "clutch-widget-js"
-        s.src = "https://widget.clutch.co/static/js/widget.js"
-        s.async = true
-        s.onload = () => resolve()
-        document.body.appendChild(s)
-      })
-    }
-
-    ensureScript().then(() => {
-      ;(window as any)?.CLUTCHCO?.Init?.()
-    })
-  }, [])
+  const status = useClutchInit(widgetRef)
 
   return (
     <>
-      {/* Minimal, from-scratch embed per Clutch snippet */}
-      <Script id="clutch-widget-inline" src="https://widget.clutch.co/static/js/widget.js" strategy="afterInteractive" />
       <section className="py-8 md:py-12 bg-white">
         <div className="mx-auto px-4 md:px-8 max-w-[1400px]">
           <div
@@ -46,6 +26,16 @@ export default function ClutchReviews({ companyId = "2504132" }: Props) {
             data-reviews=""
             data-clutchcompany-id={companyId}
           />
+          {status === "failed" && (
+            <a
+              href={`https://clutch.co/profile/${companyId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold text-[#006840] underline"
+            >
+              See our reviews on Clutch
+            </a>
+          )}
         </div>
       </section>
       <noscript>

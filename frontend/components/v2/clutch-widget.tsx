@@ -1,11 +1,13 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import Script from 'next/script'
+import { useRef } from 'react'
+import { useClutchInit } from './use-clutch-init'
 
 interface ClutchWidgetProps {
   className?: string
 }
+
+const CLUTCH_COMPANY_ID = '2504132'
 
 // Add global styles for Clutch badge widget (type 2) only
 if (typeof document !== 'undefined') {
@@ -24,39 +26,22 @@ if (typeof document !== 'undefined') {
 
 export default function ClutchWidget({ className = '' }: ClutchWidgetProps) {
   const widgetRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    // Trigger Clutch widget initialization after mount
-    const initWidget = () => {
-      if (widgetRef.current && (window as any).CLUTCHCO) {
-        (window as any).CLUTCHCO.Init()
-      }
-    }
-
-    // Try to init immediately if script already loaded
-    if ((window as any).CLUTCHCO) {
-      initWidget()
-    } else {
-      // Wait for script to load
-      const checkInterval = setInterval(() => {
-        if ((window as any).CLUTCHCO) {
-          initWidget()
-          clearInterval(checkInterval)
-        }
-      }, 100)
-
-      return () => clearInterval(checkInterval)
-    }
-  }, [])
+  const status = useClutchInit(widgetRef)
 
   return (
-    <>
-      <Script
-        id="clutch-widget-script"
-        src="https://widget.clutch.co/static/js/widget.js"
-        strategy="afterInteractive"
-      />
-      <div className={`bg-[rgba(255,255,255,0.9)] rounded-[8.673px] w-fit h-[52px] relative px-3 py-2 flex items-center justify-center ${className}`}>
+    <div
+      className={`bg-[rgba(255,255,255,0.9)] rounded-[8.673px] w-fit h-[52px] relative px-3 py-2 flex items-center justify-center ${className}`}
+    >
+      {status === 'failed' ? (
+        <a
+          href={`https://clutch.co/profile/${CLUTCH_COMPANY_ID}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm font-semibold text-[#006840] whitespace-nowrap"
+        >
+          Reviewed on Clutch
+        </a>
+      ) : (
         <div
           ref={widgetRef}
           className="clutch-widget"
@@ -65,9 +50,9 @@ export default function ClutchWidget({ className = '' }: ClutchWidgetProps) {
           data-height="40"
           data-nofollow="false"
           data-expandifr="true"
-          data-clutchcompany-id="2504132"
+          data-clutchcompany-id={CLUTCH_COMPANY_ID}
         />
-      </div>
-    </>
+      )}
+    </div>
   )
 }
