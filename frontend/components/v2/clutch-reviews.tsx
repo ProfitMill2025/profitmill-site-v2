@@ -7,6 +7,8 @@ type Props = {
   companyId?: string
 }
 
+const CLUTCH_PROFILE_URL = "https://clutch.co/profile/profit-mill"
+
 export default function ClutchReviews({ companyId = "2504132" }: Props) {
   const widgetRef = useRef<HTMLDivElement | null>(null)
   const status = useClutchInit(widgetRef)
@@ -28,7 +30,7 @@ export default function ClutchReviews({ companyId = "2504132" }: Props) {
           />
           {status === "failed" && (
             <a
-              href={`https://clutch.co/profile/${companyId}`}
+              href={CLUTCH_PROFILE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-semibold text-[#006840] underline"
@@ -39,7 +41,7 @@ export default function ClutchReviews({ companyId = "2504132" }: Props) {
         </div>
       </section>
       <noscript>
-        <a href={`https://clutch.co/profile/${companyId}`}>See our reviews on Clutch</a>
+        <a href={CLUTCH_PROFILE_URL}>See our reviews on Clutch</a>
       </noscript>
     </>
   )
