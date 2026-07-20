@@ -8,6 +8,7 @@ interface ClutchWidgetProps {
 }
 
 const CLUTCH_COMPANY_ID = '2504132'
+const CLUTCH_PROFILE_URL = 'https://clutch.co/profile/profit-mill'
 
 // Add global styles for Clutch badge widget (type 2) only
 if (typeof document !== 'undefined') {
@@ -34,12 +35,13 @@ export default function ClutchWidget({ className = '' }: ClutchWidgetProps) {
     >
       {status === 'failed' ? (
         <a
-          href={`https://clutch.co/profile/${CLUTCH_COMPANY_ID}`}
+          href={CLUTCH_PROFILE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm font-semibold text-[#006840] whitespace-nowrap"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#006840] whitespace-nowrap"
         >
-          Reviewed on Clutch
+          <span aria-hidden="true">★★★★★</span>
+          <span>4.8 on Clutch</span>
         </a>
       ) : (
         <div
