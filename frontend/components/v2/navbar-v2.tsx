@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { X, Equal, ChevronDown } from 'lucide-react'
+import { X, Equal, ChevronDown, ChevronRight } from 'lucide-react'
 import { Sora } from 'next/font/google'
 import { usePathname, useRouter } from 'next/navigation'
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -16,7 +16,7 @@ export default function NavbarV2() {
   const [isLargeScreen, setIsLargeScreen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<null | 'what' | 'who' | 'resources'>(null)
   const [mobileDropdown, setMobileDropdown] = useState<null | 'what' | 'who' | 'resources'>(null)
-  const [hoveredSubmenu, setHoveredSubmenu] = useState<string | null>(null)
+  const [toolboxExpanded, setToolboxExpanded] = useState(false)
   const [mobileToolboxOpen, setMobileToolboxOpen] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
@@ -44,10 +44,14 @@ export default function NavbarV2() {
       const target = e.target as HTMLElement
       if (!target.closest('.js-nav-dropdown')) {
         setOpenDropdown(null)
+        setToolboxExpanded(false)
       }
     }
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpenDropdown(null)
+      if (e.key === 'Escape') {
+        setOpenDropdown(null)
+        setToolboxExpanded(false)
+      }
     }
     document.addEventListener('click', handleClick)
     document.addEventListener('keydown', handleKey)
@@ -63,6 +67,13 @@ export default function NavbarV2() {
     window.addEventListener('resize', checkScreenSize)
     return () => window.removeEventListener('resize', checkScreenSize)
   }, [])
+
+  // Reset toolbox expanded when Resources dropdown closes
+  useEffect(() => {
+    if (openDropdown !== 'resources') {
+      setToolboxExpanded(false)
+    }
+  }, [openDropdown])
 
   // Update the handleNavClick function to use SheetContext
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
@@ -211,23 +222,23 @@ export default function NavbarV2() {
                 </button>
               </div>
               {openDropdown === 'resources' && (
-                <div className="absolute left-0 right-0 top-full bg-[#f1fff5] rounded-b-[10px] p-6 shadow-lg z-[200] min-w-[180px]">
+                <div className="absolute left-0 right-0 top-full bg-[#f1fff5] rounded-b-[10px] p-6 shadow-lg z-[200] min-w-[280px]">
                   <Link href="/resources/blog" className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32] mb-4">Blog</Link>
                   <Link href="/resources/alternatives" className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32] mb-4">Alternatives</Link>
+                  {/* Ad Toolbox — inline submenu */}
                   <div
-                    className="relative"
-                    onMouseEnter={() => setHoveredSubmenu('toolbox')}
-                    onMouseLeave={() => setHoveredSubmenu(null)}
+                    onMouseEnter={() => setToolboxExpanded(true)}
+                    onMouseLeave={() => setToolboxExpanded(false)}
                   >
-                    <span className="flex items-center justify-between text-[#006840] text-sm leading-[1.5] hover:text-[#004d32] cursor-default font-medium">
+                    <span className="flex items-center gap-1 text-[#006840] text-sm leading-[1.5] hover:text-[#004d32] cursor-default">
                       Ad Toolbox
-                      <ChevronDown size={14} className="-rotate-90 ml-2" />
+                      <ChevronRight size={14} className={`transition-transform ${toolboxExpanded ? 'rotate-90' : ''}`} />
                     </span>
-                    {hoveredSubmenu === 'toolbox' && (
-                      <div className="absolute left-full top-[-16px] ml-2 bg-[#f1fff5] rounded-[10px] p-4 shadow-lg z-[300] min-w-[280px]">
+                    {toolboxExpanded && (
+                      <div className="pl-4 mt-2">
                         <Link
                           href="/ad-audience-targeting-generator"
-                          className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32] whitespace-nowrap"
+                          className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32]"
                           onClick={() => setOpenDropdown(null)}
                         >
                           Ad Audience Targeting Generator
@@ -406,7 +417,7 @@ export default function NavbarV2() {
                           <div>
                             <button
                               onClick={() => setMobileToolboxOpen(!mobileToolboxOpen)}
-                              className="flex items-center gap-1 text-white hover:text-white/80 text-[18px] font-medium"
+                              className="flex items-center gap-1 text-white hover:text-white/80 text-[18px]"
                             >
                               <span>Ad Toolbox</span>
                               <ChevronDown size={18} className={`transition-transform ${mobileToolboxOpen ? 'rotate-180' : ''}`} />
