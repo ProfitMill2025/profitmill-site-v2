@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://www.profitmill.io/marketing-measurement-tools-matrix',
+    canonical: 'https://www.profitmill.io/resources/ad-toolbox/marketing-measurement-tools-matrix',
   },
 }
 
