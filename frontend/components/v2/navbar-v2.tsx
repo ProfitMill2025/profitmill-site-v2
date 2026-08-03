@@ -235,27 +235,20 @@ export default function NavbarV2() {
                       <ChevronRight size={14} className={`transition-transform ${toolboxExpanded ? 'rotate-90' : ''}`} />
                     </span>
                     {toolboxExpanded && (
-                      <div className="pl-4 mt-2">
+                      <div className="pl-4 mt-2 flex flex-col gap-3">
                         <Link
                           href="/ad-audience-targeting-generator"
-                          className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32] mb-2"
+                          className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32]"
                           onClick={() => setOpenDropdown(null)}
                         >
                           Ad Audience Targeting Generator
                         </Link>
                         <Link
-                          href="/resources/ad-toolbox/marketing-measurement-tools-matrix"
-                          className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32] mt-2"
-                          onClick={() => setOpenDropdown(null)}
-                        >
-                          Marketing Measurement Tools Matrix
-                        </Link>
-                        <Link
-                          href="/roi-calculator"
+                          href="/audience-building-guide"
                           className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32]"
                           onClick={() => setOpenDropdown(null)}
                         >
-                          Ad ROI Calculator
+                          Ad Audience Builder
                         </Link>
                       </div>
                     )}
@@ -446,18 +439,11 @@ export default function NavbarV2() {
                                   Ad Audience Targeting Generator
                                 </Link>
                                 <Link
-                                  href="/resources/ad-toolbox/marketing-measurement-tools-matrix"
+                                  href="/audience-building-guide"
                                   className="text-white/70 hover:text-white text-[16px]"
                                   onClick={() => setIsSheetOpen(false)}
                                 >
-                                  Marketing Measurement Tools Matrix
-                                </Link>
-                                <Link
-                                  href="/roi-calculator"
-                                  className="text-white/70 hover:text-white text-[16px]"
-                                  onClick={() => setIsSheetOpen(false)}
-                                >
-                                  Ad ROI Calculator
+                                  Ad Audience Builder
                                 </Link>
                               </div>
                             )}
