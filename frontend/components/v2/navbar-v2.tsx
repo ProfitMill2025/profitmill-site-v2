@@ -16,6 +16,8 @@ export default function NavbarV2() {
   const [isLargeScreen, setIsLargeScreen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<null | 'what' | 'who' | 'resources'>(null)
   const [mobileDropdown, setMobileDropdown] = useState<null | 'what' | 'who' | 'resources'>(null)
+  const [hoveredSubmenu, setHoveredSubmenu] = useState<string | null>(null)
+  const [mobileToolboxOpen, setMobileToolboxOpen] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
   
@@ -209,9 +211,30 @@ export default function NavbarV2() {
                 </button>
               </div>
               {openDropdown === 'resources' && (
-                <div className="absolute left-0 right-0 top-full bg-[#f1fff5] rounded-b-[10px] p-6 shadow-lg z-[200]">
+                <div className="absolute left-0 right-0 top-full bg-[#f1fff5] rounded-b-[10px] p-6 shadow-lg z-[200] min-w-[180px]">
                   <Link href="/resources/blog" className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32] mb-4">Blog</Link>
-                  <Link href="/resources/alternatives" className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32]">Alternatives</Link>
+                  <Link href="/resources/alternatives" className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32] mb-4">Alternatives</Link>
+                  <div
+                    className="relative"
+                    onMouseEnter={() => setHoveredSubmenu('toolbox')}
+                    onMouseLeave={() => setHoveredSubmenu(null)}
+                  >
+                    <span className="flex items-center justify-between text-[#006840] text-sm leading-[1.5] hover:text-[#004d32] cursor-default font-medium">
+                      Ad Toolbox
+                      <ChevronDown size={14} className="-rotate-90 ml-2" />
+                    </span>
+                    {hoveredSubmenu === 'toolbox' && (
+                      <div className="absolute left-full top-[-16px] ml-2 bg-[#f1fff5] rounded-[10px] p-4 shadow-lg z-[300] min-w-[280px]">
+                        <Link
+                          href="/ad-audience-targeting-generator"
+                          className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32] whitespace-nowrap"
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          Ad Audience Targeting Generator
+                        </Link>
+                      </div>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
@@ -380,6 +403,26 @@ export default function NavbarV2() {
                           <Link href="/resources/alternatives" className="text-white hover:text-white/80 text-[18px]" onClick={() => setIsSheetOpen(false)}>
                             Alternatives
                           </Link>
+                          <div>
+                            <button
+                              onClick={() => setMobileToolboxOpen(!mobileToolboxOpen)}
+                              className="flex items-center gap-1 text-white hover:text-white/80 text-[18px] font-medium"
+                            >
+                              <span>Ad Toolbox</span>
+                              <ChevronDown size={18} className={`transition-transform ${mobileToolboxOpen ? 'rotate-180' : ''}`} />
+                            </button>
+                            {mobileToolboxOpen && (
+                              <div className="flex flex-col gap-6 pl-6 mt-4">
+                                <Link
+                                  href="/ad-audience-targeting-generator"
+                                  className="text-white/70 hover:text-white text-[16px]"
+                                  onClick={() => setIsSheetOpen(false)}
+                                >
+                                  Ad Audience Targeting Generator
+                                </Link>
+                              </div>
+                            )}
+                          </div>
                         </div>
                         <div className="border-b border-[#006840]" />
                       </>
