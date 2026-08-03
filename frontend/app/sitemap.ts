@@ -29,6 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/resources/podcasts',
     '/resources/tools-templates',
     '/resources/alternatives',
+    '/resources/ad-toolbox/marketing-measurement-tools-matrix',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     changeFrequency: 'weekly' as const,

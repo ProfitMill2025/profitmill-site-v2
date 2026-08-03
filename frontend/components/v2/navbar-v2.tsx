@@ -244,6 +244,13 @@ export default function NavbarV2() {
                           Ad Audience Targeting Generator
                         </Link>
                         <Link
+                          href="/resources/ad-toolbox/marketing-measurement-tools-matrix"
+                          className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32] mt-2"
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          Marketing Measurement Tools Matrix
+                        </Link>
+                        <Link
                           href="/roi-calculator"
                           className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32]"
                           onClick={() => setOpenDropdown(null)}
@@ -437,6 +444,13 @@ export default function NavbarV2() {
                                   onClick={() => setIsSheetOpen(false)}
                                 >
                                   Ad Audience Targeting Generator
+                                </Link>
+                                <Link
+                                  href="/resources/ad-toolbox/marketing-measurement-tools-matrix"
+                                  className="text-white/70 hover:text-white text-[16px]"
+                                  onClick={() => setIsSheetOpen(false)}
+                                >
+                                  Marketing Measurement Tools Matrix
                                 </Link>
                                 <Link
                                   href="/roi-calculator"
