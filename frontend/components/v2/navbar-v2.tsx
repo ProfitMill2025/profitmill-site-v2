@@ -238,10 +238,17 @@ export default function NavbarV2() {
                       <div className="pl-4 mt-2">
                         <Link
                           href="/ad-audience-targeting-generator"
-                          className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32]"
+                          className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32] mb-2"
                           onClick={() => setOpenDropdown(null)}
                         >
                           Ad Audience Targeting Generator
+                        </Link>
+                        <Link
+                          href="/roi-calculator"
+                          className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32]"
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          Ad ROI Calculator
                         </Link>
                       </div>
                     )}
@@ -430,6 +437,13 @@ export default function NavbarV2() {
                                   onClick={() => setIsSheetOpen(false)}
                                 >
                                   Ad Audience Targeting Generator
+                                </Link>
+                                <Link
+                                  href="/roi-calculator"
+                                  className="text-white/70 hover:text-white text-[16px]"
+                                  onClick={() => setIsSheetOpen(false)}
+                                >
+                                  Ad ROI Calculator
                                 </Link>
                               </div>
                             )}
