@@ -250,6 +250,20 @@ export default function NavbarV2() {
                         >
                           Ad Audience Builder
                         </Link>
+                        <Link
+                          href="/roi-calculator"
+                          className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32]"
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          Paid Ads ROI Calculator
+                        </Link>
+                        <Link
+                          href="/ad-strategy"
+                          className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32]"
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          Ad Strategy
+                        </Link>
                       </div>
                     )}
                   </div>
@@ -438,6 +452,20 @@ export default function NavbarV2() {
                                   onClick={() => setIsSheetOpen(false)}
                                 >
                                   Ad Audience Builder
+                                </Link>
+                                <Link
+                                  href="/roi-calculator"
+                                  className="text-white/70 hover:text-white text-[16px]"
+                                  onClick={() => setIsSheetOpen(false)}
+                                >
+                                  Paid Ads ROI Calculator
+                                </Link>
+                                <Link
+                                  href="/ad-strategy"
+                                  className="text-white/70 hover:text-white text-[16px]"
+                                  onClick={() => setIsSheetOpen(false)}
+                                >
+                                  Ad Strategy
                                 </Link>
                               </div>
                             )}

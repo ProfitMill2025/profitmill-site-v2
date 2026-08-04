@@ -232,8 +232,11 @@ export const pageLogosQuery = defineQuery(`
   }
 `)
 
+// Note: isActive must be checked here, not only in whoWeWorkWithSlugsQuery.
+// Without it, a segment switched off in Sanity still renders on demand at its
+// URL (dynamicParams defaults to true), leaving an orphan page live in search.
 export const whoWeWorkWithQuery = defineQuery(`
-  *[_type == "whoWeWorkWith" && slug.current == $slug][0] {
+  *[_type == "whoWeWorkWith" && isActive == true && slug.current == $slug][0] {
     ...,
     "processedLogos": hero.logos[] {
       name,
