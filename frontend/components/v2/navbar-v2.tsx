@@ -125,7 +125,7 @@ export default function NavbarV2() {
             </svg>
           </Link>
           
-          <div className="hidden xl:flex flex-1 items-center justify-center xl:gap-2 2xl:gap-6 screen-2000px:gap-8 h-[49px]">
+          <div className="hidden xl:flex flex-1 items-center justify-evenly h-[49px]">
             <Link
               href="/about"
               className="text-[#006840] hover:text-[#004d32] font-medium text-sm px-4 py-2"
@@ -250,6 +250,20 @@ export default function NavbarV2() {
                         >
                           Ad Audience Builder
                         </Link>
+                        <Link
+                          href="/roi-calculator"
+                          className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32]"
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          Paid Ads ROI Calculator
+                        </Link>
+                        <Link
+                          href="/ad-strategy"
+                          className="block text-[#006840] text-sm leading-[1.5] hover:text-[#004d32]"
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          Ad Strategy
+                        </Link>
                       </div>
                     )}
                   </div>
@@ -257,12 +271,6 @@ export default function NavbarV2() {
               )}
             </div>
 
-            <Link
-              href="/profit-studio"
-              className="text-[#006840] hover:text-[#004d32] font-medium text-sm"
-            >
-              Profit studio
-            </Link>
           </div>
 
           <Link
@@ -445,6 +453,20 @@ export default function NavbarV2() {
                                 >
                                   Ad Audience Builder
                                 </Link>
+                                <Link
+                                  href="/roi-calculator"
+                                  className="text-white/70 hover:text-white text-[16px]"
+                                  onClick={() => setIsSheetOpen(false)}
+                                >
+                                  Paid Ads ROI Calculator
+                                </Link>
+                                <Link
+                                  href="/ad-strategy"
+                                  className="text-white/70 hover:text-white text-[16px]"
+                                  onClick={() => setIsSheetOpen(false)}
+                                >
+                                  Ad Strategy
+                                </Link>
                               </div>
                             )}
                           </div>
@@ -454,13 +476,6 @@ export default function NavbarV2() {
                     )}
                   </div>
 
-                  <Link
-                    href="/profit-studio"
-                    className="text-[#B6FFCE] hover:text-[#B6FFCE]/80 text-[18px] font-normal"
-                    onClick={() => setIsSheetOpen(false)}
-                  >
-                    Profit studio
-                  </Link>
                 </div>
 
                 <div className="px-5 pb-10 mt-12">

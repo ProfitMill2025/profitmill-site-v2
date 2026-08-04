@@ -11,7 +11,12 @@ const routeMap: Record<string, string> = {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // Static routes
+  // Static routes.
+  // IMPORTANT: every new hard-coded page (any new folder with a page.tsx that is
+  // not driven by a Sanity slug) must be added to this list, otherwise it will
+  // never appear in sitemap.xml and search engines will not discover it.
+  // Sanity-driven routes (blogPost, caseStudy, whoWeWorkWith, author) are picked
+  // up automatically further down and must NOT be listed here.
   const staticRoutes = [
     '',
     '/about',
@@ -30,6 +35,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/resources/tools-templates',
     '/resources/alternatives',
     '/resources/ad-toolbox/marketing-measurement-tools-matrix',
+    '/ad-strategy',
+    '/ad-audience-targeting-generator',
+    '/audience-building-guide',
+    '/roi-calculator',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     changeFrequency: 'weekly' as const,
