@@ -96,7 +96,7 @@ export default function NavbarV2() {
         <nav className="bg-[#F5F5F5] rounded-[32px] h-[72px] md:h-[113px] px-6 shadow-sm">
           <div className="max-w-[1500px] mx-auto h-full">
             <div className="flex items-center justify-between h-full">
-          <Link href="/" className="flex items-center h-[49px] pb-1">
+          <Link href="/" className="flex items-center h-[49px] pb-1 xl:flex-1 xl:basis-0 xl:justify-start">
             <svg width="161" height="35" viewBox="0 0 161 35" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-[34px] w-auto">
               <g clipPath="url(#clip0_1333_24)">
                 <path d="M14.6151 12.2638C13.1416 12.2638 11.946 13.4593 11.946 14.9328C11.946 16.4064 13.1416 17.6019 14.6151 17.6019C16.0887 17.6019 17.2842 16.4064 17.2842 14.9328C17.2842 13.4593 16.0887 12.2638 14.6151 12.2638Z" fill="#006840"/>
@@ -125,23 +125,23 @@ export default function NavbarV2() {
             </svg>
           </Link>
           
-          <div className="hidden xl:flex flex-1 items-center justify-center xl:gap-2 2xl:gap-6 screen-2000px:gap-8 h-[49px]">
+          <div className="hidden xl:flex shrink-0 items-center justify-center xl:gap-2 2xl:gap-6 screen-2000px:gap-8 h-[49px]">
             <Link
               href="/about"
-              className="text-[#006840] hover:text-[#004d32] font-medium text-sm px-4 py-2"
+              className="text-[#006840] hover:text-[#004d32] font-medium text-[15px] 2xl:text-base px-4 py-2"
             >
               About
             </Link>
             <Link
               href="/paid-ads-pricing"
-              className="text-[#006840] hover:text-[#004d32] font-medium text-sm px-4 py-2"
+              className="text-[#006840] hover:text-[#004d32] font-medium text-[15px] 2xl:text-base px-4 py-2"
             >
               Pricing
             </Link>
 
             {/* What we do dropdown (custom) */}
             <div className={`js-nav-dropdown relative ${openDropdown === 'what' ? 'bg-[#f1fff5] rounded-t-[10px] rounded-b-none' : ''}`}>
-              <div className={`flex items-center w-full justify-between font-medium text-sm outline-none transition-colors px-4 py-2 ${openDropdown === 'what' ? 'text-[#004d32]' : 'text-[#006840] hover:text-[#004d32]'}`}>
+              <div className={`flex items-center w-full justify-between font-medium text-[15px] 2xl:text-base outline-none transition-colors px-4 py-2 ${openDropdown === 'what' ? 'text-[#004d32]' : 'text-[#006840] hover:text-[#004d32]'}`}>
                 <Link
                   href="/what-we-do"
                   className="flex-1 text-left"
@@ -170,7 +170,7 @@ export default function NavbarV2() {
 
             {/* Who we work with dropdown (custom) */}
             <div className={`js-nav-dropdown relative ${openDropdown === 'who' ? 'bg-[#f1fff5] rounded-t-[10px] rounded-b-none' : ''}`}>
-              <div className={`flex items-center w-full justify-between font-medium text-sm outline-none transition-colors px-4 py-2 ${openDropdown === 'who' ? 'text-[#004d32]' : 'text-[#006840] hover:text-[#004d32]'}`}>
+              <div className={`flex items-center w-full justify-between font-medium text-[15px] 2xl:text-base outline-none transition-colors px-4 py-2 ${openDropdown === 'who' ? 'text-[#004d32]' : 'text-[#006840] hover:text-[#004d32]'}`}>
                 <Link
                   href="/who-we-work-with"
                   className="flex-1 text-left"
@@ -199,14 +199,14 @@ export default function NavbarV2() {
 
             <Link
               href="/case-studies"
-              className="text-[#006840] hover:text-[#004d32] font-medium text-sm px-4 py-2"
+              className="text-[#006840] hover:text-[#004d32] font-medium text-[15px] 2xl:text-base px-4 py-2"
             >
               Case studies
             </Link>
 
             {/* Resources dropdown (custom) */}
             <div className={`js-nav-dropdown relative ${openDropdown === 'resources' ? 'bg-[#f1fff5] rounded-t-[10px] rounded-b-none' : ''}`}>
-              <div className={`flex items-center w-full justify-between font-medium text-sm outline-none transition-colors px-4 py-2 ${openDropdown === 'resources' ? 'text-[#004d32]' : 'text-[#006840] hover:text-[#004d32]'}`}>
+              <div className={`flex items-center w-full justify-between font-medium text-[15px] 2xl:text-base outline-none transition-colors px-4 py-2 ${openDropdown === 'resources' ? 'text-[#004d32]' : 'text-[#006840] hover:text-[#004d32]'}`}>
                 <span className="flex-1 text-left cursor-default">
                   Resources
                 </span>
@@ -256,15 +256,9 @@ export default function NavbarV2() {
                 </div>
               )}
             </div>
-
-            <Link
-              href="/profit-studio"
-              className="text-[#006840] hover:text-[#004d32] font-medium text-sm"
-            >
-              Profit studio
-            </Link>
           </div>
 
+          <div className="flex items-center justify-end xl:flex-1 xl:basis-0">
           <Link
             href="https://app.hellobonsai.com/s/profitmill/paidadsaudit"
             className="hidden xl:flex items-center justify-center bg-[#FFBA0A] hover:bg-[#FFBA0A]/90 text-black px-6 h-[49px] rounded-[8px] transition-colors font-semibold text-sm"
@@ -453,14 +447,6 @@ export default function NavbarV2() {
                       </>
                     )}
                   </div>
-
-                  <Link
-                    href="/profit-studio"
-                    className="text-[#B6FFCE] hover:text-[#B6FFCE]/80 text-[18px] font-normal"
-                    onClick={() => setIsSheetOpen(false)}
-                  >
-                    Profit studio
-                  </Link>
                 </div>
 
                 <div className="px-5 pb-10 mt-12">
@@ -475,6 +461,7 @@ export default function NavbarV2() {
               </div>
             </SheetContent>
           </Sheet>
+          </div>
             </div>
           </div>
         </nav>

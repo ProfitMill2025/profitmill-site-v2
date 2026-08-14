@@ -18,7 +18,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/case-studies',
     '/paid-ads-pricing',
     '/privacy-policy',
-    '/profit-studio',
     '/terms-conditions',
     '/what-we-do',
     '/what-we-do/google-ads',

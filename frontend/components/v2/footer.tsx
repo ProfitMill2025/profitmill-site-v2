@@ -180,12 +180,6 @@ export default function Footer({ className = '' }: FooterProps) {
                 </div>
               </div>
 
-              {/* Profit studio */}
-              <div ref={setNavigationRef(6)} className="flex flex-col justify-center">
-                <Link href="/profit-studio" className="leading-[24px] text-nowrap hover:text-white transition-colors">
-                  Profit studio
-                </Link>
-              </div>
             </div>
           </div>
 
@@ -310,11 +304,6 @@ export default function Footer({ className = '' }: FooterProps) {
                     </Link>
                   </div>
                 </div>
-              </div>
-              <div ref={setNavigationRef(6)}>
-                <Link href="/profit-studio" className="leading-[24px] text-nowrap hover:text-white transition-colors">
-                  Profit studio
-                </Link>
               </div>
             </div>
           </div>
